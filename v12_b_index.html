@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TheBestF&amp;B 기업 홈페이지</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+*{box-sizing:border-box}
+a{color:inherit}
+input,select,textarea,button{font-family:inherit}
+.en{font-family:'Inter','Noto Sans KR',sans-serif}
+.wrap{max-width:1320px;margin:0 auto;padding-left:48px;padding-right:48px}
+.eyebrow{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.2em;color:#0F0F0F;display:flex;align-items:center;gap:10px;margin:0}
+.eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:#FF0000}
+.eyebrow.lt{color:#FFFFFF}
+.h2{margin:0;font-size:clamp(34px,3.4vw,54px);font-weight:700;letter-spacing:-.04em;line-height:1.3;color:#0F0F0F}
+.lead{margin:0;font-size:18px;line-height:1.85;color:#606060}
+.sec{padding-top:150px;padding-bottom:150px}
+.pill{display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;transition:background .3s,color .3s,gap .3s;border:0;cursor:pointer}
+.pill:hover{gap:20px}
+.pill-w{background:#FFFFFF;color:#0F0F0F}.pill-w:hover{background:#F2F2F2}
+.pill-k{background:#0F0F0F;color:#FFFFFF}.pill-k:hover{background:#272727}
+.pill-line{background:rgba(255,255,255,.12);color:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}.pill-line:hover{background:rgba(255,255,255,.24)}
+.pill-r{background:#FF0000;color:#FFFFFF}.pill-r:hover{background:#CC0000}
+.playdot{width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 2px currentColor;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.playdot::after{content:'';width:10px;height:10px;border-radius:50%;background:#FF0000}
+.tprog{position:fixed;top:0;left:0;right:0;height:3px;background:#FF0000;transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.hdr{position:sticky;top:0;z-index:40;background:#FFFFFF;color:#0F0F0F;border-bottom:1px solid #E5E5E5}
+.hdr-in{height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.gnb{display:flex;height:100%;margin:0;padding:0;list-style:none}
+.gnb>li{height:100%;display:flex;align-items:center}
+.gnb>li>a{display:flex;align-items:center;height:100%;padding:0 22px;font-size:16px;font-weight:700;text-decoration:none;position:relative}
+.gnb>li>a::after{content:'';position:absolute;left:22px;right:22px;bottom:-1px;height:3px;background:#FF0000;transform:scaleX(0);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.gnb>li:hover>a::after,.gnb>li:focus-within>a::after{transform:scaleX(1)}
+.mega{position:absolute;left:0;right:0;top:100%;background:#FFFFFF;color:#0F0F0F;border-top:1px solid #E5E5E5;box-shadow:0 30px 40px -24px rgba(0,0,0,.2);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s,transform .3s,visibility 0s .3s}
+.gnb>li:hover .mega,.gnb>li:focus-within .mega{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s}
+.mega-in{display:grid;grid-template-columns:320px 1fr;gap:56px;padding-top:40px;padding-bottom:44px}
+.mega h4{margin:0 0 10px;font-size:26px;font-weight:700;letter-spacing:-.03em}
+.mega p{margin:0;font-size:15px;color:#606060;line-height:1.7}
+.mega ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 32px}
+.mega ul a{display:flex;justify-content:space-between;align-items:center;padding:16px 4px;border-bottom:1px solid #F2F2F2;text-decoration:none;font-size:16px;font-weight:500;transition:color .25s,padding .25s}
+.mega ul a:hover{color:#FF0000;padding-left:10px}
+.util{display:flex;align-items:center;gap:18px;font-size:13px;font-weight:600}
+.util .lang{display:flex;gap:8px}
+.drawer{display:none}
+.hero{position:relative;margin-top:-84px;height:min(100vh,960px);min-height:680px;overflow:hidden;background:#0F0F0F;color:#FFFFFF}
+.slide{position:absolute;inset:0;opacity:0;z-index:0}
+.slide.prev{opacity:1;z-index:1}
+.slide.on{opacity:1;z-index:2}
+.slide.on.wa{animation:wipeA 1.4s cubic-bezier(.75,0,.2,1) both}.slide.on.wb{animation:wipeB 1.4s cubic-bezier(.75,0,.2,1) both}
+@keyframes wipeA{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}@keyframes wipeB{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.slide.on img{animation:kb 9s linear both}@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.45) 48%,rgba(0,0,0,.1) 85%),linear-gradient(0deg,rgba(0,0,0,.6),transparent 42%)}
+.hero-copy{position:absolute;left:0;right:0;top:50%;transform:translateY(-44%);z-index:3}
+.hc{display:none;flex-direction:column;gap:26px;max-width:800px}
+.hc.on{display:flex}
+.hc .k{font-family:'Inter';font-size:14px;font-weight:600;letter-spacing:.24em;opacity:.9;display:flex;align-items:center;gap:10px}
+.hc .k::before{content:'';width:8px;height:8px;border-radius:50%;background:#FF0000}
+.hc h2{margin:0;font-size:clamp(44px,5.4vw,84px);font-weight:700;letter-spacing:-.045em;line-height:1.16}
+.hc p{margin:0;font-size:19px;line-height:1.8;color:rgba(255,255,255,.82);max-width:34em}
+.ln{display:block;overflow:hidden;padding-bottom:.06em}
+.lni{display:block}
+.hc.on .lni{animation:lnup 1.1s cubic-bezier(.2,.7,.2,1) both}
+.hc .lni.d1{animation-delay:.5s}.hc .lni.d2{animation-delay:.66s}
+@keyframes lnup{from{transform:translateY(105%)}to{transform:none}}
+.rise{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}.d3{animation-delay:.9s}.d4{animation-delay:1.05s}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+.hero-ctrl{position:absolute;left:0;right:0;bottom:118px;z-index:4}
+.ind{display:flex;align-items:flex-end;gap:16px;flex:1}
+.ind button{background:none;border:0;padding:6px 0;cursor:pointer;color:rgba(255,255,255,.55);font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:12px;align-items:flex-start;flex:1;max-width:220px;text-align:left}
+.ind button.on{color:#FFFFFF}
+.ind .bar{display:block;width:100%;height:4px;background:rgba(255,255,255,.28);position:relative}
+.ind .bar i{position:absolute;left:0;top:0;bottom:0;width:100%;background:#FF0000;transform-origin:left;transform:scaleX(0)}
+.ind button.on .bar i.ra{animation:prog 6.5s linear both}.ind button.on .bar i.rb{animation:prog2 6.5s linear both}
+.ind button.on .bar::after{content:'';position:absolute;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:#FF0000;left:0;animation:knob 6.5s linear both}
+.paused .ind button.on .bar i,.paused .ind button.on .bar::after{animation-play-state:paused}
+@keyframes prog{to{transform:scaleX(1)}}@keyframes prog2{to{transform:scaleX(1)}}@keyframes knob{to{left:100%}}
+.pp{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#FFFFFF;cursor:pointer;font-size:13px;font-weight:700}
+.bignum{position:absolute;right:48px;top:46%;transform:translateY(-50%);z-index:3;font-size:210px;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.3);letter-spacing:-.05em;pointer-events:none}
+.bignum small{font-size:22px;-webkit-text-stroke:0;color:rgba(255,255,255,.6);margin-left:10px;letter-spacing:.1em}
+.film{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.86);display:none;align-items:center;justify-content:center;padding:24px}
+.film.on{display:flex;animation:fadein .4s ease both}@keyframes fadein{from{opacity:0}to{opacity:1}}
+.film-box{position:relative;width:min(1100px,100%);aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:16px;animation:pop .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes pop{from{transform:scale(.92)}to{transform:none}}
+.film-box img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.film-box .msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#FFFFFF;text-align:center;padding:20px}
+.film-x{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#FFFFFF;font-size:20px;cursor:pointer}
+.bigplay{width:84px;height:84px;border-radius:50%;box-shadow:inset 0 0 0 2px #FFFFFF;display:flex;align-items:center;justify-content:center}
+.bigplay::after{content:'';border-left:22px solid #FFFFFF;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+.quick{position:relative;z-index:5;margin-top:-80px}
+.quick-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#FFFFFF;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);border-radius:16px;overflow:hidden}
+.qk{display:flex;flex-direction:column;gap:8px;padding:30px 32px;text-decoration:none;color:#0F0F0F;border-right:1px solid #E5E5E5;position:relative;overflow:hidden;transition:color .4s}
+.qk:last-child{border-right:0}
+.qk::before{content:'';position:absolute;inset:0;background:#0F0F0F;transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.qk>*{position:relative}
+.qk .t{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.qk .s{font-size:14px;color:#606060;transition:color .4s}
+.qk .ar{position:absolute;right:28px;top:30px;font-size:20px;transition:transform .35s,color .35s}
+.qk:hover{color:#FFFFFF}.qk:hover::before{transform:scaleY(1)}.qk:hover .s{color:#AAAAAA}.qk:hover .ar{transform:translateX(6px);color:#FF0000}
+.mani{position:relative;background:#FFFFFF}
+.mani-in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:34px;padding-top:180px;padding-bottom:180px}
+.mani-t{margin:0;font-size:clamp(34px,4vw,62px);font-weight:700;letter-spacing:-.04em;line-height:1.45;max-width:18em}
+.w{color:#0F0F0F}.w.hot{color:#FF0000}
+.mani-s{margin:0;font-size:14px;color:#909090;letter-spacing:.2em}
+.story-h{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+.stack{position:relative;display:flex;flex-direction:column;gap:40px}
+.st{position:sticky;top:120px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);background:#0F0F0F;color:#FFFFFF;border-radius:24px;overflow:hidden;min-height:560px;box-shadow:0 -20px 60px -30px rgba(0,0,0,.5);transform-origin:50% 0}
+.st:nth-child(2){top:150px}.st:nth-child(3){top:180px}
+.st-img{position:relative;overflow:hidden}
+.st-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.st-body{padding:56px 52px;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.st-time{font-family:'Inter';font-size:64px;font-weight:700;letter-spacing:-.04em;line-height:1;display:flex;align-items:baseline;gap:12px}
+.st-time small{font-size:14px;font-weight:600;letter-spacing:.2em;color:#AAAAAA}
+.st-t{margin:0;font-size:clamp(28px,2.6vw,40px);font-weight:700;letter-spacing:-.035em;line-height:1.35}
+.st-p{margin:0;font-size:17px;line-height:1.85;color:#BBBBBB}
+.st-no{font-family:'Inter';font-size:13px;font-weight:700;letter-spacing:.2em;color:#AAAAAA;display:flex;justify-content:space-between}
+.typed{display:inline-block;overflow:hidden;white-space:nowrap;border-right:3px solid #FF0000;padding-right:6px;max-width:100%;vertical-align:bottom}
+.xp{position:relative;background:#FFFFFF}
+.xp-stick{position:relative;height:min(100vh,900px);min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.xp-frame{position:absolute;inset:0;overflow:hidden}
+.xp-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.xp-veil{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.xp-copy{position:relative;z-index:2;text-align:center;color:#FFFFFF;display:flex;flex-direction:column;align-items:center;gap:22px;padding:0 24px}
+.xp-t{margin:0;font-size:clamp(36px,4.4vw,68px);font-weight:700;letter-spacing:-.04em;line-height:1.25}
+.xp-s{margin:0;font-size:18px;color:rgba(255,255,255,.82);max-width:32em;line-height:1.8}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:80px;align-items:start}
+.vals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:64px}
+.val{background:#F2F2F2;border-radius:20px;padding:40px 34px;display:flex;flex-direction:column;gap:16px;transition:transform .4s,background .4s}
+.val:hover{transform:translateY(-8px);background:#EAEAEA}
+.val svg{width:56px;height:56px}
+.val svg *{fill:none;stroke:#0F0F0F;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.val svg .rd{stroke:#FF0000}
+.val .no{font-family:'Inter';font-size:13px;font-weight:700;letter-spacing:.16em;color:#909090}
+.val .tt{font-size:24px;font-weight:700;letter-spacing:-.03em}
+.val .ds{font-size:15px;color:#606060;line-height:1.8}
+.letter{background:#FFFFFF;border:1px solid #E5E5E5;border-radius:20px;padding:44px 44px 36px;display:flex;flex-direction:column;gap:20px;position:relative}
+.letter p{margin:0;font-size:17px;line-height:1.95;color:#303030}
+.letter .q{font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.55;color:#0F0F0F}
+.sign{display:flex;align-items:center;gap:16px;border-top:1px solid #E5E5E5;padding-top:20px;font-size:15px;color:#606060}
+.sign svg{width:160px;height:52px}
+.sign path{fill:none;stroke:#0F0F0F;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.biz{display:flex;gap:10px;height:620px;margin-top:64px}
+.bz{position:relative;flex:1 1 0;min-width:0;overflow:hidden;color:#FFFFFF;text-decoration:none;transition:flex-grow .8s cubic-bezier(.2,.7,.2,1);background:#0F0F0F;border-radius:20px}
+.bz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.6) brightness(.6);transition:filter .8s,transform 1.2s cubic-bezier(.2,.7,.2,1);transform:scale(1.05)}
+.bz::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.85))}
+.biz:hover .bz{flex-grow:.75}.biz .bz:hover,.biz .bz:focus-visible{flex-grow:2.4}
+.bz:hover img,.bz:focus-visible img{filter:none;transform:scale(1)}
+.bz .in{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:34px 32px;display:flex;flex-direction:column;gap:12px}
+.bz .no{font-family:'Inter';font-size:13px;font-weight:700;letter-spacing:.14em;color:#FF0000}
+.bz .tt{font-size:27px;font-weight:700;letter-spacing:-.03em;white-space:nowrap}
+.bz .ds{font-size:15px;line-height:1.7;color:rgba(255,255,255,.82);max-width:26em;max-height:0;opacity:0;overflow:hidden;transition:max-height .7s,opacity .5s}
+.bz:hover .ds,.bz:focus-visible .ds{max-height:120px;opacity:1;transition-delay:.15s}
+.brand{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;margin-top:64px}
+.bf{position:relative;border-radius:24px;overflow:hidden;min-height:640px;color:#FFFFFF;text-decoration:none;display:flex;align-items:flex-end;background:#0F0F0F}
+.bf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bf::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.85))}
+.bf .bd{position:relative;z-index:2;padding:40px;display:flex;flex-direction:column;gap:14px;width:100%}
+.bf .nm{font-size:44px;font-weight:700;letter-spacing:-.04em}
+.bf .ds{font-size:16px;line-height:1.8;color:rgba(255,255,255,.85);max-width:34em}
+.bf .go{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.3);padding-top:18px;font-weight:700}
+.bnext{border-radius:24px;border:1.5px dashed #CCCCCC;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:44px;background:#FAFAFA}
+.bnext .nm{font-size:28px;font-weight:700;letter-spacing:-.03em;color:#0F0F0F;line-height:1.4}
+.bnext .ds{font-size:15px;color:#606060;line-height:1.8}
+.dots{display:flex;gap:8px}.dots i{width:10px;height:10px;border-radius:50%;background:#CCCCCC;animation:dt 1.4s ease-in-out infinite}.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s;background:#FF0000}
+@keyframes dt{50%{transform:translateY(-8px)}}
+.fig{background:#0F0F0F;color:#FFFFFF;position:relative;overflow:hidden}
+.fig-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.2}
+.figs{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:60px}
+.fg{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:34px 30px;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.fg .num{font-family:'Inter';font-size:clamp(54px,5vw,80px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.fg .num small{font-size:.36em;font-weight:600;margin-left:4px;color:#AAAAAA}
+.fg .ul{display:block;height:3px;background:#FF0000;transform-origin:left;width:48px}
+.fg .lb{font-size:16px;font-weight:700}
+.fg .ds{font-size:14px;color:#AAAAAA;line-height:1.65}
+@property --c{syntax:'<integer>';inherits:false;initial-value:0}
+.cnt{--c:var(--to);counter-reset:c var(--c)}
+.cnt::before{content:counter(c)}
+.prom{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:80px;align-items:start}
+.plist{list-style:none;margin:0;padding:0;border-top:2px solid #0F0F0F}
+.plist li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:start;padding:28px 0;border-bottom:1px solid #E5E5E5}
+.plist svg{width:40px;height:40px}
+.plist circle{fill:none;stroke:#E5E5E5;stroke-width:2}
+.plist path{fill:none;stroke:#FF0000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.plist .tt{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.plist .ds{font-size:15px;color:#606060;line-height:1.75}
+.sticky-l{position:sticky;top:140px;display:flex;flex-direction:column;gap:26px}
+.band{overflow:hidden;padding:70px 0;background:#FFFFFF;border-top:1px solid #E5E5E5}
+.bandl,.bandr{white-space:nowrap;font-size:clamp(80px,10vw,160px);font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.bandl{color:transparent;-webkit-text-stroke:1.5px #CCCCCC}
+.bandl b{color:#FF0000;-webkit-text-stroke:0}
+.bandr{color:#0F0F0F;font-family:'Noto Sans KR',sans-serif;font-weight:900}
+.tabs{display:flex;gap:0;border-bottom:1px solid #E5E5E5}
+.tabs button{background:none;border:0;padding:14px 22px;font-size:16px;font-weight:700;color:#909090;cursor:pointer;position:relative}
+.tabs button[aria-selected="true"]{color:#0F0F0F}
+.tabs button[aria-selected="true"]::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:3px;background:#FF0000}
+.news{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:56px;margin-top:40px}
+.nf{text-decoration:none;color:#0F0F0F;display:flex;flex-direction:column;gap:16px}
+.nf .ph{aspect-ratio:16/10;overflow:hidden;border-radius:16px;position:relative;display:block}.nf .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s}
+.nf:hover .ph img{transform:scale(1.05)}
+.nf .ph .playdot{position:absolute;left:18px;bottom:18px;width:46px;height:46px;color:#FFFFFF;background:rgba(0,0,0,.35)}
+.nl{list-style:none;margin:0;padding:0;border-top:2px solid #0F0F0F}
+.nl a{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr) 110px;gap:20px;align-items:center;padding:24px 4px;border-bottom:1px solid #E5E5E5;text-decoration:none;color:#0F0F0F;transition:background .3s,padding .3s}
+.nl a:hover{background:#FFFFFF;padding-left:14px}
+.nl .ct{font-size:13px;font-weight:700;color:#606060}
+.nl .tt{font-size:17px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nl .dt{font-family:'Inter';font-size:14px;color:#909090;text-align:right}
+.nthumb{position:absolute;right:130px;top:50%;width:150px;height:96px;object-fit:cover;border-radius:10px;transform:translateY(-50%) scale(.85) rotate(-3deg);opacity:0;pointer-events:none;transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1);box-shadow:0 20px 30px -14px rgba(0,0,0,.5)}
+.nl a:hover .nthumb{opacity:1;transform:translateY(-50%) rotate(-3deg)}
+.career{position:relative;overflow:hidden;color:#FFFFFF;min-height:600px;display:flex;align-items:center}
+.career img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.career::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.5) 55%,rgba(0,0,0,.15))}
+.ct-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:80px}
+.form{display:flex;flex-direction:column;gap:26px;background:#F2F2F2;border-radius:24px;padding:44px}
+.kinds{display:flex;flex-wrap:wrap;gap:10px}
+.kinds label{display:flex;align-items:center;gap:8px;background:#FFFFFF;padding:12px 18px;font-size:15px;cursor:pointer;border-radius:999px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 26px}
+.fl{display:flex;flex-direction:column;gap:8px}
+.fl label{font-size:14px;font-weight:700}
+.fl input,.fl textarea{padding:14px 16px;border:1px solid #DDDDDD;background:#FFFFFF;font-size:16px;color:#0F0F0F;border-radius:12px;transition:border-color .3s,box-shadow .3s}
+.fl input:focus,.fl textarea:focus{outline:none;border-color:#0F0F0F;box-shadow:0 0 0 3px rgba(15,15,15,.1)}
+.ft{background:#0F0F0F;color:#AAAAAA;font-size:14px;overflow:hidden}
+.ft-top{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px;padding-top:72px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ft-top h5{margin:0 0 16px;color:#FFFFFF;font-size:15px;font-weight:700}
+.ft-top ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ft-top a{text-decoration:none}.ft-top a:hover{color:#FFFFFF}
+.ft-bot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-top:36px;padding-bottom:40px}
+.ft select{background:transparent;color:#FFFFFF;border:1px solid rgba(255,255,255,.3);padding:12px 16px;font-size:14px;min-width:220px;border-radius:10px}
+.ft select option{color:#0F0F0F}
+.ft-mark{font-size:clamp(90px,15vw,240px);font-weight:800;letter-spacing:-.05em;line-height:.8;color:#1C1C1C;padding:30px 30px 0;white-space:nowrap}
+.ft-mark span{color:#2A2A2A}.ft-mark i{display:inline-block;width:.16em;height:.16em;border-radius:50%;background:#FF0000;margin-left:.04em}
+.top-btn{position:fixed;right:28px;bottom:28px;z-index:30;width:52px;height:52px;border-radius:50%;background:#0F0F0F;color:#FFFFFF;display:flex;align-items:center;justify-content:center;text-decoration:none;font-family:'Inter';font-size:12px;font-weight:700;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.pic{position:relative;overflow:hidden;border-radius:20px}.pic img{width:100%;height:100%;object-fit:cover;display:block}
+@supports (animation-timeline: view()){
+.fx .tprog{animation:tp linear both;animation-timeline:scroll(root)}@keyframes tp{to{transform:scaleX(1)}}
+.fx .hdr{animation:hdrk linear both;animation-timeline:scroll(root);animation-range:0 160px}
+@keyframes hdrk{from{background:rgba(255,255,255,0);color:#FFFFFF;border-bottom-color:rgba(255,255,255,.18)}to{background:#FFFFFF;color:#0F0F0F;border-bottom-color:#E5E5E5}}
+.fx .hdr:hover,.fx .hdr:focus-within{background:#FFFFFF !important;color:#0F0F0F !important}
+.fx .hdr:hover .fam,.fx .hdr:focus-within .fam{animation:none !important;background:#0F0F0F !important;color:#FFFFFF !important}
+.util .lang a{color:inherit;text-decoration:none;opacity:.5;font-weight:600;cursor:pointer;padding:6px 2px}.util .lang a.on{opacity:1;font-weight:800}.util .lang a:hover{opacity:1}
+.dr-lang{display:flex;gap:18px;font-weight:700;border-bottom:1px solid #F2F2F2}.drawer .dr-lang a{border:0;opacity:.5}.dr-lang a.on{opacity:1}
+
+.fx .hdr .fam{animation:famk linear both;animation-timeline:scroll(root);animation-range:0 160px}@keyframes famk{from{background:rgba(255,255,255,.16)}to{background:#0F0F0F}}
+.fx .rv{animation:rvk linear both;animation-timeline:view();animation-range:entry 5% entry 60%}
+@keyframes rvk{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+.fx .rvi{animation:rvi linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+@keyframes rvi{from{clip-path:inset(0 0 100% 0 round 20px)}to{clip-path:inset(0 0 0 0 round 20px)}}
+.fx .parx{animation:parx linear both;animation-timeline:view()}@keyframes parx{from{transform:translateY(-8%) scale(1.16)}to{transform:translateY(8%) scale(1.16)}}
+.fx .mani{height:2400px;view-timeline-name:--mani}
+.fx .mani-in{position:sticky;top:0;height:100vh;max-height:980px;justify-content:center;padding-top:0;padding-bottom:0}
+.fx .w{color:#E3E3E3;animation:wk linear both;animation-timeline:--mani}
+@keyframes wk{to{color:#0F0F0F}}
+.fx .w.hot{animation-name:wkh}@keyframes wkh{to{color:#FF0000}}
+.fx .stack{timeline-scope:--c2,--c3}
+.fx .st:nth-child(2){view-timeline-name:--c2}.fx .st:nth-child(3){view-timeline-name:--c3}
+.fx .st:nth-child(1){animation:stk linear both;animation-timeline:--c2;animation-range:entry 0% entry 100%}
+.fx .st:nth-child(2){animation:stk linear both;animation-timeline:--c3;animation-range:entry 0% entry 100%}
+@keyframes stk{to{transform:scale(.92);filter:brightness(.4)}}
+.fx .typed{animation:typ steps(14) both;animation-timeline:view();animation-range:entry 70% cover 45%}
+@keyframes typ{from{max-width:0}to{max-width:100%}}
+.fx .xp{height:calc(min(100vh,900px) * 3.4);view-timeline-name:--xp}
+.fx .xp-stick{position:sticky;top:0}
+.fx .xp-frame{animation:xpk linear both;animation-timeline:--xp;animation-range:contain 0% contain 36%}
+@keyframes xpk{from{clip-path:inset(18% 26% 18% 26% round 28px)}to{clip-path:inset(0 0 0 0 round 0)}}
+.fx .xp-frame img{animation:xpi linear both;animation-timeline:--xp;animation-range:contain 0% contain 100%}@keyframes xpi{from{transform:scale(1.35)}to{transform:scale(1)}}
+.fx .xp-veil{animation:xpv linear both;animation-timeline:--xp;animation-range:contain 14% contain 36%}@keyframes xpv{from{opacity:0}to{opacity:1}}
+.fx .xp-copy{animation:xpc linear both;animation-timeline:--xp;animation-range:contain 30% contain 46%}@keyframes xpc{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+.fx .val svg *{stroke-dasharray:140;animation:drw linear both;animation-timeline:view();animation-range:entry 30% cover 45%}
+@keyframes drw{from{stroke-dashoffset:140}to{stroke-dashoffset:0}}
+.fx .sign path{animation:sgn linear both;animation-timeline:view();animation-range:entry 60% cover 50%}
+@keyframes sgn{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.fx .cnt{animation:cntk linear both;animation-timeline:view();animation-range:entry 20% cover 40%}
+@keyframes cntk{from{--c:0}to{--c:var(--to)}}
+.fx .fg .ul{animation:ulk linear both;animation-timeline:view();animation-range:entry 30% cover 45%}@keyframes ulk{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.fx .plist path{animation:chk linear both;animation-timeline:view();animation-range:entry 60% cover 50%}
+@keyframes chk{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.fx .bandl{animation:bl1 linear both;animation-timeline:view()}@keyframes bl1{from{transform:translateX(0)}to{transform:translateX(-35%)}}
+.fx .bandr{animation:bl2 linear both;animation-timeline:view()}@keyframes bl2{from{transform:translateX(-35%)}to{transform:translateX(0)}}
+.fx .sv{animation:svk linear both;animation-timeline:view();animation-range:entry 60% cover 45%}.fx .sv2{animation-range:entry 75% cover 50%}
+@keyframes svk{from{transform:translateY(105%)}to{transform:none}}
+.fx .ft-mark{animation:ftm linear both;animation-timeline:view();animation-range:entry 0% entry 100%}@keyframes ftm{from{transform:translateY(60%);opacity:0}to{transform:none;opacity:1}}
+}
+.nofx *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+@media (max-width:1100px){
+.gnb>li>a{padding:0 12px;font-size:15px}.gnb>li>a::after{left:12px;right:12px}
+.util .lang{display:none}
+}
+@media (max-width:760px){
+.wrap{padding-left:20px;padding-right:20px}
+.hdr-in{height:64px}
+.gnb,.util .fam{display:none}
+.menu-btn{display:flex !important}
+.drawer.on{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:#FFFFFF;color:#0F0F0F;padding:10px 20px 26px;box-shadow:0 30px 40px -20px rgba(0,0,0,.35)}
+.drawer a{padding:16px 2px;border-bottom:1px solid #F2F2F2;font-size:17px;font-weight:700;text-decoration:none}.drawer a.pill{border:0;justify-content:center;margin-top:14px}
+.hero{margin-top:-64px;height:min(100svh,780px);min-height:600px}
+.slide::after{background:linear-gradient(0deg,rgba(0,0,0,.88) 12%,rgba(0,0,0,.35) 62%,rgba(0,0,0,.2))}
+.hero-copy{top:auto;bottom:150px;transform:none}
+.hc{gap:16px}.hc h2{font-size:34px}.hc p{font-size:15px}
+.hc .btns .pill{padding:12px 16px;font-size:14px}
+.hero-ctrl{bottom:92px}.ind{gap:10px}.ind button{font-size:11px}.ind button .lbt{display:none}
+.bignum{display:none}
+.quick{margin-top:-56px}
+.quick-in{grid-template-columns:1fr 1fr}
+.qk{padding:20px 18px;border-bottom:1px solid #E5E5E5}.qk .t{font-size:16px}.qk .s{display:none}.qk .ar{right:14px;top:20px}
+.sec{padding-top:84px;padding-bottom:84px}
+.mani-in{padding-top:100px;padding-bottom:100px}.mani-t{font-size:28px}
+.fx .mani{height:1700px}.fx .mani-in{height:min(100svh,760px)}
+.st{grid-template-columns:1fr;min-height:0;top:84px !important}
+.st-img{height:220px}.st-body{padding:28px 24px}.st-time{font-size:44px}
+.xp-stick{min-height:520px}
+.fx .xp-frame{animation-name:xpkm}@keyframes xpkm{from{clip-path:inset(20% 10% 20% 10% round 20px)}to{clip-path:inset(0 0 0 0 round 0)}}
+.split,.ct-grid,.news,.prom,.brand{grid-template-columns:1fr;gap:40px}
+.sticky-l{position:static}
+.vals{grid-template-columns:1fr}
+.letter{padding:28px 22px;margin-top:0 !important}.letter .q{font-size:20px}
+.biz{flex-direction:column;height:auto}
+.bz{flex:none !important;height:220px}.bz .ds{max-height:none;opacity:1}.bz .tt{font-size:22px}.bz .in{padding:22px}
+.bf{min-height:440px}.bf .bd{padding:26px}.bf .nm{font-size:32px}
+.figs{grid-template-columns:1fr 1fr;gap:12px}.fg{padding:22px 18px}
+.band{padding:40px 0}.bandl,.bandr{font-size:60px}
+.nl a{grid-template-columns:1fr;gap:4px;padding:18px 4px}.nl .dt{text-align:left}
+.nthumb{display:none}
+.form{padding:26px 20px}
+.fields{grid-template-columns:1fr}
+.ft-top{grid-template-columns:1fr 1fr;gap:28px}
+.ft-mark{font-size:68px;padding:24px 16px 0}
+.career{min-height:480px}
+.top-btn{right:16px;bottom:16px;width:44px;height:44px}
+}
+.sr-h1{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+</style>
+<script id="tb-i18n">(function(){var L='ko';try{var q=location.search.match(/[?&]lang=(en|ko)\b/);if(q){L=q[1];localStorage.setItem('tb_lang',L);}else L=localStorage.getItem('tb_lang')||'ko';}catch(e){var q2=location.search.match(/[?&]lang=(en|ko)\b/);if(q2)L=q2[1];}
+window.TB_LANG=L;document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;var f=document.querySelector('.film.on');if(!f)return;var c=[...f.querySelectorAll('button')].find(function(b){return b.textContent.trim()==='✕'});if(c)c.click();});
+function mark(){var as=document.querySelectorAll('a[data-lang]');for(var i=0;i<as.length;i++){as[i].classList.toggle('on',as[i].getAttribute('data-lang')===L);}}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-lang]');if(!a)return;e.preventDefault();var to=a.getAttribute('data-lang');try{localStorage.setItem('tb_lang',to)}catch(x){}var u=location.pathname+(to==='en'?'?lang=en':'?lang=ko')+location.hash;location.href=u;},true);
+document.addEventListener('DOMContentLoaded',mark);
+if(L!=='en'){window.DC_POST=mark;return;}
+var D={"회사소개": "About Us", "누군가의 하루 끝에 따뜻한 한 상이 있도록. TheBestF&B가 일하는 이유입니다.": "So that a warm meal awaits at the end of someone's day. That is why TheBestF&B works.", "CEO 인사말": "CEO Message", "일하는 방식": "How We Work", "어느 저녁의 이야기": "A Story of One Evening", "연혁": "History", "오시는 길": "Location", "사업영역": "Business", "브랜드가 태어나 오래 사랑받기까지, 모든 단계를 직접 합니다.": "From the birth of a brand to years of being loved, we do every step ourselves.", "브랜드 개발": "Brand Development", "직영 운영": "Direct Operation", "가맹 사업": "Franchising", "콘텐츠 · 글로벌 마케팅": "Content · Global Marketing", "브랜드": "Brands", "직영에서 충분히 검증한 브랜드만 세상에 내놓습니다.": "We only launch brands that have been fully proven in our own stores.", "인천항갈매기": "Incheonhang Galmaegi", "브랜드가 태어나는 과정": "How a Brand Is Born", "가맹사업": "Franchise", "점주님의 첫 출근부터 십 년 뒤까지 곁에 있겠습니다.": "From an owner's first day to ten years later, we will be by your side.", "가맹 안내": "Franchise Guide", "점주님께 드리는 약속": "Our Promise to Owners", "가맹 상담 신청": "Request a Consultation", "점주 전용": "Owners Only", "홍보센터": "Newsroom", "TheBestF&B와 브랜드의 새로운 소식을 전합니다.": "News from TheBestF&B and our brands.", "보도자료": "Press Releases", "공지사항": "Notices", "브랜드 소식": "Brand News", "인재채용": "Careers", "당신의 다음 장을 함께 쓰고 싶습니다.": "We want to write your next chapter together.", "인재상": "Who We Look For", "채용 공고": "Job Openings", "가맹 · 제휴 문의": "Franchise Inquiry", "누군가의 하루 끝에": "At the end of someone's day,", "따뜻한 한 상이 있도록": "a warm meal is waiting", "지친 하루를 위로하는 저녁 식탁. TheBestF&B는 그 식탁이 오래 이어지는 가게를 만듭니다.": "A dinner table that comforts a tiring day. TheBestF&B builds restaurants where that table lasts.", "우리의 이야기": "Our Story", "브랜드 필름 보기": "Watch Brand Film", "BRAND · 인천항갈매기": "BRAND · Incheonhang Galmaegi", "숯불 앞에서": "In front of the charcoal,", "웃음이 다시 피어납니다": "laughter blooms again", "1970년대 인천항 부두의 저녁을 오늘의 골목에 다시 차렸습니다. 첫 번째 브랜드, 인천항갈매기.": "The evenings of the 1970s Incheon port docks, set again in today's alleys. Our first brand, Incheonhang Galmaegi.", "브랜드 보기": "View Brand", "한 사람의 꿈이": "So one person's dream", "오래 가는 가게가 되도록": "becomes a store that lasts", "점주님의 첫 출근부터 십 년 뒤까지. 검증된 시스템으로 곁에서 함께하겠습니다.": "From an owner's first day to ten years later. We stand by you with a proven system.", "하루의 끝": "End of the Day", "첫 번째 브랜드": "Our First Brand", "함께 여는 가게": "Opening Together", "브랜드 필름이 이 자리에 들어갑니다": "The brand film goes here", "[인천항 부두의 저녁 · Veo 영상 또는 유튜브 영상 연결]": "[Evening at Incheon port · Veo or YouTube video link]", "브랜드 소개": "About the Brand", "첫 번째 이야기, 인천항갈매기": "Our first story, Incheonhang Galmaegi", "창업 절차 · 비용 · 상담": "Process · Costs · Consultation", "인재 채용": "Careers", "함께 성장할 사람들": "People who grow with us", "고객의 소리": "Customer Voice", "문의 · 제안 · 칭찬": "Inquiries · Proposals · Compliments", "우리는": "We", "화려한": "build", "가게보다": "places", "오래": "that", "남는": "outlast", "가게를": "the flashy", "만듭니다.": "ones.", "유행은": "Trends", "지나가도,": "fade,", "맛있게": "but", "먹고": "the evening", "웃던": "of good food", "그": "and laughter", "저녁은": "stays", "남으니까요.": "with you.", "우리가 파는 것은 음식이 아니라, 그 음식 앞에서 보내는 시간이라고 믿습니다.": "We believe what we sell is not food, but the time spent in front of it.", "퇴근길": "After Work", "오늘도 수고했다는 말 대신,": "Instead of saying \"good job today,\"", "숯불 앞에 앉습니다": "we sit down by the charcoal", "누군가에게는 하루를 내려놓는 첫 잔입니다. 그 자리가 편안하도록, 불 맛과 반찬 하나까지 매일 같은 기준으로 준비합니다.": "For some, it is the first drink that lets the day go. To make that seat comfortable, we prepare everything to the same standard every day, from the flavor of the fire to every side dish.", "마주 앉은 시간": "Time Face to Face", "고기가 익는 소리에": "At the sound of sizzling meat,", "대화가 시작됩니다": "the conversation begins", "휴대폰을 내려놓고 서로를 마주 보는 시간. 직접 구워 나눠 먹는 한 점이 그 시간을 조금 더 길게 만들어 줍니다.": "Time to put the phones down and look at each other. Grilling and sharing each bite makes that time last a little longer.", "마감 무렵": "Closing Time", "“사장님, 또 올게요.”": "\"See you again soon!\"", "우리가 가장 좋아하는 말입니다. 이 한마디를 다시 듣기 위해, 내일도 같은 맛을 지킵니다.": "These are our favorite words. To hear them again, we keep the same taste tomorrow.", "매장 하나를 열어도,": "Even when opening one store,", "백 개를 여는 기준으로": "we work to the standard of a hundred", "그 저녁이 어느 동네, 어느 매장에서든 똑같이 따뜻하도록. 레시피부터 반찬 하나, 오픈과 마감까지 모든 과정을 기록합니다.": "So that evening feels just as warm in any neighborhood, in any store. We document every process, from recipes to each side dish to opening and closing.", "유행보다 기본,": "Basics over trends,", "속도보다 오래 가는 길을": "the long road over speed", "선택합니다": "— that is our choice", "“가게 문을 여는 일은 누군가의 인생을 거는 일입니다. 저희는 그 무게를 압니다.”": "\"Opening a store means betting someone's life on it. We know that weight.\"", "TheBestF&B는 하나의 메뉴를 깊게 파고들고, 직영 매장에서 먼저 부딪혀 본 뒤에야 가맹을 엽니다. 손님이 다시 찾는 가게, 점주님이 오래 웃는 가게. 저희가 지키고 싶은 것은 그 두 가지입니다.": "TheBestF&B digs deep into a single menu and opens franchising only after testing it first in our own stores. A store guests return to, a store where owners keep smiling. Those are the two things we want to protect.", "화려하게 시작해 금방 사라지는 가게보다, 동네 사람들이 십 년 뒤에도 “거기 아직 있지?” 하고 찾는 가게를 만들겠습니다.": "Rather than stores that start flashy and vanish quickly, we will build stores that locals still look for ten years later, asking \"Is that place still there?\"", "TheBestF&B 대표": "CEO, TheBestF&B", "정시웅 · 임경준 · 백승화": "Jung Si-woong · Lim Kyung-jun · Baek Seunghwa", "01 · 검증": "01 · Proven", "직영에서 먼저": "Our own stores first", "메뉴와 동선, 원가와 손님의 반응까지. 직영 매장에서 충분히 검증한 것만 가맹점에 전합니다.": "Menu, flow, cost, and guest reactions. We pass on to franchisees only what has been fully proven in our own stores.", "02 · 기록": "02 · Recorded", "모든 과정을 기록으로": "Every process documented", "반찬 하나, 오픈과 마감까지 매뉴얼로 남겨 누가 문을 열어도 같은 가게가 되게 합니다.": "From each side dish to opening and closing, everything is in the manual, so the store is the same no matter who opens it.", "03 · 상생": "03 · Shared Growth", "점주의 수익이 곧 본사의 성과": "The owner's profit is our success", "가맹점이 남아야 본사도 남습니다. 숫자보다 사람을 먼저 보겠습니다.": "When franchisees thrive, so does headquarters. We will put people before numbers.", "브랜드가 태어나": "From the birth of a brand", "오래 사랑받기까지": "to years of being loved", "기획부터 직영 운영, 가맹 확장, 콘텐츠 마케팅까지. 브랜드가 자라는 모든 단계를 직접 합니다.": "From planning to direct operation, franchise expansion, and content marketing. We do every stage of a brand's growth ourselves.", "시장과 상권을 읽고, 콘셉트와 메뉴, 공간과 이름, 이야기까지 브랜드를 처음부터 설계합니다.": "We read markets and trade areas, then design the brand from scratch: concept, menu, space, name, and story.", "직영 매장에서 메뉴와 동선, 원가와 손님 반응을 먼저 검증한 뒤에만 가맹을 엽니다.": "We open franchising only after testing the menu, flow, cost, and guest response in our own stores.", "상권 분석, 점주 교육, 오픈 지원과 운영 매뉴얼로 점주님과 함께 매장을 엽니다.": "We open stores together with owners through trade-area analysis, owner training, opening support, and operation manuals.", "사진과 영상을 직접 만들고, 매장별 홈페이지와 블로그, 다국어 메뉴와 해외 플랫폼까지 운영합니다.": "We shoot our own photos and videos and run each store's website, blog, multilingual menus, and global platforms.", "첫 번째 이야기,": "Our first story,", "지역의 이야기를 한 상에 담습니다. 브랜드마다 하나의 동네, 하나의 저녁을 품고 있습니다.": "We serve local stories on one table. Each brand holds one neighborhood and one evening.", "BRAND 01 · 운영 중": "BRAND 01 · Open now", "1970년대 인천항 부두, 고된 하루를 마친 사람들이 둘러앉던 저녁을 오늘의 골목에 다시 차렸습니다. 네 가지 젓갈에 찍어 먹는 숯불 갈매기살을 부평점에서 만나실 수 있습니다.": "The evenings of the 1970s Incheon port docks, where people gathered after a hard day, set again in today's alleys. Enjoy charcoal-grilled galmaegisal (pork skirt) dipped in four kinds of jeotgal at our Bupyeong store.", "브랜드 사이트 바로가기": "Visit Brand Site", "두 번째 이야기를": "We are preparing", "준비하고 있습니다": "our second story", "직영에서 충분히 검증을 마친 뒤에 공개합니다. 서두르지 않겠습니다.": "We will reveal it only after it is fully proven in our own stores. We will not rush.", "작은 기준이 쌓여": "Small standards add up", "브랜드가 됩니다": "to become a brand", "[기준일] 기준": "As of [date]", "개 언어": " languages", "다국어 메뉴판": "Multilingual Menu", "어느 나라 손님도 망설이지 않고 주문하도록.": "So guests from any country can order without hesitation.", "가지": " kinds", "완성된 반찬": "Ready-made Side Dishes", "모든 반찬이 완성된 상태로 상에 오르는 매뉴얼.": "A manual that brings every side dish to the table fully prepared.", "직영 검증 후 가맹": "Franchise After Proof", "직영에서 검증한 것만 가맹점에 전합니다.": "We pass on only what we proved in our own stores.", "건": " cases", "누적 가맹 상담": "Total Franchise Inquiries", "실제 수치로 바꿀 자리입니다.": "A placeholder for the real figure.", "점주님께": "Our promise", "드리는 약속": "to owners", "가게 하나에는 한 가족의 내일이 걸려 있습니다. 그래서 계약서보다 먼저, 이 약속을 드립니다.": "A single store carries a family's tomorrow. That is why, before any contract, we make these promises.", "가맹 안내 보기": "View Franchise Guide", "검증되지 않은 것은 팔지 않겠습니다": "We will not sell anything unproven", "직영에서 손님의 반응까지 확인한 메뉴와 운영 방식만 전합니다.": "We share only the menu and operations we have confirmed, down to guest reactions, in our own stores.", "오픈 날, 가장 먼저 매장에 있겠습니다": "On opening day, we will be the first ones in the store", "교육부터 오픈 준비, 첫 영업까지 본사가 함께 문을 엽니다.": "From training to opening prep to the first day of business, headquarters opens the doors with you.", "혼자 고민하게 두지 않겠습니다": "We will not leave you to worry alone", "운영 매뉴얼과 체크리스트, 궁금할 때 바로 닿는 연락 창구를 드립니다.": "Operation manuals, checklists, and a contact line that answers when you have questions.", "손님이 매장을 찾게 돕겠습니다": "We will help guests find your store", "매장별 홈페이지와 블로그, SNS 영상, 다국어 메뉴까지 본사가 직접 만듭니다.": "Headquarters builds each store's website, blog, SNS videos, and multilingual menu.", "기본 · 기록 · 상생 · 기본 · 기록 · 상생 · 기본 · 기록 · 상생 ·": "BASICS · RECORDS · SHARED GROWTH · BASICS · RECORDS · SHARED GROWTH · BASICS · RECORDS · SHARED GROWTH ·", "전체": "All", "브랜드 필름": "Brand Film", "하루의 고단함도 고기 한 점이면 — 인천항갈매기 브랜드 필름": "Even a hard day melts with one bite — Incheonhang Galmaegi brand film", "[보도자료 제목 1]": "[Press release title 1]", "[공지사항 제목 1]": "[Notice title 1]", "[보도자료 제목 2]": "[Press release title 2]", "[공지사항 제목 — 예: 개인정보처리방침 개정 안내]": "[Notice title — e.g. Privacy Policy update]", "[보도자료 제목 3]": "[Press release title 3]", "당신의 다음 장을": "We want to write", "함께 쓰고 싶습니다": "your next chapter together", "매장 운영부터 브랜드 기획, 콘텐츠 제작까지. 직접 해 보고, 기록하고, 함께 자라는 사람을 기다립니다.": "From store operations to brand planning and content production. We are looking for people who try things, record them, and grow together.", "채용 공고 보기": "View Job Openings", "어떤 이야기든 좋습니다.": "Any story is welcome.", "먼저 들려주세요": "Tell us first", "가맹 상담, 제휴 제안, 매장에 대한 한마디까지. 담당자가 직접 읽고 연락드립니다.": "Franchise consultations, partnership proposals, or a word about our stores. A team member reads every message and gets back to you.", "가맹 상담": "Franchise Consultation", "온라인 상담 신청 ·": "Apply online ·", "제휴 · 입점": "Partnership · Entry", "본사 주소": "Head Office", "인천광역시 부평구 시장로12번길 21-1 (부평동)": "21-1 Sijang-ro 12beon-gil, Bupyeong-gu, Incheon, Korea", "문의 유형": "Inquiry Type", "기타": "Other", "성함": "Name", "연락처": "Phone", "이메일": "Email", "희망 지역": "Preferred Area", "문의 내용": "Message", "개인정보 수집 및 이용에 동의합니다.": "I agree to the collection and use of personal information.", "내용 보기": "View", "문의 보내기": "Send Inquiry", "콘텐츠 · 글로벌": "Content · Global", "상호 인천항갈매기 · 대표 정시웅, 임경준, 백승화 · 사업자등록번호 467-03-03763": "Business name Incheonhang Galmaegi · CEO Jung Si-woong, Lim Kyung-jun, Baek Seunghwa · Business Reg. No. 467-03-03763", "본사 인천광역시 부평구 시장로12번길 21-1 (부평동) · 이메일": "Head office 21-1 Sijang-ro 12beon-gil, Bupyeong-gu, Incheon, Korea · Email", "개인정보처리방침": "Privacy Policy", "이용약관": "Terms of Use", "윤리경영 제보": "Ethics Hotline", "패밀리 사이트": "Family Sites", "선택하세요": "Select", "TheBestF&B 홈": "TheBestF&B Home", "주 메뉴": "Main menu", "전체 메뉴": "Full menu", "모바일 메뉴": "Mobile menu", "TheBestF&B 소개": "About TheBestF&B", "노을 진 도시의 저녁 풍경": "An evening cityscape at sunset", "숯불 석쇠 위에서 집게로 뒤집는 고기": "Meat being turned with tongs on a charcoal grill", "테이블 위로 악수하는 두 사람": "Two people shaking hands over a table", "슬라이드 선택": "Select slide", "슬라이드 일시정지": "Pause slideshow", "닫기": "Close", "바로가기": "Go", "TheBestF&B의 다짐": "TheBestF&B's Commitment", "숯불 위에서 익어 가는 고기": "Meat grilling over charcoal", "따뜻한 조명이 켜진 식당 홀": "A restaurant hall with warm lighting", "불빛이 새어 나오는 늦은 밤의 주방": "A late-night kitchen with light spilling out", "TheBestF&B의 기준": "TheBestF&B's Standards", "나무 테이블이 놓인 따뜻한 분위기의 식당 내부": "A warm restaurant interior with wooden tables", "주방에서 요리를 준비하는 사람들": "People preparing food in a kitchen", "인천항갈매기 부평점의 숯불 갈매기살과 네 가지 젓갈, 반찬이 차려진 한 상": "A table at Incheonhang Galmaegi Bupyeong with charcoal galmaegisal, four kinds of jeotgal, and side dishes", "숫자로 보는 TheBestF&B": "TheBestF&B in Numbers", "소식 분류": "News categories", "인천항갈매기 브랜드 그림": "Incheonhang Galmaegi brand illustration", "홍길동": "Hong Gildong", "예: 경기 수원": "e.g. Suwon, Gyeonggi", "편하게 적어 주세요": "Feel free to write anything", "맨 위로": "Back to top", "우리는 화려한 가게보다 오래 남는 가게를 만듭니다. 유행은 지나가도, 맛있게 먹고 웃던 그 저녁은 오래 남으니까요.": "We build places that outlast the flashy ones. Trends fade, but the evening of good food and laughter stays with you.", "슬라이드 재생": "Play slideshow", "가게 하나에는 한 가족의 내일이 걸려 있습니다. TheBestF&B는 직영에서 검증한 브랜드와 시스템으로, 점주님의 첫 출근부터 십 년 뒤까지 곁에 있겠습니다.": "A single store carries a family's tomorrow. With brands and systems proven in our own stores, TheBestF&B will stand by you from your first day to ten years later.", "개설 절차 보기": "View Opening Process", "왜 TheBestF&B": "Why TheBestF&B", "개설 브랜드": "Brand", "개설 절차": "Opening Process", "본사 지원": "HQ Support", "개설 비용": "Opening Costs", "자주 묻는 질문": "FAQ", "상담 신청": "Consultation", "유행이 아니라,": "Not a trend —", "오래 남는 이유를 팝니다": "we sell the reason a store lasts", "문 여는 가게보다 닫는 가게가 많은 시대입니다. 그래서 저희는 화려한 약속 대신, 검증과 기록과 동행을 약속합니다.": "In an era when more stores close than open, we promise proof, records, and companionship instead of flashy promises.", "검증": "Proven", "부딪혀 봤습니다": "We tested it ourselves", "메뉴와 동선, 원가와 손님 반응까지 직영 매장에서 먼저 확인한 것만 가맹점에 전합니다.": "Menu, flow, cost, and guest reactions: we pass on to franchisees only what we confirmed first in our own stores.", "기록": "Recorded", "누가 열어도": "Whoever opens it,", "같은 가게가 됩니다": "it is the same store", "반찬 하나, 오픈과 마감까지 매뉴얼과 체크리스트로 남겨, 처음 하는 점주님도 같은 맛을 낼 수 있게 합니다.": "From each side dish to opening and closing, we leave manuals and checklists so even first-time owners can deliver the same taste.", "동행": "Together", "손님이 찾아오게": "Headquarters helps", "본사가 함께 알립니다": "bring guests to you", "매장별 홈페이지와 블로그, SNS 영상, 다국어 메뉴까지 본사가 직접 만들어 매장을 알립니다.": "Headquarters builds each store's website, blog, SNS videos, and multilingual menu to promote your store.", "지금 함께할 수 있는 브랜드": "Brand available now", "1970년대 인천항 부두의 저녁을 담은 숯불 갈매기살 전문점. 네 가지 젓갈에 찍어 먹는 차별화된 메뉴와, 고기는 손님이 직접 굽고 반찬은 완성된 채 나가는 단순한 운영 구조를 갖췄습니다.": "A charcoal galmaegisal specialty restaurant capturing the evenings of the 1970s Incheon port docks. A distinctive menu dipped in four kinds of jeotgal, and a simple operation: guests grill the meat themselves and side dishes go out ready-made.", "숯불 갈매기살": "Charcoal galmaegisal", "젓갈 4종": "4 kinds of jeotgal", "완성형 반찬 11가지": "11 ready-made side dishes", "직영 부평점 운영 중": "Bupyeong flagship open", "인천항갈매기 가맹 상세": "Incheonhang Galmaegi Franchise Details", "브랜드 사이트": "Brand Site", "상담부터 오픈까지,": "From consultation to opening,", "일곱 걸음": "seven steps", "한 걸음마다 담당자가 함께 걷습니다. 스크롤을 내리면 그 길이 이어집니다.": "A team member walks with you at every step. Scroll down to follow the path.", "온라인 신청이나 전화로 상담을 요청해 주세요. 담당자가 희망 지역과 예산, 궁금한 점을 먼저 듣습니다.": "Request a consultation online or by phone. We first listen to your preferred area, budget, and questions.", "브랜드 설명 · 직영점 방문": "Brand Briefing · Store Visit", "브랜드와 운영 구조를 자세히 설명드리고, 직영 부평점에서 직접 맛보고 매장이 돌아가는 모습을 보실 수 있습니다.": "We explain the brand and operating structure in detail, and you can taste the food and see the store in action at our Bupyeong flagship.", "직영점 시식은 상담 시 일정을 함께 잡습니다": "We schedule the tasting at the flagship during your consultation", "상권 분석 · 입지 확정": "Trade Area Analysis · Site Selection", "후보 입지의 유동 인구와 주변 상권, 임대 조건을 함께 검토해 오래 갈 수 있는 자리를 고릅니다.": "We review foot traffic, surrounding trade areas, and lease terms of candidate sites together to choose a place that lasts.", "정보공개서 제공 · 가맹 계약": "Disclosure Document · Franchise Contract", "가맹사업법에 따라 정보공개서를 먼저 드리고, 충분히 검토하신 뒤 계약합니다.": "As required by the Franchise Business Act, we provide the disclosure document first and sign only after you have reviewed it fully.", "정보공개서 제공 후 14일이 지나야 계약할 수 있습니다": "A contract can be signed only 14 days after the disclosure document is provided", "인테리어 · 설비": "Interior · Equipment", "브랜드 분위기에 맞춘 공간 설계와 시공, 숯불 설비와 주방 동선까지 함께 챙깁니다.": "We take care of space design and construction, charcoal equipment, and kitchen flow to match the brand's mood.", "점주 · 직원 교육": "Owner · Staff Training", "직영점에서 고기 손질과 반찬, 홀 서비스, 오픈·마감까지 실제 매장에서 배웁니다.": "At the flagship you learn meat prep, side dishes, hall service, and opening and closing in a real store.", "오픈 · 운영 동행": "Opening · Ongoing Support", "오픈 날에는 본사가 함께 문을 엽니다. 이후에도 매뉴얼 업데이트와 홍보, 운영 상담으로 계속 곁에 있습니다.": "On opening day, headquarters opens the doors with you. After that, we stay by your side with manual updates, promotion, and operations advice.", "혼자 고민하게": "We will not leave you", "두지 않겠습니다": "to worry alone", "현장 교육": "On-site Training", "직영점에서 실제 영업 시간에 맞춰 손질부터 서비스까지 배웁니다.": "Learn everything from prep to service at the flagship during real business hours.", "운영 매뉴얼 · 체크리스트": "Manuals · Checklists", "반찬, 홀, 오픈·마감 매뉴얼과 매일 쓰는 체크리스트를 드립니다.": "We provide side dish, hall, and opening/closing manuals and daily checklists.", "오픈 동행": "Opening Support", "오픈 준비부터 첫 영업까지 본사 담당자가 매장에 함께 있습니다.": "A headquarters team member is in the store with you from opening prep to the first day of business.", "콘텐츠 · SNS 홍보": "Content · SNS Promotion", "매장 사진과 영상을 직접 찍고, 블로그와 SNS에 꾸준히 올립니다.": "We shoot store photos and videos ourselves and post consistently on blogs and SNS.", "매장별 홈페이지": "Store Websites", "매장마다 소개 페이지와 소식 게시판을 만들어 검색에 잘 보이게 합니다.": "We build an introduction page and news board for each store so it shows up well in search.", "다국어 · 해외 플랫폼": "Multilingual · Global Platforms", "20개 언어 메뉴판과 해외 손님이 쓰는 플랫폼 등록까지 도와드립니다.": "We help with menus in 20 languages and listings on platforms used by overseas guests.", "정확한 금액은 정보공개서와 매장 조건에 따라 달라집니다. 상담 때 항목별로 투명하게 안내드립니다.": "Exact amounts depend on the disclosure document and store conditions. We explain each item transparently during consultation.", "가맹비": "Franchise Fee", "브랜드 사용 · 영업권": "Brand use · Business rights", "[금액]": "[Amount]", "교육비": "Training Fee", "점주 · 직원 현장 교육": "On-site training for owners and staff", "보증금": "Deposit", "계약 이행 보증 (계약 종료 시 반환)": "Contract performance guarantee (returned at contract end)", "인테리어": "Interior", "평당 기준 · 실측 후 확정": "Per-pyeong basis · confirmed after site measurement", "설비 · 집기": "Equipment · Fixtures", "숯불 설비, 주방 기기, 테이블": "Charcoal equipment, kitchen appliances, tables", "합계 (임대료 · 권리금 별도)": "Total (excluding rent and key money)", "[합계]": "[Total]", "※ 위 항목과 금액은 정보공개서 확정 후 실제 내용으로 바꿀 자리입니다.": "※ These items and amounts will be replaced with actual figures once the disclosure document is finalized.", "외식업 경험이 없어도 할 수 있나요?": "Can I do it without restaurant experience?", "네. 고기는 손님이 직접 굽고 반찬은 완성된 상태로 나가는 구조라 운영이 단순한 편입니다. 직영점 현장 교육과 매뉴얼로 처음부터 함께 배웁니다.": "Yes. Guests grill the meat themselves and side dishes go out ready-made, so operations are relatively simple. You learn from the start with on-site training at the flagship and our manuals.", "매장은 어느 정도 크기가 적당한가요?": "What store size is right?", "[권장 평수와 좌석 수]를 기준으로 상권에 맞춰 함께 정합니다. 단체석 수요가 있는 상권이라면 더 넓은 매장도 검토합니다.": "We decide together based on [recommended size and seats] and the trade area. In areas with demand for group seating, we also consider larger stores.", "계약은 언제 할 수 있나요?": "When can I sign the contract?", "가맹사업법에 따라 정보공개서를 받으신 날부터 14일이 지난 뒤에 계약하실 수 있습니다. 그 기간 동안 충분히 검토하시고 궁금한 점은 언제든 물어봐 주세요.": "Under the Franchise Business Act, you can sign 14 days after receiving the disclosure document. Take that time to review, and ask us anything at any time.", "오픈 후에는 어떤 지원을 받나요?": "What support do I get after opening?", "오픈 날 본사가 함께 문을 열고, 이후에도 매뉴얼 업데이트, 매장 홈페이지와 SNS 홍보, 운영 상담을 계속 지원합니다.": "Headquarters opens the doors with you on opening day, and continues to support you with manual updates, store website and SNS promotion, and operations advice.", "직영점을 먼저 방문해 볼 수 있나요?": "Can I visit the flagship first?", "네. 상담 신청 시 말씀해 주시면 부평 직영점 방문과 시식 일정을 함께 잡아 드립니다.": "Yes. Let us know when you request a consultation and we will schedule a visit and tasting at the Bupyeong flagship.", "당신의 가게가": "So your store", "오래 남도록 함께하겠습니다": "lasts, we will be with you", "남겨 주시면 가맹 담당자가 직접 연락드려 상담 일정과 직영점 방문을 함께 잡아 드립니다.": "Leave your details and a franchise manager will contact you directly to schedule a consultation and a visit to the flagship.", "가맹 안내 목차": "Franchise guide contents", "회의하며 기록을 정리하는 사람들": "People in a meeting organizing notes", "카메라로 음식을 촬영하는 모습": "Filming food with a camera", "인천항갈매기의 숯불 갈매기살과 네 가지 젓갈 한 상": "Charcoal galmaegisal and four kinds of jeotgal at Incheonhang Galmaegi", "인천항갈매기 로고": "Incheonhang Galmaegi logo", "2026년 11월 기준": "As of Nov 2026", "일": " days", "계약 후 오픈까지": "From Contract to Opening", "계약부터 첫 불을 켜는 날까지 약 20일.": "About 20 days from contract to lighting the first fire.", "인천항갈매기, 가맹점 모집을 시작합니다": "Incheonhang Galmaegi begins recruiting franchisees", "TheBestF&B 공식 홈페이지를 열었습니다": "TheBestF&B official website is now open", "인천항갈매기, 20개 언어 다국어 메뉴판 도입": "Incheonhang Galmaegi introduces menus in 20 languages", "개인정보처리방침 안내": "Privacy Policy notice", "인천항갈매기 신메뉴 매운닭목살 출시": "Incheonhang Galmaegi launches new spicy chicken neck", "500만원": "KRW 5M", "200만원": "KRW 2M", "계약이행보증금": "Performance Deposit", "계약 종료 시 반환": "Returned at contract end", "30평 · 덕트 · 주방 설비 포함": "30 pyeong · incl. ducts & kitchen equipment", "6,300만원": "KRW 63M", "초도 물품 · 간판": "Initial Supplies · Signage", "초도 물품 500만원 · 간판 · 사인물 300만원": "Initial supplies KRW 5M · signage KRW 3M", "800만원": "KRW 8M", "합계 (30평 기준 · VAT 별도 · 임대료 · 권리금 별도)": "Total (30 pyeong · excl. VAT, rent, key money)", "약 8,000만원": "Approx. KRW 80M", "※ 30평 신규 창업 기준입니다. 기존 고깃집 업종 변경은 약 1,700만원부터이며, 로열티는 월 30만원 정액(VAT 별도)입니다. 정확한 금액은 정보공개서와 매장 조건에 따라 달라집니다.": "※ Based on a new 30-pyeong store. Converting an existing BBQ restaurant starts from about KRW 17M, and the royalty is a flat KRW 300,000 per month (excl. VAT). Exact amounts depend on the disclosure document and store conditions.", "30평 매장을 기준으로 상권에 맞춰 함께 정합니다. 단체석 수요가 있는 상권이라면 더 넓은 매장도 검토합니다.": "We decide together based on a 30-pyeong store and the trade area. In areas with demand for group seating, we also consider larger stores.", "TheBest F&B 더베스트에프앤비 — 직영에서 검증한 외식 브랜드 그룹, 인천항갈매기 가맹 본사": "TheBest F&B — a food & brand group proven in its own stores, headquarters of the Incheonhang Galmaegi franchise"};var K=/[가-힣]/;var AT=['placeholder','aria-label','alt','title'];
+function tr(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n,a=[];while(n=w.nextNode())a.push(n);
+ for(var i=0;i<a.length;i++){var v=a[i].nodeValue;if(!K.test(v))continue;var t=v.trim();if(D.hasOwnProperty(t)){var lead=v.match(/^\s*/)[0],tail=v.match(/\s*$/)[0];a[i].nodeValue=lead+D[t]+tail;}}
+ var els=root.querySelectorAll?root.querySelectorAll('*'):[];for(var j=0;j<els.length;j++){for(var k=0;k<AT.length;k++){var x=els[j].getAttribute(AT[k]);if(x&&K.test(x)){var y=x.trim();if(D.hasOwnProperty(y))els[j].setAttribute(AT[k],D[y]);}}}}
+window.DC_I18N=tr;window.DC_POST=mark;
+document.documentElement.lang='en';
+var T={'/':'TheBestF&B | Food & Brand Group · Incheonhang Galmaegi Franchise','/index.html':'TheBestF&B | Food & Brand Group · Incheonhang Galmaegi Franchise','/company/franchise.html':'Franchise | TheBestF&B · Incheonhang Galmaegi'};
+document.addEventListener('DOMContentLoaded',function(){var r=document.getElementById('dc-root');if(r)tr(r);if(T[location.pathname])document.title=T[location.pathname];mark();});
+var st=document.createElement('style');st.textContent='html[lang=en] .gnb>li>a,html[lang=en] .util .fam{white-space:nowrap}html[lang=en] .gnb>li>a{padding:0 clamp(9px,1.05vw,20px);font-size:15px}html[lang=en] .gnb>li>a::after{left:9px;right:9px}#dc-root{visibility:hidden}html.tb-ready #dc-root{visibility:visible}';document.head.appendChild(st);
+window.addEventListener('DOMContentLoaded',function(){document.documentElement.classList.add('tb-ready')});
+})();
+</script>
+<style id="m-fix">@media (max-width:760px){html,body{overflow-x:clip}.m-hd{transition:transform .25s ease}html.hd-hide .m-hd{transform:translateY(-110%)}.frv-grid,.loved,.co-depts{display:flex !important;grid-template-columns:none !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px !important;padding-bottom:10px;scrollbar-width:none}.frv-grid::-webkit-scrollbar,.loved::-webkit-scrollbar,.co-depts::-webkit-scrollbar{display:none}.frv-grid>*,.loved>*,.co-depts>*{flex:0 0 78%;scroll-snap-align:start}input,select,textarea{font-size:16px !important;max-width:100%;box-sizing:border-box}h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.gnav,.mnav{gap:12px !important;font-size:13.5px !important;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);mask-image:linear-gradient(90deg,#000 86%,transparent);padding-right:24px}.gnav .nl{padding:9px 0}.gnav .btn-clean,.mnav .btn-clean{padding:6px 11px !important;font-size:13px !important}.bd-bar{position:static !important}#w-kw{width:100% !important;min-width:0 !important}label:has(#w-kw),div:has(>#w-kw){max-width:100%;min-width:0}.st-bar{transition:transform .25s}html.hd-hide .st-bar{transform:translateY(105%)}.st-bar>div{padding:8px 14px !important;flex-wrap:nowrap !important;gap:10px !important}.st-bar>div>span{font-size:0 !important;gap:6px !important}.st-bar .brush{font-size:15px !important}.st-bar a{padding:10px 14px !important;font-size:14px !important;white-space:nowrap}.fx .mani{height:auto !important}.fx .mani-in{position:relative !important;height:auto !important;padding-top:84px !important;padding-bottom:84px !important}.fx .w{animation:none !important;color:#0F0F0F !important}.fx .w.hot{color:#FF0000 !important}.st{position:relative !important;top:auto !important;margin-bottom:16px}.fx .st{animation:none !important;transform:none !important;filter:none !important}.fx .xp{height:auto !important}.fx .xp-stick{position:relative !important}.fx .xp-frame,.fx .xp-frame img,.fx .xp-veil,.fx .xp-copy{animation:none !important;clip-path:none !important;opacity:1 !important;transform:none !important}.fx .typed{animation:none !important;max-width:100% !important;white-space:normal;border-right:0}html.hd-hide .subnav{top:0 !important}.top-btn{transition:opacity .25s}html.hd-hide .top-btn{opacity:0;pointer-events:none}.kinds label{min-height:44px}}@media (min-width:761px){.m-cta{display:none}}</style>
+</head>
+<body>
+<div id="dc-root">
+<div class="fx" style="font-family: 'Noto Sans KR', sans-serif; color: #0F0F0F; background: #FFFFFF; font-size: 16px; line-height: 1.6; overflow-x: clip">
+
+<div class="tprog" aria-hidden="true"></div>
+<header class="hdr" id="top">
+<div class="wrap hdr-in">
+<a href="index.html" aria-label="TheBestF&amp;B 홈" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex: 0 0 auto">
+<svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FF0000"></circle><g transform="translate(9.2 8.6) scale(.9)"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" fill="#FFFFFF"></path></g></svg>
+<span class="en" style="display: flex; flex-direction: column; line-height: 1"><span style="font-size: 21px; font-weight: 800; letter-spacing: -.03em">TheBest F&amp;B</span><span style="font-size: 10px; font-weight: 600; letter-spacing: .28em; opacity: .6; margin-top: 4px">FOOD &amp; BRAND GROUP</span></span>
+</a>
+<nav aria-label="주 메뉴" style="height: 100%">
+<ul class="gnb">
+<li><a href="#about">회사소개</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>회사소개</h4><p>누군가의 하루 끝에 따뜻한 한 상이 있도록. TheBestF&amp;B가 일하는 이유입니다.</p></div><ul><li><a href="#about">CEO 인사말<span aria-hidden="true">→</span></a></li><li><a href="#about">일하는 방식<span aria-hidden="true">→</span></a></li><li><a href="#story">어느 저녁의 이야기<span aria-hidden="true">→</span></a></li><li><a href="#about">연혁<span aria-hidden="true">→</span></a></li><li><a href="#contact">오시는 길<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#business">사업영역</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>사업영역</h4><p>브랜드가 태어나 오래 사랑받기까지, 모든 단계를 직접 합니다.</p></div><ul><li><a href="#business">브랜드 개발<span aria-hidden="true">→</span></a></li><li><a href="#business">직영 운영<span aria-hidden="true">→</span></a></li><li><a href="company/franchise.html">가맹 사업<span aria-hidden="true">→</span></a></li><li><a href="#business">콘텐츠 · 글로벌 마케팅<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#brands">브랜드</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>브랜드</h4><p>직영에서 충분히 검증한 브랜드만 세상에 내놓습니다.</p></div><ul><li><a href="/shop2/">인천항갈매기<span aria-hidden="true">→</span></a></li><li><a href="#brands">브랜드가 태어나는 과정<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="company/franchise.html">가맹사업</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>가맹사업</h4><p>점주님의 첫 출근부터 십 년 뒤까지 곁에 있겠습니다.</p></div><ul><li><a href="company/franchise.html">가맹 안내<span aria-hidden="true">→</span></a></li><li><a href="#promise">점주님께 드리는 약속<span aria-hidden="true">→</span></a></li><li><a href="#contact">가맹 상담 신청<span aria-hidden="true">→</span></a></li><li><a href="/shop2/brand/write.html">점주 전용<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#news">홍보센터</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>홍보센터</h4><p>TheBestF&amp;B와 브랜드의 새로운 소식을 전합니다.</p></div><ul><li><a href="#news">보도자료<span aria-hidden="true">→</span></a></li><li><a href="#news">공지사항<span aria-hidden="true">→</span></a></li><li><a href="/shop2/brand/news.html">브랜드 소식<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#career">인재채용</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>인재채용</h4><p>당신의 다음 장을 함께 쓰고 싶습니다.</p></div><ul><li><a href="#career">인재상<span aria-hidden="true">→</span></a></li><li><a href="#career">채용 공고<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+</ul>
+</nav>
+<div class="util">
+<span class="lang en"><a href="?lang=ko" data-lang="ko">KOR</a><a href="?lang=en" data-lang="en">ENG</a></span>
+<a class="fam pill pill-k" href="#contact" style="padding: 12px 20px; font-size: 14px">가맹 · 제휴 문의</a>
+<button class="menu-btn" type="button" aria-label="전체 메뉴" aria-expanded="false" data-dc-click="0" style="display: none; background: none; border: 0; padding: 8px; cursor: pointer; flex-direction: column; gap: 5px; color: inherit"><span style="width: 24px; height: 2px; background: currentColor; display: block"></span><span style="width: 24px; height: 2px; background: currentColor; display: block"></span><span style="width: 16px; height: 2px; background: currentColor; display: block"></span></button>
+</div>
+</div>
+<nav class="drawer" aria-label="모바일 메뉴">
+<a href="#about" data-dc-click="1">회사소개</a><a href="#business" data-dc-click="2">사업영역</a><a href="#brands" data-dc-click="3">브랜드</a><a href="company/franchise.html">가맹사업</a><a href="#news" data-dc-click="4">홍보센터</a><a href="#career" data-dc-click="5">인재채용</a>
+<span class="dr-lang en"><a href="?lang=ko" data-lang="ko">KOR</a><a href="?lang=en" data-lang="en">ENG</a></span>
+<a class="pill pill-k" href="#contact" data-dc-click="6">가맹 · 제휴 문의</a>
+</nav>
+</header>
+
+<section class="hero " aria-roledescription="carousel" aria-label="TheBestF&amp;B 소개">
+
+<div class="slide on wb" aria-hidden="false"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/7e9db4d34b2e449adaa662b67528848e.jpg" alt="노을 진 도시의 저녁 풍경"></div>
+
+<div class="slide wb" aria-hidden="true"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/8527c83de8a53a411cb9d4c9287f718e.jpg" alt="숯불 석쇠 위에서 집게로 뒤집는 고기"></div>
+
+<div class="slide wb" aria-hidden="true"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/9cb82af246cf3243024212a51662c941.jpg" alt="테이블 위로 악수하는 두 사람"></div>
+
+<div class="hero-copy"><h1 class="sr-h1">TheBest F&amp;B 더베스트에프앤비 — 직영에서 검증한 외식 브랜드 그룹, 인천항갈매기 가맹 본사</h1>
+<div class="wrap">
+
+<div class="hc on">
+<span class="k rise">THE BEST F&amp;B</span>
+<h2><span class="ln"><span class="lni d1">누군가의 하루 끝에</span></span><span class="ln"><span class="lni d2">따뜻한 한 상이 있도록</span></span></h2>
+<p class="rise d3">지친 하루를 위로하는 저녁 식탁. TheBestF&amp;B는 그 식탁이 오래 이어지는 가게를 만듭니다.</p>
+<div class="btns rise d4" style="display: flex; gap: 12px; flex-wrap: wrap"><a class="pill pill-w" href="#story">우리의 이야기 <span aria-hidden="true">→</span></a><button type="button" class="pill pill-line" data-dc-click="7"><span class="playdot" aria-hidden="true"></span>브랜드 필름 보기</button></div>
+</div>
+
+<div class="hc">
+<span class="k rise">BRAND · 인천항갈매기</span>
+<h2><span class="ln"><span class="lni d1">숯불 앞에서</span></span><span class="ln"><span class="lni d2">웃음이 다시 피어납니다</span></span></h2>
+<p class="rise d3">1970년대 인천항 부두의 저녁을 오늘의 골목에 다시 차렸습니다. 첫 번째 브랜드, 인천항갈매기.</p>
+<div class="btns rise d4" style="display: flex; gap: 12px; flex-wrap: wrap"><a class="pill pill-w" href="#brands">브랜드 보기 <span aria-hidden="true">→</span></a><button type="button" class="pill pill-line" data-dc-click="8"><span class="playdot" aria-hidden="true"></span>브랜드 필름 보기</button></div>
+</div>
+
+<div class="hc">
+<span class="k rise">FRANCHISE</span>
+<h2><span class="ln"><span class="lni d1">한 사람의 꿈이</span></span><span class="ln"><span class="lni d2">오래 가는 가게가 되도록</span></span></h2>
+<p class="rise d3">점주님의 첫 출근부터 십 년 뒤까지. 검증된 시스템으로 곁에서 함께하겠습니다.</p>
+<div class="btns rise d4" style="display: flex; gap: 12px; flex-wrap: wrap"><a class="pill pill-w" href="#promise">점주님께 드리는 약속 <span aria-hidden="true">→</span></a><button type="button" class="pill pill-line" data-dc-click="9"><span class="playdot" aria-hidden="true"></span>브랜드 필름 보기</button></div>
+</div>
+
+</div>
+</div>
+<div class="hero-ctrl">
+<div class="wrap" style="display: flex; align-items: center; gap: 24px">
+<div class="ind" role="tablist" aria-label="슬라이드 선택">
+
+<button type="button" role="tab" aria-selected="true" class="on" data-dc-click="10"><span class="en">01 <span class="lbt">하루의 끝</span></span><span class="bar"><i class="rb"></i></span></button>
+
+<button type="button" role="tab" aria-selected="false" class="" data-dc-click="11"><span class="en">02 <span class="lbt">첫 번째 브랜드</span></span><span class="bar"><i class="rb"></i></span></button>
+
+<button type="button" role="tab" aria-selected="false" class="" data-dc-click="12"><span class="en">03 <span class="lbt">함께 여는 가게</span></span><span class="bar"><i class="rb"></i></span></button>
+
+</div>
+<button type="button" class="pp en" data-dc-click="13" aria-label="슬라이드 일시정지">II</button>
+</div>
+</div>
+<span class="bignum en" aria-hidden="true">01<small>/ 03</small></span>
+</section>
+
+<div class="film" role="dialog" aria-modal="true" aria-label="브랜드 필름" data-dc-click="14">
+<div class="film-box">
+<img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/80d1e8cfce61c045da2edeadf004d364.jpg" alt="">
+<div class="msg"><span class="bigplay" aria-hidden="true"></span><span style="font-size: 22px; font-weight: 700">브랜드 필름이 이 자리에 들어갑니다</span><span style="font-size: 15px; color: rgba(255,255,255,.75)">[인천항 부두의 저녁 · Veo 영상 또는 유튜브 영상 연결]</span></div>
+<button type="button" class="film-x" aria-label="닫기" data-dc-click="15">✕</button>
+</div>
+</div>
+
+<div class="quick">
+<div class="wrap">
+<nav class="quick-in" aria-label="바로가기">
+<a class="qk" href="#brands"><span class="t">브랜드 소개</span><span class="s">첫 번째 이야기, 인천항갈매기</span><span class="ar" aria-hidden="true">→</span></a>
+<a class="qk" href="company/franchise.html"><span class="t">가맹 안내</span><span class="s">창업 절차 · 비용 · 상담</span><span class="ar" aria-hidden="true">→</span></a>
+<a class="qk" href="#career"><span class="t">인재 채용</span><span class="s">함께 성장할 사람들</span><span class="ar" aria-hidden="true">→</span></a>
+<a class="qk" href="#contact"><span class="t">고객의 소리</span><span class="s">문의 · 제안 · 칭찬</span><span class="ar" aria-hidden="true">→</span></a>
+</nav>
+</div>
+</div>
+
+<section class="mani" aria-label="TheBestF&amp;B의 다짐">
+<div class="wrap mani-in">
+<p class="eyebrow">PROLOGUE</p>
+<p class="mani-t"><span class="w" style="animation-range: contain 8% contain 16%">우리는 </span><span class="w" style="animation-range: contain 13% contain 21%">화려한 </span><span class="w" style="animation-range: contain 17% contain 25%">가게보다 </span><span class="w hot" style="animation-range: contain 22% contain 30%">오래 </span><span class="w hot" style="animation-range: contain 26% contain 34%">남는 </span><span class="w hot" style="animation-range: contain 31% contain 39%">가게를 </span><span class="w" style="animation-range: contain 35% contain 43%">만듭니다. </span><span class="w" style="animation-range: contain 40% contain 48%">유행은 </span><span class="w" style="animation-range: contain 44% contain 52%">지나가도, </span><span class="w" style="animation-range: contain 49% contain 57%">맛있게 </span><span class="w" style="animation-range: contain 53% contain 61%">먹고 </span><span class="w" style="animation-range: contain 58% contain 66%">웃던 </span><span class="w" style="animation-range: contain 62% contain 70%">그 </span><span class="w" style="animation-range: contain 67% contain 75%">저녁은 </span><span class="w" style="animation-range: contain 71% contain 79%">오래 </span><span class="w" style="animation-range: contain 76% contain 84%">남으니까요. </span></p>
+<p class="mani-s en">THE BEST F&amp;B · SINCE 2026</p>
+</div>
+</section>
+
+<section id="story" class="sec" style="background: #F2F2F2">
+<div class="wrap">
+<div class="story-h rv">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">ONE EVENING</p><h2 class="h2">어느 저녁의 이야기</h2></div>
+<p class="lead" style="max-width: 26em">우리가 파는 것은 음식이 아니라, 그 음식 앞에서 보내는 시간이라고 믿습니다.</p>
+</div>
+<div class="stack">
+<article class="st">
+<div class="st-img"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/8527c83de8a53a411cb9d4c9287f718e.jpg" alt="숯불 위에서 익어 가는 고기"></div>
+<div class="st-body">
+<span class="st-no"><span>CHAPTER 01</span><span>퇴근길</span></span>
+<span class="st-time en">19:30<small>PM</small></span>
+<div style="display: flex; flex-direction: column; gap: 16px"><h3 class="st-t">오늘도 수고했다는 말 대신,<br>숯불 앞에 앉습니다</h3><p class="st-p">누군가에게는 하루를 내려놓는 첫 잔입니다. 그 자리가 편안하도록, 불 맛과 반찬 하나까지 매일 같은 기준으로 준비합니다.</p></div>
+</div>
+</article>
+<article class="st">
+<div class="st-img"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/4b669af8477a9f6579db07e5ed3cc41e.jpg" alt="따뜻한 조명이 켜진 식당 홀"></div>
+<div class="st-body">
+<span class="st-no"><span>CHAPTER 02</span><span>마주 앉은 시간</span></span>
+<span class="st-time en">20:10<small>PM</small></span>
+<div style="display: flex; flex-direction: column; gap: 16px"><h3 class="st-t">고기가 익는 소리에<br>대화가 시작됩니다</h3><p class="st-p">휴대폰을 내려놓고 서로를 마주 보는 시간. 직접 구워 나눠 먹는 한 점이 그 시간을 조금 더 길게 만들어 줍니다.</p></div>
+</div>
+</article>
+<article class="st">
+<div class="st-img"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/729dbaf423167b3ea647d59eac696754.jpg" alt="불빛이 새어 나오는 늦은 밤의 주방"></div>
+<div class="st-body">
+<span class="st-no"><span>CHAPTER 03</span><span>마감 무렵</span></span>
+<span class="st-time en">22:40<small>PM</small></span>
+<div style="display: flex; flex-direction: column; gap: 16px"><h3 class="st-t"><span class="typed">“사장님, 또 올게요.”</span></h3><p class="st-p">우리가 가장 좋아하는 말입니다. 이 한마디를 다시 듣기 위해, 내일도 같은 맛을 지킵니다.</p></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="xp" aria-label="TheBestF&amp;B의 기준">
+<div class="xp-stick">
+<div class="xp-frame"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/25f570047dc12824efd7292e6b938c9b.jpg" alt="나무 테이블이 놓인 따뜻한 분위기의 식당 내부"><span class="xp-veil"></span></div>
+<div class="xp-copy"><p class="eyebrow lt">OUR STANDARD</p><h2 class="xp-t">매장 하나를 열어도,<br>백 개를 여는 기준으로</h2><p class="xp-s">그 저녁이 어느 동네, 어느 매장에서든 똑같이 따뜻하도록. 레시피부터 반찬 하나, 오픈과 마감까지 모든 과정을 기록합니다.</p></div>
+</div>
+</section>
+
+<section id="about" class="sec">
+<div class="wrap">
+<div class="split">
+<div class="rv" style="display: flex; flex-direction: column; gap: 26px">
+<p class="eyebrow">ABOUT US</p>
+<h2 class="h2">유행보다 기본,<br>속도보다 오래 가는 길을<br>선택합니다</h2>
+<div class="pic rvi" style="aspect-ratio: 4 / 3; margin-top: 12px"><img class="parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/036453e4caaa30687ef4c2fbb272e95c.jpg" alt="주방에서 요리를 준비하는 사람들"></div>
+</div>
+<div class="letter rv" style="margin-top: 44px">
+<span class="en" style="font-size: 13px; font-weight: 700; letter-spacing: .2em; color: #909090">A LETTER FROM CEO</span>
+<p class="q">“가게 문을 여는 일은 누군가의 인생을 거는 일입니다. 저희는 그 무게를 압니다.”</p>
+<p>TheBestF&amp;B는 하나의 메뉴를 깊게 파고들고, 직영 매장에서 먼저 부딪혀 본 뒤에야 가맹을 엽니다. 손님이 다시 찾는 가게, 점주님이 오래 웃는 가게. 저희가 지키고 싶은 것은 그 두 가지입니다.</p>
+<p>화려하게 시작해 금방 사라지는 가게보다, 동네 사람들이 십 년 뒤에도 “거기 아직 있지?” 하고 찾는 가게를 만들겠습니다.</p>
+<div class="sign"><svg viewBox="0 0 160 52" aria-hidden="true"><path pathLength="1" d="M6 36 C 18 10, 30 10, 28 30 S 40 46, 52 24 C 58 14, 64 36, 72 30 C 80 22, 86 18, 92 32 C 98 44, 110 20, 120 26 C 130 32, 140 22, 154 18"></path></svg><span>TheBestF&amp;B 대표 <b style="color: #0F0F0F">정시웅 · 임경준 · 백승화</b></span></div>
+</div>
+</div>
+<div class="vals">
+<div class="val rv"><svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="22"></circle><path class="rd" d="M18 29 L25 36 L39 21"></path></svg><span class="no">01 · 검증</span><span class="tt">직영에서 먼저</span><span class="ds">메뉴와 동선, 원가와 손님의 반응까지. 직영 매장에서 충분히 검증한 것만 가맹점에 전합니다.</span></div>
+<div class="val rv"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 8 H36 L44 16 V48 H14 Z"></path><path d="M20 24 H38 M20 32 H38"></path><path class="rd" d="M20 40 H30"></path></svg><span class="no">02 · 기록</span><span class="tt">모든 과정을 기록으로</span><span class="ds">반찬 하나, 오픈과 마감까지 매뉴얼로 남겨 누가 문을 열어도 같은 가게가 되게 합니다.</span></div>
+<div class="val rv"><svg viewBox="0 0 56 56" aria-hidden="true"><path class="rd" d="M28 46 C 16 38, 10 32, 10 24 C 10 18, 15 14, 20 14 C 24 14, 27 17, 28 20 C 29 17, 32 14, 36 14 C 41 14, 46 18, 46 24 C 46 32, 40 38, 28 46 Z"></path></svg><span class="no">03 · 상생</span><span class="tt">점주의 수익이 곧 본사의 성과</span><span class="ds">가맹점이 남아야 본사도 남습니다. 숫자보다 사람을 먼저 보겠습니다.</span></div>
+</div>
+</div>
+</section>
+
+<section id="business" class="sec" style="background: #F2F2F2">
+<div class="wrap">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">BUSINESS</p><h2 class="h2">브랜드가 태어나<br>오래 사랑받기까지</h2></div>
+<p class="lead" style="max-width: 30em">기획부터 직영 운영, 가맹 확장, 콘텐츠 마케팅까지. 브랜드가 자라는 모든 단계를 직접 합니다.</p>
+</div>
+<div class="biz rv">
+<a class="bz" href="#business"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/192e50028b1e55c7452a9ebf1031996e.jpg" alt=""><div class="in"><span class="no">01</span><span class="tt">브랜드 개발</span><span class="ds">시장과 상권을 읽고, 콘셉트와 메뉴, 공간과 이름, 이야기까지 브랜드를 처음부터 설계합니다.</span></div></a>
+<a class="bz" href="#business"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/036453e4caaa30687ef4c2fbb272e95c.jpg" alt=""><div class="in"><span class="no">02</span><span class="tt">직영 운영</span><span class="ds">직영 매장에서 메뉴와 동선, 원가와 손님 반응을 먼저 검증한 뒤에만 가맹을 엽니다.</span></div></a>
+<a class="bz" href="company/franchise.html"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/6013d44d498012593d717334c69a1f38.jpg" alt=""><div class="in"><span class="no">03</span><span class="tt">가맹 사업</span><span class="ds">상권 분석, 점주 교육, 오픈 지원과 운영 매뉴얼로 점주님과 함께 매장을 엽니다.</span></div></a>
+<a class="bz" href="#business"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/29917ba1bbd147b43b97f715e67bc430.jpg" alt=""><div class="in"><span class="no">04</span><span class="tt">콘텐츠 · 글로벌 마케팅</span><span class="ds">사진과 영상을 직접 만들고, 매장별 홈페이지와 블로그, 다국어 메뉴와 해외 플랫폼까지 운영합니다.</span></div></a>
+</div>
+</div>
+</section>
+
+<section id="brands" class="sec">
+<div class="wrap">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">OUR BRANDS</p><h2 class="h2">첫 번째 이야기,<br>인천항갈매기</h2></div>
+<p class="lead" style="max-width: 28em">지역의 이야기를 한 상에 담습니다. 브랜드마다 하나의 동네, 하나의 저녁을 품고 있습니다.</p>
+</div>
+<div class="brand">
+<a class="bf rv" href="/shop2/">
+<img class="parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/950cb2fb3d7ee029508cff417f76cc4a.jpg" alt="인천항갈매기 부평점의 숯불 갈매기살과 네 가지 젓갈, 반찬이 차려진 한 상">
+<span class="bd">
+<span class="en" style="font-size: 13px; font-weight: 700; letter-spacing: .2em; display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #FF0000"></span>BRAND 01 · 운영 중</span>
+<span class="nm">인천항갈매기</span>
+<span class="ds">1970년대 인천항 부두, 고된 하루를 마친 사람들이 둘러앉던 저녁을 오늘의 골목에 다시 차렸습니다. 네 가지 젓갈에 찍어 먹는 숯불 갈매기살을 부평점에서 만나실 수 있습니다.</span>
+<span class="go"><span>브랜드 사이트 바로가기</span><span aria-hidden="true">↗</span></span>
+</span>
+</a>
+<div class="bnext rv">
+<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+<span class="en" style="font-size: 13px; font-weight: 700; letter-spacing: .2em; color: #909090">BRAND 02</span>
+<span class="nm">두 번째 이야기를<br>준비하고 있습니다</span>
+<span class="ds">직영에서 충분히 검증을 마친 뒤에 공개합니다. 서두르지 않겠습니다.</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="fig sec" aria-label="숫자로 보는 TheBestF&amp;B">
+<img class="fig-bg parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/ce35e31a7ac1ab42a6e9097883c24406.jpg" alt="" aria-hidden="true">
+<div class="wrap" style="position: relative">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow lt">KEY FIGURES</p><h2 class="h2" style="color: #FFFFFF">작은 기준이 쌓여<br>브랜드가 됩니다</h2></div>
+<p style="margin: 0; font-size: 14px; color: #909090">2026년 11월 기준</p>
+</div>
+<div class="figs">
+<div class="fg rv"><span class="num en"><span class="cnt" style="--to: 20"></span><small>개 언어</small></span><span class="ul"></span><span class="lb">다국어 메뉴판</span><span class="ds">어느 나라 손님도 망설이지 않고 주문하도록.</span></div>
+<div class="fg rv"><span class="num en"><span class="cnt" style="--to: 11"></span><small>가지</small></span><span class="ul"></span><span class="lb">완성된 반찬</span><span class="ds">모든 반찬이 완성된 상태로 상에 오르는 매뉴얼.</span></div>
+<div class="fg rv"><span class="num en"><span class="cnt" style="--to: 100"></span><small>%</small></span><span class="ul"></span><span class="lb">직영 검증 후 가맹</span><span class="ds">직영에서 검증한 것만 가맹점에 전합니다.</span></div>
+<div class="fg rv"><span class="num en">20<small>일</small></span><span class="ul"></span><span class="lb">계약 후 오픈까지</span><span class="ds">계약부터 첫 불을 켜는 날까지 약 20일.</span></div>
+</div>
+</div>
+</section>
+
+<section id="promise" class="sec">
+<div class="wrap prom">
+<div class="sticky-l rv">
+<p class="eyebrow">OUR PROMISE</p>
+<h2 class="h2">점주님께<br>드리는 약속</h2>
+<p class="lead">가게 하나에는 한 가족의 내일이 걸려 있습니다. 그래서 계약서보다 먼저, 이 약속을 드립니다.</p>
+<a class="pill pill-k" href="company/franchise.html" style="align-self: flex-start">가맹 안내 보기 <span aria-hidden="true">→</span></a>
+</div>
+<ul class="plist">
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">검증되지 않은 것은 팔지 않겠습니다</div><div class="ds">직영에서 손님의 반응까지 확인한 메뉴와 운영 방식만 전합니다.</div></div></li>
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">오픈 날, 가장 먼저 매장에 있겠습니다</div><div class="ds">교육부터 오픈 준비, 첫 영업까지 본사가 함께 문을 엽니다.</div></div></li>
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">혼자 고민하게 두지 않겠습니다</div><div class="ds">운영 매뉴얼과 체크리스트, 궁금할 때 바로 닿는 연락 창구를 드립니다.</div></div></li>
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">손님이 매장을 찾게 돕겠습니다</div><div class="ds">매장별 홈페이지와 블로그, SNS 영상, 다국어 메뉴까지 본사가 직접 만듭니다.</div></div></li>
+</ul>
+</div>
+</section>
+
+<section aria-hidden="true" class="band">
+<div class="bandl en">BASIC <b>·</b> RECORD <b>·</b> WIN-WIN <b>·</b> BASIC <b>·</b> RECORD <b>·</b> WIN-WIN <b>·</b></div>
+<div class="bandr">기본 · 기록 · 상생 · 기본 · 기록 · 상생 · 기본 · 기록 · 상생 ·</div>
+</section>
+
+<section id="news" class="sec" style="background: #F2F2F2">
+<div class="wrap">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">NEWSROOM</p><h2 class="h2">홍보센터</h2></div>
+<div class="tabs" role="tablist" aria-label="소식 분류">
+<button type="button" role="tab" aria-selected="true" data-dc-click="16">전체</button><button type="button" role="tab" aria-selected="false" data-dc-click="17">브랜드 소식</button><button type="button" role="tab" aria-selected="false" data-dc-click="18">공지사항</button>
+</div>
+</div>
+<div class="news">
+<a class="nf rv" href="#news" data-dc-click="19"><span class="ph"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/96f714f78c93e48175852ab90b8301d3.jpg" alt="인천항갈매기 브랜드 그림"><span class="playdot" aria-hidden="true"></span></span><span style="font-size: 13px; font-weight: 700; color: #606060">브랜드 필름</span><span style="font-size: 24px; font-weight: 700; letter-spacing: -.03em; line-height: 1.45">하루의 고단함도 고기 한 점이면 — 인천항갈매기 브랜드 필름</span><span class="en" style="font-size: 14px; color: #909090">2026.10.20</span></a>
+<ul class="nl rv">
+<li><a href="#news"><span class="ct">브랜드 소식</span><span class="tt">인천항갈매기, 가맹점 모집을 시작합니다</span><span class="dt">2026.11.03</span><img class="nthumb" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/950cb2fb3d7ee029508cff417f76cc4a.jpg" alt=""></a></li><li><a href="#news"><span class="ct">공지사항</span><span class="tt">TheBestF&amp;B 공식 홈페이지를 열었습니다</span><span class="dt">2026.11.05</span><img class="nthumb" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/2070e45181d755de1e72403c80185e05.jpg" alt=""></a></li><li><a href="#news"><span class="ct">브랜드 소식</span><span class="tt">인천항갈매기, 20개 언어 다국어 메뉴판 도입</span><span class="dt">2026.10.09</span><img class="nthumb" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/8527c83de8a53a411cb9d4c9287f718e.jpg" alt=""></a></li><li><a href="#news"><span class="ct">공지사항</span><span class="tt">개인정보처리방침 안내</span><span class="dt">2026.11.05</span><img class="nthumb" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/4b669af8477a9f6579db07e5ed3cc41e.jpg" alt=""></a></li><li><a href="#news"><span class="ct">브랜드 소식</span><span class="tt">인천항갈매기 신메뉴 매운닭목살 출시</span><span class="dt">2026.10.20</span><img class="nthumb" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/192e50028b1e55c7452a9ebf1031996e.jpg" alt=""></a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="career" class="career">
+<img class="parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/729dbaf423167b3ea647d59eac696754.jpg" alt="">
+<div class="wrap" style="position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; gap: 24px">
+<p class="eyebrow lt rv">CAREERS</p>
+<h2 style="margin: 0; font-size: clamp(34px, 3.8vw, 60px); font-weight: 700; letter-spacing: -.04em; line-height: 1.3"><span class="ln"><span class="lni sv">당신의 다음 장을</span></span><span class="ln"><span class="lni sv sv2">함께 쓰고 싶습니다</span></span></h2>
+<p class="rv" style="margin: 0; font-size: 17px; color: rgba(255,255,255,.82); max-width: 32em; line-height: 1.85">매장 운영부터 브랜드 기획, 콘텐츠 제작까지. 직접 해 보고, 기록하고, 함께 자라는 사람을 기다립니다.</p>
+<div class="rv" style="display: flex; gap: 12px; flex-wrap: wrap"><a class="pill pill-w" href="#career">채용 공고 보기 <span aria-hidden="true">→</span></a><a class="pill pill-line" href="#career">인재상</a></div>
+</div>
+</section>
+
+<section id="contact" class="sec">
+<div class="wrap ct-grid">
+<div class="rv" style="display: flex; flex-direction: column; gap: 26px">
+<p class="eyebrow">CONTACT</p>
+<h2 class="h2">어떤 이야기든 좋습니다.<br>먼저 들려주세요</h2>
+<p class="lead">가맹 상담, 제휴 제안, 매장에 대한 한마디까지. 담당자가 직접 읽고 연락드립니다.</p>
+<dl style="margin: 12px 0 0; display: grid; grid-template-columns: 110px 1fr; gap: 14px 20px; font-size: 16px; border-top: 2px solid #0F0F0F; padding-top: 26px">
+<dt style="font-weight: 700">가맹 상담</dt><dd style="margin: 0; color: #606060">온라인 상담 신청 · <a href="mailto:thebestglobal@amakers.co.kr" style="color: inherit">thebestglobal@amakers.co.kr</a></dd>
+<dt style="font-weight: 700">제휴 · 입점</dt><dd style="margin: 0; color: #606060"><a href="mailto:thebestglobal@amakers.co.kr" style="color: inherit">thebestglobal@amakers.co.kr</a></dd>
+<dt style="font-weight: 700">본사 주소</dt><dd style="margin: 0; color: #606060">인천광역시 부평구 시장로12번길 21-1 (부평동)</dd>
+</dl>
+</div>
+<form class="form rv">
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px"><legend style="font-size: 14px; font-weight: 700; padding: 0 0 12px">문의 유형</legend>
+<div class="kinds"><label><input type="radio" name="kind" checked> 가맹 상담</label><label><input type="radio" name="kind"> 제휴 · 입점</label><label><input type="radio" name="kind"> 고객의 소리</label><label><input type="radio" name="kind"> 기타</label></div>
+</fieldset>
+<div class="fields">
+<div class="fl"><label for="c-name">성함</label><input id="c-name" type="text" placeholder="홍길동"></div>
+<div class="fl"><label for="c-tel">연락처</label><input id="c-tel" type="tel" placeholder="010-0000-0000"></div>
+<div class="fl"><label for="c-mail">이메일</label><input id="c-mail" type="email" placeholder="name@email.com"></div>
+<div class="fl"><label for="c-area">희망 지역</label><input id="c-area" type="text" placeholder="예: 경기 수원"></div>
+</div>
+<div class="fl"><label for="c-msg">문의 내용</label><textarea id="c-msg" rows="4" placeholder="편하게 적어 주세요"></textarea></div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #606060"><input type="checkbox" style="margin-top: 4px"> <span>개인정보 수집 및 이용에 동의합니다. <a href="#contact" style="color: #0F0F0F; font-weight: 700">내용 보기</a></span></label>
+<button type="button" class="pill pill-r" style="align-self: flex-start">문의 보내기 <span aria-hidden="true">→</span></button>
+</form>
+</div>
+</section>
+
+<footer class="ft">
+<div class="wrap ft-top">
+<div><h5>회사소개</h5><ul><li><a href="#about">CEO 인사말</a></li><li><a href="#about">일하는 방식</a></li><li><a href="#story">어느 저녁의 이야기</a></li><li><a href="#contact">오시는 길</a></li></ul></div>
+<div><h5>사업영역</h5><ul><li><a href="#business">브랜드 개발</a></li><li><a href="#business">직영 운영</a></li><li><a href="company/franchise.html">가맹 사업</a></li><li><a href="#business">콘텐츠 · 글로벌</a></li></ul></div>
+<div><h5>브랜드</h5><ul><li><a href="/shop2/">인천항갈매기</a></li></ul></div>
+<div><h5>가맹사업</h5><ul><li><a href="company/franchise.html">가맹 안내</a></li><li><a href="#promise">점주님께 드리는 약속</a></li><li><a href="#contact">가맹 상담 신청</a></li></ul></div>
+<div><h5>홍보센터</h5><ul><li><a href="#news">보도자료</a></li><li><a href="#news">공지사항</a></li><li><a href="/shop2/brand/news.html">브랜드 소식</a></li></ul></div>
+<div><h5>인재채용</h5><ul><li><a href="#career">인재상</a></li><li><a href="#career">채용 공고</a></li></ul></div>
+</div>
+<div class="wrap ft-bot">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="en" style="font-size: 20px; font-weight: 800; color: #FFFFFF; display: flex; align-items: center; gap: 10px"><svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FF0000"></circle><g transform="translate(9.2 8.6) scale(.9)"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" fill="#FFFFFF"></path></g></svg>TheBest F&amp;B</span>
+<span>상호 인천항갈매기 · 대표 정시웅, 임경준, 백승화 · 사업자등록번호 467-03-03763</span>
+<span>본사 인천광역시 부평구 시장로12번길 21-1 (부평동) · 이메일 <a href="mailto:thebestglobal@amakers.co.kr" style="color: inherit">thebestglobal@amakers.co.kr</a></span>
+<span style="display: flex; gap: 18px; color: #FFFFFF"><a href="/member/privacy.html" style="text-decoration: none; font-weight: 700">개인정보처리방침</a><a href="/member/mall_agreement.html" style="text-decoration: none">이용약관</a><a href="#top" style="text-decoration: none">윤리경영 제보</a></span>
+<span style="font-size: 13px">© TheBestF&amp;B. All rights reserved.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<label for="fam" style="color: #FFFFFF; font-weight: 700">패밀리 사이트</label>
+<select id="fam" data-dc-change="20"><option value="">선택하세요</option><option value="/shop2/">인천항갈매기</option></select>
+</div>
+</div>
+<div class="ft-mark en" aria-hidden="true">TheBest<span>F&amp;B</span><i></i></div>
+</footer>
+<a class="top-btn" href="#top" aria-label="맨 위로">TOP</a>
+</div>
+</div>
+<script type="text/x-dc-tpl" id="dc-tpl">
+<div class="{{fxClass}}" style="font-family: 'Noto Sans KR', sans-serif; color: #0F0F0F; background: #FFFFFF; font-size: 16px; line-height: 1.6; overflow-x: clip">
+
+<div class="tprog" aria-hidden="true"></div>
+<header class="hdr" id="top">
+<div class="wrap hdr-in">
+<a href="index.html" aria-label="TheBestF&amp;B 홈" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex: 0 0 auto">
+<svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FF0000"></circle><g transform="translate(9.2 8.6) scale(.9)"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" fill="#FFFFFF"></path></g></svg>
+<span class="en" style="display: flex; flex-direction: column; line-height: 1"><span style="font-size: 21px; font-weight: 800; letter-spacing: -.03em">TheBest F&amp;B</span><span style="font-size: 10px; font-weight: 600; letter-spacing: .28em; opacity: .6; margin-top: 4px">FOOD &amp; BRAND GROUP</span></span>
+</a>
+<nav aria-label="주 메뉴" style="height: 100%">
+<ul class="gnb">
+<li><a href="#about">회사소개</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>회사소개</h4><p>누군가의 하루 끝에 따뜻한 한 상이 있도록. TheBestF&amp;B가 일하는 이유입니다.</p></div><ul><li><a href="#about">CEO 인사말<span aria-hidden="true">→</span></a></li><li><a href="#about">일하는 방식<span aria-hidden="true">→</span></a></li><li><a href="#story">어느 저녁의 이야기<span aria-hidden="true">→</span></a></li><li><a href="#about">연혁<span aria-hidden="true">→</span></a></li><li><a href="#contact">오시는 길<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#business">사업영역</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>사업영역</h4><p>브랜드가 태어나 오래 사랑받기까지, 모든 단계를 직접 합니다.</p></div><ul><li><a href="#business">브랜드 개발<span aria-hidden="true">→</span></a></li><li><a href="#business">직영 운영<span aria-hidden="true">→</span></a></li><li><a href="company/franchise.html">가맹 사업<span aria-hidden="true">→</span></a></li><li><a href="#business">콘텐츠 · 글로벌 마케팅<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#brands">브랜드</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>브랜드</h4><p>직영에서 충분히 검증한 브랜드만 세상에 내놓습니다.</p></div><ul><li><a href="/shop2/">인천항갈매기<span aria-hidden="true">→</span></a></li><li><a href="#brands">브랜드가 태어나는 과정<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="company/franchise.html">가맹사업</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>가맹사업</h4><p>점주님의 첫 출근부터 십 년 뒤까지 곁에 있겠습니다.</p></div><ul><li><a href="company/franchise.html">가맹 안내<span aria-hidden="true">→</span></a></li><li><a href="#promise">점주님께 드리는 약속<span aria-hidden="true">→</span></a></li><li><a href="#contact">가맹 상담 신청<span aria-hidden="true">→</span></a></li><li><a href="/shop2/brand/write.html">점주 전용<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#news">홍보센터</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>홍보센터</h4><p>TheBestF&amp;B와 브랜드의 새로운 소식을 전합니다.</p></div><ul><li><a href="#news">보도자료<span aria-hidden="true">→</span></a></li><li><a href="#news">공지사항<span aria-hidden="true">→</span></a></li><li><a href="/shop2/brand/news.html">브랜드 소식<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+<li><a href="#career">인재채용</a>
+<div class="mega"><div class="wrap mega-in"><div><h4>인재채용</h4><p>당신의 다음 장을 함께 쓰고 싶습니다.</p></div><ul><li><a href="#career">인재상<span aria-hidden="true">→</span></a></li><li><a href="#career">채용 공고<span aria-hidden="true">→</span></a></li></ul></div></div>
+</li>
+</ul>
+</nav>
+<div class="util">
+<span class="lang en"><a href="?lang=ko" data-lang="ko">KOR</a><a href="?lang=en" data-lang="en">ENG</a></span>
+<a class="fam pill pill-k" href="#contact" style="padding: 12px 20px; font-size: 14px">가맹 · 제휴 문의</a>
+<button class="menu-btn" type="button" aria-label="전체 메뉴" aria-expanded="{{menuOpen}}" onClick="{{toggleMenu}}" style="display: none; background: none; border: 0; padding: 8px; cursor: pointer; flex-direction: column; gap: 5px; color: inherit"><span style="width: 24px; height: 2px; background: currentColor; display: block"></span><span style="width: 24px; height: 2px; background: currentColor; display: block"></span><span style="width: 16px; height: 2px; background: currentColor; display: block"></span></button>
+</div>
+</div>
+<nav class="{{drawerCls}}" aria-label="모바일 메뉴">
+<a href="#about" onClick="{{closeMenu}}">회사소개</a><a href="#business" onClick="{{closeMenu}}">사업영역</a><a href="#brands" onClick="{{closeMenu}}">브랜드</a><a href="company/franchise.html">가맹사업</a><a href="#news" onClick="{{closeMenu}}">홍보센터</a><a href="#career" onClick="{{closeMenu}}">인재채용</a>
+<span class="dr-lang en"><a href="?lang=ko" data-lang="ko">KOR</a><a href="?lang=en" data-lang="en">ENG</a></span>
+<a class="pill pill-k" href="#contact" onClick="{{closeMenu}}">가맹 · 제휴 문의</a>
+</nav>
+</header>
+
+<section class="hero {{pauseCls}}" aria-roledescription="carousel" aria-label="TheBestF&amp;B 소개">
+<sc-for list="{{slides}}" as="sl" hint-placeholder-count="3">
+<div class="{{sl.cls}}" aria-hidden="{{sl.hidden}}"><img src="{{sl.img}}" alt="{{sl.alt}}"></div>
+</sc-for>
+<div class="hero-copy"><h1 class="sr-h1">TheBest F&amp;B 더베스트에프앤비 — 직영에서 검증한 외식 브랜드 그룹, 인천항갈매기 가맹 본사</h1>
+<div class="wrap">
+<sc-for list="{{slides}}" as="sl" hint-placeholder-count="3">
+<div class="{{sl.copyCls}}">
+<span class="k rise">{{sl.k}}</span>
+<h2><span class="ln"><span class="lni d1">{{sl.t1}}</span></span><span class="ln"><span class="lni d2">{{sl.t2}}</span></span></h2>
+<p class="rise d3">{{sl.p}}</p>
+<div class="btns rise d4" style="display: flex; gap: 12px; flex-wrap: wrap"><a class="pill pill-w" href="{{sl.href}}">{{sl.cta}} <span aria-hidden="true">→</span></a><button type="button" class="pill pill-line" onClick="{{openFilm}}"><span class="playdot" aria-hidden="true"></span>브랜드 필름 보기</button></div>
+</div>
+</sc-for>
+</div>
+</div>
+<div class="hero-ctrl">
+<div class="wrap" style="display: flex; align-items: center; gap: 24px">
+<div class="ind" role="tablist" aria-label="슬라이드 선택">
+<sc-for list="{{slides}}" as="sl" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{sl.sel}}" class="{{sl.indCls}}" onClick="{{sl.go}}"><span class="en">{{sl.no}} <span class="lbt">{{sl.short}}</span></span><span class="bar"><i class="{{sl.barCls}}"></i></span></button>
+</sc-for>
+</div>
+<button type="button" class="pp en" onClick="{{togglePause}}" aria-label="{{ppLabel}}">{{ppIcon}}</button>
+</div>
+</div>
+<span class="bignum en" aria-hidden="true">{{bigNum}}<small>/ 03</small></span>
+</section>
+
+<div class="{{filmCls}}" role="dialog" aria-modal="true" aria-label="브랜드 필름" onClick="{{closeFilm}}">
+<div class="film-box">
+<img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/80d1e8cfce61c045da2edeadf004d364.jpg" alt="">
+<div class="msg"><span class="bigplay" aria-hidden="true"></span><span style="font-size: 22px; font-weight: 700">브랜드 필름이 이 자리에 들어갑니다</span><span style="font-size: 15px; color: rgba(255,255,255,.75)">[인천항 부두의 저녁 · Veo 영상 또는 유튜브 영상 연결]</span></div>
+<button type="button" class="film-x" aria-label="닫기" onClick="{{closeFilm}}">✕</button>
+</div>
+</div>
+
+<div class="quick">
+<div class="wrap">
+<nav class="quick-in" aria-label="바로가기">
+<a class="qk" href="#brands"><span class="t">브랜드 소개</span><span class="s">첫 번째 이야기, 인천항갈매기</span><span class="ar" aria-hidden="true">→</span></a>
+<a class="qk" href="company/franchise.html"><span class="t">가맹 안내</span><span class="s">창업 절차 · 비용 · 상담</span><span class="ar" aria-hidden="true">→</span></a>
+<a class="qk" href="#career"><span class="t">인재 채용</span><span class="s">함께 성장할 사람들</span><span class="ar" aria-hidden="true">→</span></a>
+<a class="qk" href="#contact"><span class="t">고객의 소리</span><span class="s">문의 · 제안 · 칭찬</span><span class="ar" aria-hidden="true">→</span></a>
+</nav>
+</div>
+</div>
+
+<section class="mani" aria-label="TheBestF&amp;B의 다짐">
+<div class="wrap mani-in">
+<p class="eyebrow">PROLOGUE</p>
+<p class="mani-t"><sc-for list="{{words}}" as="w" hint-placeholder-count="20"><span class="{{w.cls}}" style="{{w.r}}">{{w.t}} </span></sc-for></p>
+<p class="mani-s en">THE BEST F&amp;B · SINCE 2026</p>
+</div>
+</section>
+
+<section id="story" class="sec" style="background: #F2F2F2">
+<div class="wrap">
+<div class="story-h rv">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">ONE EVENING</p><h2 class="h2">어느 저녁의 이야기</h2></div>
+<p class="lead" style="max-width: 26em">우리가 파는 것은 음식이 아니라, 그 음식 앞에서 보내는 시간이라고 믿습니다.</p>
+</div>
+<div class="stack">
+<article class="st">
+<div class="st-img"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/8527c83de8a53a411cb9d4c9287f718e.jpg" alt="숯불 위에서 익어 가는 고기"></div>
+<div class="st-body">
+<span class="st-no"><span>CHAPTER 01</span><span>퇴근길</span></span>
+<span class="st-time en">19:30<small>PM</small></span>
+<div style="display: flex; flex-direction: column; gap: 16px"><h3 class="st-t">오늘도 수고했다는 말 대신,<br>숯불 앞에 앉습니다</h3><p class="st-p">누군가에게는 하루를 내려놓는 첫 잔입니다. 그 자리가 편안하도록, 불 맛과 반찬 하나까지 매일 같은 기준으로 준비합니다.</p></div>
+</div>
+</article>
+<article class="st">
+<div class="st-img"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/4b669af8477a9f6579db07e5ed3cc41e.jpg" alt="따뜻한 조명이 켜진 식당 홀"></div>
+<div class="st-body">
+<span class="st-no"><span>CHAPTER 02</span><span>마주 앉은 시간</span></span>
+<span class="st-time en">20:10<small>PM</small></span>
+<div style="display: flex; flex-direction: column; gap: 16px"><h3 class="st-t">고기가 익는 소리에<br>대화가 시작됩니다</h3><p class="st-p">휴대폰을 내려놓고 서로를 마주 보는 시간. 직접 구워 나눠 먹는 한 점이 그 시간을 조금 더 길게 만들어 줍니다.</p></div>
+</div>
+</article>
+<article class="st">
+<div class="st-img"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/729dbaf423167b3ea647d59eac696754.jpg" alt="불빛이 새어 나오는 늦은 밤의 주방"></div>
+<div class="st-body">
+<span class="st-no"><span>CHAPTER 03</span><span>마감 무렵</span></span>
+<span class="st-time en">22:40<small>PM</small></span>
+<div style="display: flex; flex-direction: column; gap: 16px"><h3 class="st-t"><span class="typed">“사장님, 또 올게요.”</span></h3><p class="st-p">우리가 가장 좋아하는 말입니다. 이 한마디를 다시 듣기 위해, 내일도 같은 맛을 지킵니다.</p></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="xp" aria-label="TheBestF&amp;B의 기준">
+<div class="xp-stick">
+<div class="xp-frame"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/25f570047dc12824efd7292e6b938c9b.jpg" alt="나무 테이블이 놓인 따뜻한 분위기의 식당 내부"><span class="xp-veil"></span></div>
+<div class="xp-copy"><p class="eyebrow lt">OUR STANDARD</p><h2 class="xp-t">매장 하나를 열어도,<br>백 개를 여는 기준으로</h2><p class="xp-s">그 저녁이 어느 동네, 어느 매장에서든 똑같이 따뜻하도록. 레시피부터 반찬 하나, 오픈과 마감까지 모든 과정을 기록합니다.</p></div>
+</div>
+</section>
+
+<section id="about" class="sec">
+<div class="wrap">
+<div class="split">
+<div class="rv" style="display: flex; flex-direction: column; gap: 26px">
+<p class="eyebrow">ABOUT US</p>
+<h2 class="h2">유행보다 기본,<br>속도보다 오래 가는 길을<br>선택합니다</h2>
+<div class="pic rvi" style="aspect-ratio: 4 / 3; margin-top: 12px"><img class="parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/036453e4caaa30687ef4c2fbb272e95c.jpg" alt="주방에서 요리를 준비하는 사람들"></div>
+</div>
+<div class="letter rv" style="margin-top: 44px">
+<span class="en" style="font-size: 13px; font-weight: 700; letter-spacing: .2em; color: #909090">A LETTER FROM CEO</span>
+<p class="q">“가게 문을 여는 일은 누군가의 인생을 거는 일입니다. 저희는 그 무게를 압니다.”</p>
+<p>TheBestF&amp;B는 하나의 메뉴를 깊게 파고들고, 직영 매장에서 먼저 부딪혀 본 뒤에야 가맹을 엽니다. 손님이 다시 찾는 가게, 점주님이 오래 웃는 가게. 저희가 지키고 싶은 것은 그 두 가지입니다.</p>
+<p>화려하게 시작해 금방 사라지는 가게보다, 동네 사람들이 십 년 뒤에도 “거기 아직 있지?” 하고 찾는 가게를 만들겠습니다.</p>
+<div class="sign"><svg viewBox="0 0 160 52" aria-hidden="true"><path pathLength="1" d="M6 36 C 18 10, 30 10, 28 30 S 40 46, 52 24 C 58 14, 64 36, 72 30 C 80 22, 86 18, 92 32 C 98 44, 110 20, 120 26 C 130 32, 140 22, 154 18"></path></svg><span>TheBestF&amp;B 대표 <b style="color: #0F0F0F">정시웅 · 임경준 · 백승화</b></span></div>
+</div>
+</div>
+<div class="vals">
+<div class="val rv"><svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="22"></circle><path class="rd" d="M18 29 L25 36 L39 21"></path></svg><span class="no">01 · 검증</span><span class="tt">직영에서 먼저</span><span class="ds">메뉴와 동선, 원가와 손님의 반응까지. 직영 매장에서 충분히 검증한 것만 가맹점에 전합니다.</span></div>
+<div class="val rv"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M14 8 H36 L44 16 V48 H14 Z"></path><path d="M20 24 H38 M20 32 H38"></path><path class="rd" d="M20 40 H30"></path></svg><span class="no">02 · 기록</span><span class="tt">모든 과정을 기록으로</span><span class="ds">반찬 하나, 오픈과 마감까지 매뉴얼로 남겨 누가 문을 열어도 같은 가게가 되게 합니다.</span></div>
+<div class="val rv"><svg viewBox="0 0 56 56" aria-hidden="true"><path class="rd" d="M28 46 C 16 38, 10 32, 10 24 C 10 18, 15 14, 20 14 C 24 14, 27 17, 28 20 C 29 17, 32 14, 36 14 C 41 14, 46 18, 46 24 C 46 32, 40 38, 28 46 Z"></path></svg><span class="no">03 · 상생</span><span class="tt">점주의 수익이 곧 본사의 성과</span><span class="ds">가맹점이 남아야 본사도 남습니다. 숫자보다 사람을 먼저 보겠습니다.</span></div>
+</div>
+</div>
+</section>
+
+<section id="business" class="sec" style="background: #F2F2F2">
+<div class="wrap">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">BUSINESS</p><h2 class="h2">브랜드가 태어나<br>오래 사랑받기까지</h2></div>
+<p class="lead" style="max-width: 30em">기획부터 직영 운영, 가맹 확장, 콘텐츠 마케팅까지. 브랜드가 자라는 모든 단계를 직접 합니다.</p>
+</div>
+<div class="biz rv">
+<a class="bz" href="#business"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/192e50028b1e55c7452a9ebf1031996e.jpg" alt=""><div class="in"><span class="no">01</span><span class="tt">브랜드 개발</span><span class="ds">시장과 상권을 읽고, 콘셉트와 메뉴, 공간과 이름, 이야기까지 브랜드를 처음부터 설계합니다.</span></div></a>
+<a class="bz" href="#business"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/036453e4caaa30687ef4c2fbb272e95c.jpg" alt=""><div class="in"><span class="no">02</span><span class="tt">직영 운영</span><span class="ds">직영 매장에서 메뉴와 동선, 원가와 손님 반응을 먼저 검증한 뒤에만 가맹을 엽니다.</span></div></a>
+<a class="bz" href="company/franchise.html"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/6013d44d498012593d717334c69a1f38.jpg" alt=""><div class="in"><span class="no">03</span><span class="tt">가맹 사업</span><span class="ds">상권 분석, 점주 교육, 오픈 지원과 운영 매뉴얼로 점주님과 함께 매장을 엽니다.</span></div></a>
+<a class="bz" href="#business"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/29917ba1bbd147b43b97f715e67bc430.jpg" alt=""><div class="in"><span class="no">04</span><span class="tt">콘텐츠 · 글로벌 마케팅</span><span class="ds">사진과 영상을 직접 만들고, 매장별 홈페이지와 블로그, 다국어 메뉴와 해외 플랫폼까지 운영합니다.</span></div></a>
+</div>
+</div>
+</section>
+
+<section id="brands" class="sec">
+<div class="wrap">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">OUR BRANDS</p><h2 class="h2">첫 번째 이야기,<br>인천항갈매기</h2></div>
+<p class="lead" style="max-width: 28em">지역의 이야기를 한 상에 담습니다. 브랜드마다 하나의 동네, 하나의 저녁을 품고 있습니다.</p>
+</div>
+<div class="brand">
+<a class="bf rv" href="/shop2/">
+<img class="parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/950cb2fb3d7ee029508cff417f76cc4a.jpg" alt="인천항갈매기 부평점의 숯불 갈매기살과 네 가지 젓갈, 반찬이 차려진 한 상">
+<span class="bd">
+<span class="en" style="font-size: 13px; font-weight: 700; letter-spacing: .2em; display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #FF0000"></span>BRAND 01 · 운영 중</span>
+<span class="nm">인천항갈매기</span>
+<span class="ds">1970년대 인천항 부두, 고된 하루를 마친 사람들이 둘러앉던 저녁을 오늘의 골목에 다시 차렸습니다. 네 가지 젓갈에 찍어 먹는 숯불 갈매기살을 부평점에서 만나실 수 있습니다.</span>
+<span class="go"><span>브랜드 사이트 바로가기</span><span aria-hidden="true">↗</span></span>
+</span>
+</a>
+<div class="bnext rv">
+<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+<span class="en" style="font-size: 13px; font-weight: 700; letter-spacing: .2em; color: #909090">BRAND 02</span>
+<span class="nm">두 번째 이야기를<br>준비하고 있습니다</span>
+<span class="ds">직영에서 충분히 검증을 마친 뒤에 공개합니다. 서두르지 않겠습니다.</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="fig sec" aria-label="숫자로 보는 TheBestF&amp;B">
+<img class="fig-bg parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/ce35e31a7ac1ab42a6e9097883c24406.jpg" alt="" aria-hidden="true">
+<div class="wrap" style="position: relative">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow lt">KEY FIGURES</p><h2 class="h2" style="color: #FFFFFF">작은 기준이 쌓여<br>브랜드가 됩니다</h2></div>
+<p style="margin: 0; font-size: 14px; color: #909090">2026년 11월 기준</p>
+</div>
+<div class="figs">
+<div class="fg rv"><span class="num en"><span class="cnt" style="--to: 20"></span><small>개 언어</small></span><span class="ul"></span><span class="lb">다국어 메뉴판</span><span class="ds">어느 나라 손님도 망설이지 않고 주문하도록.</span></div>
+<div class="fg rv"><span class="num en"><span class="cnt" style="--to: 11"></span><small>가지</small></span><span class="ul"></span><span class="lb">완성된 반찬</span><span class="ds">모든 반찬이 완성된 상태로 상에 오르는 매뉴얼.</span></div>
+<div class="fg rv"><span class="num en"><span class="cnt" style="--to: 100"></span><small>%</small></span><span class="ul"></span><span class="lb">직영 검증 후 가맹</span><span class="ds">직영에서 검증한 것만 가맹점에 전합니다.</span></div>
+<div class="fg rv"><span class="num en">20<small>일</small></span><span class="ul"></span><span class="lb">계약 후 오픈까지</span><span class="ds">계약부터 첫 불을 켜는 날까지 약 20일.</span></div>
+</div>
+</div>
+</section>
+
+<section id="promise" class="sec">
+<div class="wrap prom">
+<div class="sticky-l rv">
+<p class="eyebrow">OUR PROMISE</p>
+<h2 class="h2">점주님께<br>드리는 약속</h2>
+<p class="lead">가게 하나에는 한 가족의 내일이 걸려 있습니다. 그래서 계약서보다 먼저, 이 약속을 드립니다.</p>
+<a class="pill pill-k" href="company/franchise.html" style="align-self: flex-start">가맹 안내 보기 <span aria-hidden="true">→</span></a>
+</div>
+<ul class="plist">
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">검증되지 않은 것은 팔지 않겠습니다</div><div class="ds">직영에서 손님의 반응까지 확인한 메뉴와 운영 방식만 전합니다.</div></div></li>
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">오픈 날, 가장 먼저 매장에 있겠습니다</div><div class="ds">교육부터 오픈 준비, 첫 영업까지 본사가 함께 문을 엽니다.</div></div></li>
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">혼자 고민하게 두지 않겠습니다</div><div class="ds">운영 매뉴얼과 체크리스트, 궁금할 때 바로 닿는 연락 창구를 드립니다.</div></div></li>
+<li class="rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><path pathLength="1" d="M12 21 L18 27 L29 14"></path></svg><div><div class="tt">손님이 매장을 찾게 돕겠습니다</div><div class="ds">매장별 홈페이지와 블로그, SNS 영상, 다국어 메뉴까지 본사가 직접 만듭니다.</div></div></li>
+</ul>
+</div>
+</section>
+
+<section aria-hidden="true" class="band">
+<div class="bandl en">BASIC <b>·</b> RECORD <b>·</b> WIN-WIN <b>·</b> BASIC <b>·</b> RECORD <b>·</b> WIN-WIN <b>·</b></div>
+<div class="bandr">기본 · 기록 · 상생 · 기본 · 기록 · 상생 · 기본 · 기록 · 상생 ·</div>
+</section>
+
+<section id="news" class="sec" style="background: #F2F2F2">
+<div class="wrap">
+<div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 22px"><p class="eyebrow">NEWSROOM</p><h2 class="h2">홍보센터</h2></div>
+<div class="tabs" role="tablist" aria-label="소식 분류">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
+</div>
+</div>
+<div class="news">
+<a class="nf rv" href="#news" onClick="{{openFilm}}"><span class="ph"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/96f714f78c93e48175852ab90b8301d3.jpg" alt="인천항갈매기 브랜드 그림"><span class="playdot" aria-hidden="true"></span></span><span style="font-size: 13px; font-weight: 700; color: #606060">브랜드 필름</span><span style="font-size: 24px; font-weight: 700; letter-spacing: -.03em; line-height: 1.45">하루의 고단함도 고기 한 점이면 — 인천항갈매기 브랜드 필름</span><span class="en" style="font-size: 14px; color: #909090">2026.10.20</span></a>
+<ul class="nl rv">
+<sc-for list="{{news}}" as="n" hint-placeholder-count="5"><li><a href="#news"><span class="ct">{{n.cat}}</span><span class="tt">{{n.t}}</span><span class="dt">{{n.d}}</span><img class="nthumb" src="{{n.img}}" alt=""></a></li></sc-for>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="career" class="career">
+<img class="parx" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/729dbaf423167b3ea647d59eac696754.jpg" alt="">
+<div class="wrap" style="position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; gap: 24px">
+<p class="eyebrow lt rv">CAREERS</p>
+<h2 style="margin: 0; font-size: clamp(34px, 3.8vw, 60px); font-weight: 700; letter-spacing: -.04em; line-height: 1.3"><span class="ln"><span class="lni sv">당신의 다음 장을</span></span><span class="ln"><span class="lni sv sv2">함께 쓰고 싶습니다</span></span></h2>
+<p class="rv" style="margin: 0; font-size: 17px; color: rgba(255,255,255,.82); max-width: 32em; line-height: 1.85">매장 운영부터 브랜드 기획, 콘텐츠 제작까지. 직접 해 보고, 기록하고, 함께 자라는 사람을 기다립니다.</p>
+<div class="rv" style="display: flex; gap: 12px; flex-wrap: wrap"><a class="pill pill-w" href="#career">채용 공고 보기 <span aria-hidden="true">→</span></a><a class="pill pill-line" href="#career">인재상</a></div>
+</div>
+</section>
+
+<section id="contact" class="sec">
+<div class="wrap ct-grid">
+<div class="rv" style="display: flex; flex-direction: column; gap: 26px">
+<p class="eyebrow">CONTACT</p>
+<h2 class="h2">어떤 이야기든 좋습니다.<br>먼저 들려주세요</h2>
+<p class="lead">가맹 상담, 제휴 제안, 매장에 대한 한마디까지. 담당자가 직접 읽고 연락드립니다.</p>
+<dl style="margin: 12px 0 0; display: grid; grid-template-columns: 110px 1fr; gap: 14px 20px; font-size: 16px; border-top: 2px solid #0F0F0F; padding-top: 26px">
+<dt style="font-weight: 700">가맹 상담</dt><dd style="margin: 0; color: #606060">온라인 상담 신청 · <a href="mailto:thebestglobal@amakers.co.kr" style="color: inherit">thebestglobal@amakers.co.kr</a></dd>
+<dt style="font-weight: 700">제휴 · 입점</dt><dd style="margin: 0; color: #606060"><a href="mailto:thebestglobal@amakers.co.kr" style="color: inherit">thebestglobal@amakers.co.kr</a></dd>
+<dt style="font-weight: 700">본사 주소</dt><dd style="margin: 0; color: #606060">인천광역시 부평구 시장로12번길 21-1 (부평동)</dd>
+</dl>
+</div>
+<form class="form rv">
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px"><legend style="font-size: 14px; font-weight: 700; padding: 0 0 12px">문의 유형</legend>
+<div class="kinds"><label><input type="radio" name="kind" checked> 가맹 상담</label><label><input type="radio" name="kind"> 제휴 · 입점</label><label><input type="radio" name="kind"> 고객의 소리</label><label><input type="radio" name="kind"> 기타</label></div>
+</fieldset>
+<div class="fields">
+<div class="fl"><label for="c-name">성함</label><input id="c-name" type="text" placeholder="홍길동"></div>
+<div class="fl"><label for="c-tel">연락처</label><input id="c-tel" type="tel" placeholder="010-0000-0000"></div>
+<div class="fl"><label for="c-mail">이메일</label><input id="c-mail" type="email" placeholder="name@email.com"></div>
+<div class="fl"><label for="c-area">희망 지역</label><input id="c-area" type="text" placeholder="예: 경기 수원"></div>
+</div>
+<div class="fl"><label for="c-msg">문의 내용</label><textarea id="c-msg" rows="4" placeholder="편하게 적어 주세요"></textarea></div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #606060"><input type="checkbox" style="margin-top: 4px"> <span>개인정보 수집 및 이용에 동의합니다. <a href="#contact" style="color: #0F0F0F; font-weight: 700">내용 보기</a></span></label>
+<button type="button" class="pill pill-r" style="align-self: flex-start">문의 보내기 <span aria-hidden="true">→</span></button>
+</form>
+</div>
+</section>
+
+<footer class="ft">
+<div class="wrap ft-top">
+<div><h5>회사소개</h5><ul><li><a href="#about">CEO 인사말</a></li><li><a href="#about">일하는 방식</a></li><li><a href="#story">어느 저녁의 이야기</a></li><li><a href="#contact">오시는 길</a></li></ul></div>
+<div><h5>사업영역</h5><ul><li><a href="#business">브랜드 개발</a></li><li><a href="#business">직영 운영</a></li><li><a href="company/franchise.html">가맹 사업</a></li><li><a href="#business">콘텐츠 · 글로벌</a></li></ul></div>
+<div><h5>브랜드</h5><ul><li><a href="/shop2/">인천항갈매기</a></li></ul></div>
+<div><h5>가맹사업</h5><ul><li><a href="company/franchise.html">가맹 안내</a></li><li><a href="#promise">점주님께 드리는 약속</a></li><li><a href="#contact">가맹 상담 신청</a></li></ul></div>
+<div><h5>홍보센터</h5><ul><li><a href="#news">보도자료</a></li><li><a href="#news">공지사항</a></li><li><a href="/shop2/brand/news.html">브랜드 소식</a></li></ul></div>
+<div><h5>인재채용</h5><ul><li><a href="#career">인재상</a></li><li><a href="#career">채용 공고</a></li></ul></div>
+</div>
+<div class="wrap ft-bot">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="en" style="font-size: 20px; font-weight: 800; color: #FFFFFF; display: flex; align-items: center; gap: 10px"><svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FF0000"></circle><g transform="translate(9.2 8.6) scale(.9)"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" fill="#FFFFFF"></path></g></svg>TheBest F&amp;B</span>
+<span>상호 인천항갈매기 · 대표 정시웅, 임경준, 백승화 · 사업자등록번호 467-03-03763</span>
+<span>본사 인천광역시 부평구 시장로12번길 21-1 (부평동) · 이메일 <a href="mailto:thebestglobal@amakers.co.kr" style="color: inherit">thebestglobal@amakers.co.kr</a></span>
+<span style="display: flex; gap: 18px; color: #FFFFFF"><a href="/member/privacy.html" style="text-decoration: none; font-weight: 700">개인정보처리방침</a><a href="/member/mall_agreement.html" style="text-decoration: none">이용약관</a><a href="#top" style="text-decoration: none">윤리경영 제보</a></span>
+<span style="font-size: 13px">© TheBestF&amp;B. All rights reserved.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<label for="fam" style="color: #FFFFFF; font-weight: 700">패밀리 사이트</label>
+<select id="fam" onChange="{{goFamily}}"><option value="">선택하세요</option><option value="/shop2/">인천항갈매기</option></select>
+</div>
+</div>
+<div class="ft-mark en" aria-hidden="true">TheBest<span>F&amp;B</span><i></i></div>
+</footer>
+<a class="top-btn" href="#top" aria-label="맨 위로">TOP</a>
+</div>
+</script>
+<script>(function(global,factory){typeof exports==="object"&&typeof module!=="undefined"?module.exports=factory():typeof define==="function"&&define.amd?define(factory):(global=global||self,global.morphdom=factory())})(this,function(){"use strict";var DOCUMENT_FRAGMENT_NODE=11;function morphAttrs(fromNode,toNode){var toNodeAttrs=toNode.attributes;var attr;var attrName;var attrNamespaceURI;var attrValue;var fromValue;if(toNode.nodeType===DOCUMENT_FRAGMENT_NODE||fromNode.nodeType===DOCUMENT_FRAGMENT_NODE){return}for(var i=toNodeAttrs.length-1;i>=0;i--){attr=toNodeAttrs[i];attrName=attr.name;attrNamespaceURI=attr.namespaceURI;attrValue=attr.value;if(attrNamespaceURI){attrName=attr.localName||attrName;fromValue=fromNode.getAttributeNS(attrNamespaceURI,attrName);if(fromValue!==attrValue){if(attr.prefix==="xmlns"){attrName=attr.name}fromNode.setAttributeNS(attrNamespaceURI,attrName,attrValue)}}else{fromValue=fromNode.getAttribute(attrName);if(fromValue!==attrValue){fromNode.setAttribute(attrName,attrValue)}}}var fromNodeAttrs=fromNode.attributes;for(var d=fromNodeAttrs.length-1;d>=0;d--){attr=fromNodeAttrs[d];attrName=attr.name;attrNamespaceURI=attr.namespaceURI;if(attrNamespaceURI){attrName=attr.localName||attrName;if(!toNode.hasAttributeNS(attrNamespaceURI,attrName)){fromNode.removeAttributeNS(attrNamespaceURI,attrName)}}else{if(!toNode.hasAttribute(attrName)){fromNode.removeAttribute(attrName)}}}}var range;var NS_XHTML="http://www.w3.org/1999/xhtml";var doc=typeof document==="undefined"?undefined:document;var HAS_TEMPLATE_SUPPORT=!!doc&&"content"in doc.createElement("template");var HAS_RANGE_SUPPORT=!!doc&&doc.createRange&&"createContextualFragment"in doc.createRange();function createFragmentFromTemplate(str){var template=doc.createElement("template");template.innerHTML=str;return template.content.childNodes[0]}function createFragmentFromRange(str){if(!range){range=doc.createRange();range.selectNode(doc.body)}var fragment=range.createContextualFragment(str);return fragment.childNodes[0]}function createFragmentFromWrap(str){var fragment=doc.createElement("body");fragment.innerHTML=str;return fragment.childNodes[0]}function toElement(str){str=str.trim();if(HAS_TEMPLATE_SUPPORT){return createFragmentFromTemplate(str)}else if(HAS_RANGE_SUPPORT){return createFragmentFromRange(str)}return createFragmentFromWrap(str)}function compareNodeNames(fromEl,toEl){var fromNodeName=fromEl.nodeName;var toNodeName=toEl.nodeName;var fromCodeStart,toCodeStart;if(fromNodeName===toNodeName){return true}fromCodeStart=fromNodeName.charCodeAt(0);toCodeStart=toNodeName.charCodeAt(0);if(fromCodeStart<=90&&toCodeStart>=97){return fromNodeName===toNodeName.toUpperCase()}else if(toCodeStart<=90&&fromCodeStart>=97){return toNodeName===fromNodeName.toUpperCase()}else{return false}}function createElementNS(name,namespaceURI){return!namespaceURI||namespaceURI===NS_XHTML?doc.createElement(name):doc.createElementNS(namespaceURI,name)}function moveChildren(fromEl,toEl){var curChild=fromEl.firstChild;while(curChild){var nextChild=curChild.nextSibling;toEl.appendChild(curChild);curChild=nextChild}return toEl}function syncBooleanAttrProp(fromEl,toEl,name){if(fromEl[name]!==toEl[name]){fromEl[name]=toEl[name];if(fromEl[name]){fromEl.setAttribute(name,"")}else{fromEl.removeAttribute(name)}}}var specialElHandlers={OPTION:function(fromEl,toEl){var parentNode=fromEl.parentNode;if(parentNode){var parentName=parentNode.nodeName.toUpperCase();if(parentName==="OPTGROUP"){parentNode=parentNode.parentNode;parentName=parentNode&&parentNode.nodeName.toUpperCase()}if(parentName==="SELECT"&&!parentNode.hasAttribute("multiple")){if(fromEl.hasAttribute("selected")&&!toEl.selected){fromEl.setAttribute("selected","selected");fromEl.removeAttribute("selected")}parentNode.selectedIndex=-1}}syncBooleanAttrProp(fromEl,toEl,"selected")},INPUT:function(fromEl,toEl){syncBooleanAttrProp(fromEl,toEl,"checked");syncBooleanAttrProp(fromEl,toEl,"disabled");if(fromEl.value!==toEl.value){fromEl.value=toEl.value}if(!toEl.hasAttribute("value")){fromEl.removeAttribute("value")}},TEXTAREA:function(fromEl,toEl){var newValue=toEl.value;if(fromEl.value!==newValue){fromEl.value=newValue}var firstChild=fromEl.firstChild;if(firstChild){var oldValue=firstChild.nodeValue;if(oldValue==newValue||!newValue&&oldValue==fromEl.placeholder){return}firstChild.nodeValue=newValue}},SELECT:function(fromEl,toEl){if(!toEl.hasAttribute("multiple")){var selectedIndex=-1;var i=0;var curChild=fromEl.firstChild;var optgroup;var nodeName;while(curChild){nodeName=curChild.nodeName&&curChild.nodeName.toUpperCase();if(nodeName==="OPTGROUP"){optgroup=curChild;curChild=optgroup.firstChild}else{if(nodeName==="OPTION"){if(curChild.hasAttribute("selected")){selectedIndex=i;break}i++}curChild=curChild.nextSibling;if(!curChild&&optgroup){curChild=optgroup.nextSibling;optgroup=null}}}fromEl.selectedIndex=selectedIndex}}};var ELEMENT_NODE=1;var DOCUMENT_FRAGMENT_NODE$1=11;var TEXT_NODE=3;var COMMENT_NODE=8;function noop(){}function defaultGetNodeKey(node){if(node){return node.getAttribute&&node.getAttribute("id")||node.id}}function morphdomFactory(morphAttrs){return function morphdom(fromNode,toNode,options){if(!options){options={}}if(typeof toNode==="string"){if(fromNode.nodeName==="#document"||fromNode.nodeName==="HTML"||fromNode.nodeName==="BODY"){var toNodeHtml=toNode;toNode=doc.createElement("html");toNode.innerHTML=toNodeHtml}else{toNode=toElement(toNode)}}else if(toNode.nodeType===DOCUMENT_FRAGMENT_NODE$1){toNode=toNode.firstElementChild}var getNodeKey=options.getNodeKey||defaultGetNodeKey;var onBeforeNodeAdded=options.onBeforeNodeAdded||noop;var onNodeAdded=options.onNodeAdded||noop;var onBeforeElUpdated=options.onBeforeElUpdated||noop;var onElUpdated=options.onElUpdated||noop;var onBeforeNodeDiscarded=options.onBeforeNodeDiscarded||noop;var onNodeDiscarded=options.onNodeDiscarded||noop;var onBeforeElChildrenUpdated=options.onBeforeElChildrenUpdated||noop;var skipFromChildren=options.skipFromChildren||noop;var addChild=options.addChild||function(parent,child){return parent.appendChild(child)};var childrenOnly=options.childrenOnly===true;var fromNodesLookup=Object.create(null);var keyedRemovalList=[];function addKeyedRemoval(key){keyedRemovalList.push(key)}function walkDiscardedChildNodes(node,skipKeyedNodes){if(node.nodeType===ELEMENT_NODE){var curChild=node.firstChild;while(curChild){var key=undefined;if(skipKeyedNodes&&(key=getNodeKey(curChild))){addKeyedRemoval(key)}else{onNodeDiscarded(curChild);if(curChild.firstChild){walkDiscardedChildNodes(curChild,skipKeyedNodes)}}curChild=curChild.nextSibling}}}function removeNode(node,parentNode,skipKeyedNodes){if(onBeforeNodeDiscarded(node)===false){return}if(parentNode){parentNode.removeChild(node)}onNodeDiscarded(node);walkDiscardedChildNodes(node,skipKeyedNodes)}function indexTree(node){if(node.nodeType===ELEMENT_NODE||node.nodeType===DOCUMENT_FRAGMENT_NODE$1){var curChild=node.firstChild;while(curChild){var key=getNodeKey(curChild);if(key){fromNodesLookup[key]=curChild}indexTree(curChild);curChild=curChild.nextSibling}}}indexTree(fromNode);function handleNodeAdded(el){onNodeAdded(el);var curChild=el.firstChild;while(curChild){var nextSibling=curChild.nextSibling;var key=getNodeKey(curChild);if(key){var unmatchedFromEl=fromNodesLookup[key];if(unmatchedFromEl&&compareNodeNames(curChild,unmatchedFromEl)){curChild.parentNode.replaceChild(unmatchedFromEl,curChild);morphEl(unmatchedFromEl,curChild)}else{handleNodeAdded(curChild)}}else{handleNodeAdded(curChild)}curChild=nextSibling}}function cleanupFromEl(fromEl,curFromNodeChild,curFromNodeKey){while(curFromNodeChild){var fromNextSibling=curFromNodeChild.nextSibling;if(curFromNodeKey=getNodeKey(curFromNodeChild)){addKeyedRemoval(curFromNodeKey)}else{removeNode(curFromNodeChild,fromEl,true)}curFromNodeChild=fromNextSibling}}function morphEl(fromEl,toEl,childrenOnly){var toElKey=getNodeKey(toEl);if(toElKey){delete fromNodesLookup[toElKey]}if(!childrenOnly){var beforeUpdateResult=onBeforeElUpdated(fromEl,toEl);if(beforeUpdateResult===false){return}else if(beforeUpdateResult instanceof HTMLElement){fromEl=beforeUpdateResult;indexTree(fromEl)}morphAttrs(fromEl,toEl);onElUpdated(fromEl);if(onBeforeElChildrenUpdated(fromEl,toEl)===false){return}}if(fromEl.nodeName!=="TEXTAREA"){morphChildren(fromEl,toEl)}else{specialElHandlers.TEXTAREA(fromEl,toEl)}}function morphChildren(fromEl,toEl){var skipFrom=skipFromChildren(fromEl,toEl);var curToNodeChild=toEl.firstChild;var curFromNodeChild=fromEl.firstChild;var curToNodeKey;var curFromNodeKey;var fromNextSibling;var toNextSibling;var matchingFromEl;outer:while(curToNodeChild){toNextSibling=curToNodeChild.nextSibling;curToNodeKey=getNodeKey(curToNodeChild);while(!skipFrom&&curFromNodeChild){fromNextSibling=curFromNodeChild.nextSibling;if(curToNodeChild.isSameNode&&curToNodeChild.isSameNode(curFromNodeChild)){curToNodeChild=toNextSibling;curFromNodeChild=fromNextSibling;continue outer}curFromNodeKey=getNodeKey(curFromNodeChild);var curFromNodeType=curFromNodeChild.nodeType;var isCompatible=undefined;if(curFromNodeType===curToNodeChild.nodeType){if(curFromNodeType===ELEMENT_NODE){if(curToNodeKey){if(curToNodeKey!==curFromNodeKey){if(matchingFromEl=fromNodesLookup[curToNodeKey]){if(fromNextSibling===matchingFromEl){isCompatible=false}else{fromEl.insertBefore(matchingFromEl,curFromNodeChild);if(curFromNodeKey){addKeyedRemoval(curFromNodeKey)}else{removeNode(curFromNodeChild,fromEl,true)}curFromNodeChild=matchingFromEl;curFromNodeKey=getNodeKey(curFromNodeChild)}}else{isCompatible=false}}}else if(curFromNodeKey){isCompatible=false}isCompatible=isCompatible!==false&&compareNodeNames(curFromNodeChild,curToNodeChild);if(isCompatible){morphEl(curFromNodeChild,curToNodeChild)}}else if(curFromNodeType===TEXT_NODE||curFromNodeType==COMMENT_NODE){isCompatible=true;if(curFromNodeChild.nodeValue!==curToNodeChild.nodeValue){curFromNodeChild.nodeValue=curToNodeChild.nodeValue}}}if(isCompatible){curToNodeChild=toNextSibling;curFromNodeChild=fromNextSibling;continue outer}if(curFromNodeKey){addKeyedRemoval(curFromNodeKey)}else{removeNode(curFromNodeChild,fromEl,true)}curFromNodeChild=fromNextSibling}if(curToNodeKey&&(matchingFromEl=fromNodesLookup[curToNodeKey])&&compareNodeNames(matchingFromEl,curToNodeChild)){if(!skipFrom){addChild(fromEl,matchingFromEl)}morphEl(matchingFromEl,curToNodeChild)}else{var onBeforeNodeAddedResult=onBeforeNodeAdded(curToNodeChild);if(onBeforeNodeAddedResult!==false){if(onBeforeNodeAddedResult){curToNodeChild=onBeforeNodeAddedResult}if(curToNodeChild.actualize){curToNodeChild=curToNodeChild.actualize(fromEl.ownerDocument||doc)}addChild(fromEl,curToNodeChild);handleNodeAdded(curToNodeChild)}}curToNodeChild=toNextSibling;curFromNodeChild=fromNextSibling}cleanupFromEl(fromEl,curFromNodeChild,curFromNodeKey);var specialElHandler=specialElHandlers[fromEl.nodeName];if(specialElHandler){specialElHandler(fromEl,toEl)}}var morphedNode=fromNode;var morphedNodeType=morphedNode.nodeType;var toNodeType=toNode.nodeType;if(!childrenOnly){if(morphedNodeType===ELEMENT_NODE){if(toNodeType===ELEMENT_NODE){if(!compareNodeNames(fromNode,toNode)){onNodeDiscarded(fromNode);morphedNode=moveChildren(fromNode,createElementNS(toNode.nodeName,toNode.namespaceURI))}}else{morphedNode=toNode}}else if(morphedNodeType===TEXT_NODE||morphedNodeType===COMMENT_NODE){if(toNodeType===morphedNodeType){if(morphedNode.nodeValue!==toNode.nodeValue){morphedNode.nodeValue=toNode.nodeValue}return morphedNode}else{morphedNode=toNode}}}if(morphedNode===toNode){onNodeDiscarded(fromNode)}else{if(toNode.isSameNode&&toNode.isSameNode(morphedNode)){return}morphEl(morphedNode,toNode,childrenOnly);if(keyedRemovalList){for(var i=0,len=keyedRemovalList.length;i<len;i++){var elToRemove=fromNodesLookup[keyedRemovalList[i]];if(elToRemove){removeNode(elToRemove,elToRemove.parentNode,false)}}}}if(!childrenOnly&&morphedNode!==fromNode&&fromNode.parentNode){if(morphedNode.actualize){morphedNode=morphedNode.actualize(fromNode.ownerDocument||doc)}fromNode.parentNode.replaceChild(morphedNode,fromNode)}return morphedNode}}var morphdom=morphdomFactory(morphAttrs);return morphdom});</script>
+<script>(function(G){
+var EV={onClick:'click',onInput:'input',onChange:'change',onSubmit:'submit',onKeyDown:'keydown',onKeyUp:'keyup',onFocus:'focusin',onBlur:'focusout',onMouseEnter:'mouseover',onMouseLeave:'mouseout'};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function get(scope,p){p=p.trim();if(p==='true')return true;if(p==='false')return false;if(/^-?\d+(\.\d+)?$/.test(p))return Number(p);var neg=false;while(p[0]==='!'){neg=!neg;p=p.slice(1).trim();}
+ var v=p.split('.').reduce(function(a,k){return a==null?a:a[k];},scope);return neg?!v:v;}
+function findClose(str,tag,from){var open='<'+tag,close='</'+tag+'>',depth=1,i=from;while(i<str.length){var a=str.indexOf(open,i),b=str.indexOf(close,i);if(b<0)return -1;if(a>=0&&a<b){depth++;i=a+open.length;}else{depth--;if(depth===0)return b;i=b+close.length;}}return -1;}
+function interp(text,scope,H){
+ text=text.replace(/\s(on[A-Z]\w*)="\{\{\s*([\w.]+)\s*\}\}"/g,function(m,ev,p){var f=get(scope,p);if(typeof f!=='function')return '';var n=EV[ev]||ev.slice(2).toLowerCase();H.push(f);return ' data-dc-'+n+'="'+(H.length-1)+'"';});
+ return text.replace(/\{\{([^{}]*)\}\}/g,function(m,p){var v=get(scope,p);return (v==null||typeof v==='function'||v===false&&false)?'':esc(v);});
+}
+function proc(str,scope,H){var out='',i=0;var re=/<sc-(for|if)\b([^>]*)>/g;re.lastIndex=0;var m;
+ while((m=re.exec(str))){out+=interp(str.slice(i,m.index),scope,H);var tag='sc-'+m[1];var st=m.index+m[0].length;var end=findClose(str,tag,st);if(end<0)throw new Error('unclosed '+tag);var inner=str.slice(st,end);var attrs=m[2];
+  if(m[1]==='for'){var lm=attrs.match(/list="\{\{([^}]*)\}\}"/),am=attrs.match(/as="(\w+)"/);var list=get(scope,lm[1])||[];var as=am?am[1]:'item';
+   for(var k=0;k<list.length;k++){var s2=Object.create(scope);s2[as]=list[k];s2[as+'Index']=k;out+=proc(inner,s2,H);}}
+  else{var vm=attrs.match(/value="\{\{([^}]*)\}\}"/);if(vm&&get(scope,vm[1]))out+=proc(inner,scope,H);}
+  i=end+tag.length+3;re.lastIndex=i;}
+ return out+interp(str.slice(i),scope,H);}
+function render(tpl,vals){var H=[];var html=proc(tpl,vals,H);return {html:html,H:H};}
+function DCLogic(props){this.props=props||{};this.state={};}
+DCLogic.prototype.setState=function(o){if(typeof o==='function')o=o(this.state);Object.assign(this.state,o);this.__q();};
+DCLogic.prototype.forceUpdate=function(){this.__q();};
+DCLogic.prototype.__q=function(){var self=this;if(self.__p)return;self.__p=true;Promise.resolve().then(function(){self.__p=false;self.__r();});};
+function mount(Cls,props,root,tpl){var c=new Cls(props);var H=[];
+ c.__r=function(){var r=render(tpl,c.renderVals());H=r.H;var tmp=root.cloneNode(false);tmp.innerHTML=r.html;if(G.DC_I18N)G.DC_I18N(tmp);
+  if(G.morphdom){G.morphdom(root,tmp,{childrenOnly:true,onBeforeElUpdated:function(f,t){if(f.tagName==='VIDEO'&&t.tagName==='VIDEO'&&f.getAttribute('src')===t.getAttribute('src'))return false;if((f.tagName==='INPUT'||f.tagName==='TEXTAREA')&&f===document.activeElement){t.value=f.value;}if(f.tagName==='DETAILS'&&f.open)t.setAttribute('open','');return true;}});}else root.innerHTML=r.html;if(G.DC_POST)G.DC_POST();};
+ ['click','input','change','submit','keydown','keyup','focusin','focusout','mouseover','mouseout'].forEach(function(n){root.addEventListener(n,function(e){var el=e.target&&e.target.closest?e.target.closest('[data-dc-'+n+']'):null;if(!el||!root.contains(el))return;var f=H[+el.getAttribute('data-dc-'+n)];if(f){if(n==='submit')e.preventDefault();f(e);}});});
+ c.__r();if(c.componentDidMount)c.componentDidMount();G.__dc=c;return c;}
+G.DCLite={render:render,mount:mount,DCLogic:DCLogic};G.DCLogic=DCLogic;
+if(typeof module!=='undefined')module.exports=G.DCLite;
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>
+(function(){var Component=class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { slide: 0, prev: -1, cycle: 0, paused: false, tab: 'all', menu: false, film: false };
+  }
+  componentDidMount() {
+    this.iv = setInterval(() => {
+      if (this.state.paused || this.state.film || !(this.props.effects ?? true)) return;
+      this.setState({ prev: this.state.slide, slide: (this.state.slide + 1) % 3, cycle: this.state.cycle + 1 });
+    }, 6500);
+  }
+  componentWillUnmount() {
+    clearInterval(this.iv);
+  }
+  renderVals() {
+    const fx = this.props.effects ?? true;
+    const cur = this.state.slide;
+    const data = [
+      { k: 'THE BEST F&B', t1: '누군가의 하루 끝에', t2: '따뜻한 한 상이 있도록', p: '지친 하루를 위로하는 저녁 식탁. TheBestF&B는 그 식탁이 오래 이어지는 가게를 만듭니다.', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/7e9db4d34b2e449adaa662b67528848e.jpg', alt: '노을 진 도시의 저녁 풍경', cta: '우리의 이야기', href: '#story', short: '하루의 끝' },
+      { k: 'BRAND · 인천항갈매기', t1: '숯불 앞에서', t2: '웃음이 다시 피어납니다', p: '1970년대 인천항 부두의 저녁을 오늘의 골목에 다시 차렸습니다. 첫 번째 브랜드, 인천항갈매기.', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/8527c83de8a53a411cb9d4c9287f718e.jpg', alt: '숯불 석쇠 위에서 집게로 뒤집는 고기', cta: '브랜드 보기', href: '#brands', short: '첫 번째 브랜드' },
+      { k: 'FRANCHISE', t1: '한 사람의 꿈이', t2: '오래 가는 가게가 되도록', p: '점주님의 첫 출근부터 십 년 뒤까지. 검증된 시스템으로 곁에서 함께하겠습니다.', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/9cb82af246cf3243024212a51662c941.jpg', alt: '테이블 위로 악수하는 두 사람', cta: '점주님께 드리는 약속', href: '#promise', short: '함께 여는 가게' }
+    ];
+    const slides = data.map((d, i) => {
+      const on = i === cur;
+      return {
+        ...d,
+        cls: 'slide' + (on ? ' on' : (i === this.state.prev ? ' prev' : '')) + (this.state.cycle % 2 ? ' wa' : ' wb'),
+        copyCls: 'hc' + (on ? ' on' : ''),
+        hidden: on ? 'false' : 'true',
+        sel: on ? 'true' : 'false',
+        no: '0' + (i + 1),
+        indCls: on ? 'on' : '',
+        barCls: this.state.cycle % 2 ? 'ra' : 'rb',
+        go: () => { if (i !== this.state.slide) this.setState({ prev: this.state.slide, slide: i, cycle: this.state.cycle + 1 }); }
+      };
+    });
+    const text = '우리는 화려한 가게보다 오래 남는 가게를 만듭니다. 유행은 지나가도, 맛있게 먹고 웃던 그 저녁은 오래 남으니까요.';
+    const ws = text.split(' ');
+    const words = ws.map((t, i) => {
+      const a = Math.round(8 + i / ws.length * 72);
+      const isHot = i >= 3 && i <= 5;
+      return { t, cls: isHot ? 'w hot' : 'w', r: 'animation-range: contain ' + a + '% contain ' + (a + 8) + '%' };
+    });
+    const all = [
+      { cat: '브랜드 소식', k: 'press', t: '인천항갈매기, 가맹점 모집을 시작합니다', d: '2026.11.03', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/950cb2fb3d7ee029508cff417f76cc4a.jpg' },
+      { cat: '공지사항', k: 'notice', t: 'TheBestF&B 공식 홈페이지를 열었습니다', d: '2026.11.05', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/2070e45181d755de1e72403c80185e05.jpg' },
+      { cat: '브랜드 소식', k: 'press', t: '인천항갈매기, 20개 언어 다국어 메뉴판 도입', d: '2026.10.09', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/8527c83de8a53a411cb9d4c9287f718e.jpg' },
+      { cat: '공지사항', k: 'notice', t: '개인정보처리방침 안내', d: '2026.11.05', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/4b669af8477a9f6579db07e5ed3cc41e.jpg' },
+      { cat: '브랜드 소식', k: 'press', t: '인천항갈매기 신메뉴 매운닭목살 출시', d: '2026.10.20', img: 'https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/192e50028b1e55c7452a9ebf1031996e.jpg' }
+    ];
+    const news = all.filter((n) => this.state.tab === 'all' || n.k === this.state.tab);
+    const tabs = [['all', '전체'], ['press', '브랜드 소식'], ['notice', '공지사항']].map(([k, label]) => ({ label, on: this.state.tab === k ? 'true' : 'false', pick: () => this.setState({ tab: k }) }));
+    return {
+      fxClass: fx ? 'fx' : 'nofx',
+      slides, news, tabs, words,
+      bigNum: '0' + (cur + 1),
+      pauseCls: this.state.paused ? 'paused' : '',
+      ppIcon: this.state.paused ? '▶' : 'II',
+      ppLabel: this.state.paused ? '슬라이드 재생' : '슬라이드 일시정지',
+      togglePause: () => this.setState({ paused: !this.state.paused }),
+      filmCls: 'film' + (this.state.film ? ' on' : ''),
+      openFilm: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ film: true }); },
+      closeFilm: (e) => { const tg = e && e.target; if (tg && !(tg.getAttribute && tg.getAttribute('role') === 'dialog') && !(tg.closest && tg.closest('button'))) return; this.setState({ film: false }); },
+      menuOpen: this.state.menu ? 'true' : 'false',
+      drawerCls: 'drawer' + (this.state.menu ? ' on' : ''),
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      closeMenu: () => this.setState({ menu: false }),
+      goFamily: (e) => { const v = e.target.value; if (v) window.location.href = v; }
+    };
+  }
+};
+var root=document.getElementById('dc-root');var tpl=document.getElementById('dc-tpl').textContent;
+DCLite.mount(Component,{"effects":true},root,tpl);})();
+</script>
+<script>document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button');if(!b)return;if(!/상담 신청|문의 보내기/.test(b.textContent))return;var f=b.closest('form');if(!f)return;e.preventDefault();e.stopPropagation();var g=function(s){var el=f.querySelector(s);return el?String(el.value||'').trim():''};var d={name:g('#f-name,#qb-n,#c-name'),tel:g('#f-tel,#qb-t,#c-tel'),mail:g('#f-mail,#c-mail'),area:g('#f-area,#qb-a,#c-area'),msg:g('#f-msg,#c-msg'),shop:g('#f-shop')};var r=f.querySelector('input[name=src]:checked');if(r)d.src=r.parentElement.textContent.trim();var k=f.querySelector('input[name=kind]:checked');if(k)d.msg='['+k.parentElement.textContent.trim()+'] '+d.msg;try{sessionStorage.setItem('fr_consult',JSON.stringify(d))}catch(x){}location.href='/shop2/brand/consult.html?board_no=3001';},true);</script>
+<script id="m-fix-js">(function(){var last=0;function hd(){var h=document.querySelector(".m-hd");if(!h){var c=document.querySelectorAll("#dc-root header");for(var i=0;i<c.length;i++){var ps=getComputedStyle(c[i]).position;if(ps==="sticky"||ps==="fixed"){c[i].classList.add("m-hd");h=c[i];break;}}}}function on(){var r=document.documentElement;if(innerWidth>760){r.classList.remove("hd-hide");return;}hd();var y=scrollY,d=y-last;if(y<140||d<-6)r.classList.remove("hd-hide");else if(d>6)r.classList.add("hd-hide");last=y;}addEventListener("scroll",on,{passive:true});setTimeout(hd,800);})();</script>
+</body>
+</html>
