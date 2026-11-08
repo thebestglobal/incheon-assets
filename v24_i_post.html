@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부평역 맛집 게시글</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&amp;family=Gowun+Dodum&amp;family=Nanum+Myeongjo:wght@400;700;800&amp;family=Song+Myung&amp;display=swap">
+<style>
+body{margin:0;background:#F7F1E3}
+*{box-sizing:border-box}
+a{color:#1D4F86}a:hover{color:#123A66}
+.hanji{background:#EFE7D6 url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) repeat}
+.navy{background:#16212F url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/3acec2643dce73759b659f4a452678d2.jpg) repeat}
+.wave-l{background-image:url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/db61a50e838b88efc8e1ba7fdc81d5e4.svg);background-size:80px 40px}
+.brush{font-family:'East Sea Dokdo',cursive;font-weight:400;line-height:.95}
+.prose p{margin:0 0 1.4em;font-size:18px;line-height:2;color:#2A251F}
+.prose h2{font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:28px;line-height:1.4;margin:2.2em 0 .8em;display:flex;gap:14px;align-items:baseline;scroll-margin-top:100px}
+.prose h2 .n{font-family:'Nanum Myeongjo',serif;font-weight:800;color:#2B4A6B;font-size:24px}
+.prose figure{margin:2em 0}
+.prose figcaption{font-size:14px;color:#6B5F4F;margin-top:10px;text-align:center}
+.hl{background:linear-gradient(transparent 60%,rgba(232,177,58,.55) 60%)}
+.zoom{overflow:hidden}.zoom img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}.zoom:hover img{transform:scale(1.05)}
+.toc a{transition:color .3s,padding .3s}.toc a:hover{color:#2B4A6B !important;padding-left:6px}
+.share{transition:background .3s,color .3s}.share:hover{background:#1D1A16;color:#F4EEE2 !important}
+.progress{position:fixed;top:0;left:0;right:0;height:4px;background:#2B4A6B;transform-origin:0 50%;z-index:60;transform:scaleX(0)}
+.rel{transition:transform .45s cubic-bezier(.2,.7,.2,1)}.rel:hover{transform:translateY(-6px)}
+.up{animation:up 1s ease both}@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+.fx .progress{animation:prog linear both;animation-timeline:scroll(root)}@keyframes prog{to{transform:scaleX(1)}}
+.fx .rv{animation:rvk linear both;animation-timeline:view();animation-range:entry 5% entry 60%}
+@keyframes rvk{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+.fx .heroimg{animation:hk linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
+@keyframes hk{to{transform:scale(1.15);filter:brightness(.6)}}
+}
+.nofx *{animation:none !important;transition:none !important}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+@media (max-width:980px){.side{display:none !important}}
+.gs .gs-body{animation:gsbob 3.2s ease-in-out infinite}@keyframes gsbob{50%{transform:translateY(-5px)}}
+.gs .gs-eyes{animation:gsblink 4.6s infinite}@keyframes gsblink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.12)}}
+.gs .gs-arm-r{animation:gswave 1.6s ease-in-out infinite}@keyframes gswave{50%{transform:rotate(-10deg)}}
+.gs-bubble{animation:gsbub 3.2s ease-in-out infinite}@keyframes gsbub{50%{transform:translateY(-4px) rotate(-1deg)}}
+.gs-wrap{transition:transform .5s cubic-bezier(.3,1.5,.5,1)}.gs-wrap:hover{transform:translateY(-8px) rotate(-3deg)}
+.lamps{position:absolute;left:0;right:0;top:100%;height:34px;pointer-events:none;display:flex;justify-content:space-around;padding:0 6%}
+.lamps span{position:relative;width:2px;height:12px;background:#5A3B22}
+.lamps span::after{content:'';position:absolute;top:12px;left:-9px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFFFFF,#FFF1CF 55%,#E9D6A8);box-shadow:0 0 16px 4px rgba(255,230,170,.55);animation:lampglow 3s ease-in-out infinite}
+.lamps span:nth-child(even)::after{animation-delay:-1.5s}
+@keyframes lampglow{50%{box-shadow:0 0 22px 7px rgba(255,230,170,.75)}}
+.marble{background:#1B1612 url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/e4cf09ffdf81ffe91cdb455b299d51cc.png);background-blend-mode:soft-light}
+.btn-marble{background:#2B4A6B;color:#F4EEE2 !important;box-shadow:3px 3px 0 #1B1612;transition:filter .3s}.btn-marble:hover{filter:brightness(1.15)}
+
+/*common r14*/
+.brush{font-family:'Nanum Myeongjo',serif !important;font-weight:800 !important;line-height:1.22;letter-spacing:-.03em}
+.btn-clean{display:inline-flex;align-items:center;gap:10px;background:#1B1612;color:#F4EEE2 !important;text-decoration:none !important;font-weight:700;font-size:14px;letter-spacing:.02em;padding:11px 20px;border-radius:999px;border:0;transition:background .3s;white-space:nowrap}
+.btn-clean i{font-style:normal;transition:transform .3s}
+.btn-clean:hover{background:#2B4A6B}.btn-clean:hover i{transform:translateX(4px)}
+.btn-marble{border-radius:999px !important;box-shadow:none !important}
+header .hd-row{flex-wrap:nowrap !important}
+.gnav{display:flex;gap:28px;align-items:center;font-size:15px;flex-wrap:nowrap;white-space:nowrap}
+.gnav .nl{color:#1B1612;text-decoration:none;font-weight:700;padding:6px 0;border-bottom:2px solid transparent;transition:color .25s,border-color .25s}
+.gnav .nl:hover{color:#2B4A6B}
+.gnav .nl.on{color:#2B4A6B;border-bottom-color:#2B4A6B}
+.gnav .owner-badge{font-size:12px;color:#2B4A6B;border:1px solid #2B4A6B;padding:3px 10px;border-radius:20px;white-space:nowrap}
+@media (max-width:760px){
+header .hd-row{flex-wrap:wrap !important;padding:10px 16px !important;gap:8px !important}
+.gnav{order:3;width:100%;overflow-x:auto;gap:18px;font-size:14px;padding-bottom:4px;scrollbar-width:none}
+.gnav::-webkit-scrollbar{display:none}
+.gnav .btn-clean{padding:7px 14px;font-size:13px}
+}
+
+/*torn paper buttons*/
+.btn-clean{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%231B1612%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%235A4A3A%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important}
+.btn-clean:hover{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%232B4A6B%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%236F8BA8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E")}
+.btn-clean.btn-light{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F4EEE2%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#1B1612 !important}
+.btn-clean.btn-light:hover{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F2C46D%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFE2A8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E")}
+.btn-clean.btn-gold{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F2C46D%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFE2A8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#1B1612 !important}
+.btn-clean.btn-gold:hover{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23FFD98A%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFF0C8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E")}
+.btn-clean,.btn-ghost,.mchips a,.g-go,.hh-sub,.nv-more-box>summary{filter:drop-shadow(0 3px 5px rgba(20,14,8,.28))}
+.btn-ghost{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F4EEE2%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#1B1612 !important}
+.btn-ghost:hover{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F2C46D%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFE2A8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E")}
+.mchips a{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F4EEE2%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#1B1612 !important;padding:9px 10px !important}
+.mchips a:hover{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%231B1612%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%235A4A3A%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E");color:#F4EEE2 !important}
+.g-go{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F4EEE2%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#1B1612 !important;padding:6px 4px !important}
+.g-guest .g-go{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F4EEE2%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E")}
+.nv-more-box>summary{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%2303A94D%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%237FD3A4%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;color:#FFFFFF !important;padding:13px 16px !important}
+.nv-more-box>summary:hover{border-image-source:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%232B4A6B%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%236F8BA8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E");color:#FFFFFF !important}
+.hh-sub{border-style:solid;border-width:0 13px;border-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22%23F4EEE2%22/%3E%3Cpath%20d%3D%22M2.9%200.0%20L5.9%203.6%20L4.8%206.9%20L0.5%2011.4%20L0.3%2016.4%20L0.6%2021.1%20L3.8%2024.5%20L1.1%2030.8%20L5.6%2034.7%20L5.2%2041.5%20L8.8%2046.1%20L7.7%2049.2%20L1.3%2053.4%20L2.8%2056.9%20L1.6%2060.0%20L193.2%2060.0%20L198.9%2056.9%20L197.4%2049.9%20L192.1%2044.0%20L194.8%2038.9%20L193.7%2035.0%20L197.3%2028.8%20L194.7%2024.0%20L196.2%2019.7%20L198.1%2014.0%20L199.4%2010.7%20L196.6%205.6%20L194.8%200.0%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%22.55%22/%3E%3C/svg%3E") 0 14 fill / 0 13px stretch;border-radius:0 !important;background:transparent !important;box-shadow:none !important;border-top:0 !important;border-bottom:0 !important;border-left-width:16px !important;border-right-width:16px !important}
+
+header .btn-clean{font-size:16px !important;padding:12px 22px !important}
+@media (max-width:760px){header .btn-clean{font-size:14px !important;padding:8px 14px !important}}
+
+body,.fx,.nofx{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3{text-wrap:balance}
+
+header .btn-clean{font-size:18px !important;padding:14px 26px !important}
+@media (max-width:760px){header .btn-clean{font-size:14px !important;padding:8px 14px !important}}
+
+/*hdr btn compact*/
+header .btn-clean{font-size:17px !important;padding:6px 6px !important;border-width:0 11px !important;line-height:1.3}
+@media (max-width:760px){header .btn-clean{font-size:14px !important;padding:5px 4px !important;border-width:0 9px !important}}
+</style>
+<style id="m-fix">@media (max-width:760px){html,body{overflow-x:clip}.m-hd{transition:transform .25s ease}html.hd-hide .m-hd{transform:translateY(-110%)}.frv-grid,.loved,.co-depts{display:flex !important;grid-template-columns:none !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px !important;padding-bottom:10px;scrollbar-width:none}.frv-grid::-webkit-scrollbar,.loved::-webkit-scrollbar,.co-depts::-webkit-scrollbar{display:none}.frv-grid>*,.loved>*,.co-depts>*{flex:0 0 78%;scroll-snap-align:start}input,select,textarea{font-size:16px !important;max-width:100%;box-sizing:border-box}h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}.gnav,.mnav{gap:14px !important;font-size:14px !important}.hd-row{position:relative}.hd-row>a:first-child>span{display:none !important}.hd-row .gnav>a.btn-clean,.hd-row .mnav>a.btn-clean,.hd-row .fnav>a.btn-clean{position:absolute;right:14px;top:50%;transform:translateY(-50%);margin:0;padding:8px 14px !important;font-size:13.5px !important;z-index:2}.hd-row .gnav>a.btn-clean,.hd-row .mnav>a.btn-clean{top:22px;transform:none}.hd-row .fnav>a.btn-clean{top:14px;transform:none}.gnav .nl{padding:9px 0}.gnav .btn-clean,.mnav .btn-clean{padding:6px 11px !important;font-size:13px !important}.bd-bar{position:static !important}#w-kw{width:100% !important;min-width:0 !important}label:has(#w-kw),div:has(>#w-kw){max-width:100%;min-width:0}.st-bar{transition:transform .25s}html.hd-hide .st-bar{transform:translateY(105%)}.st-bar>div{padding:8px 14px !important;flex-wrap:nowrap !important;gap:10px !important}.st-bar>div>span{font-size:0 !important;gap:6px !important}.st-bar .brush{font-size:15px !important}.st-bar a{padding:10px 14px !important;font-size:14px !important;white-space:nowrap}}@media (min-width:761px){.m-cta{display:none}}</style>
+<style id="nopo">/* 노포 질감 레이어 (인천항갈매기 전 페이지) */
+html body{background:#E8DECA}
+#dc-root [style*="background: #FFFFFF"],#dc-root [style*="background: #F7F1E3"],#dc-root [style*="background: #F4EEE2"],#dc-root [style*="background: #F3EAD6"],#dc-root [style*="background: #EFE7D6"],#dc-root [style*="background: #E9DCC4"]{background-color:#EFE7D6 !important;background-image:url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-blend-mode:multiply}
+#dc-root [style*="background: #FFFFFF"]{box-shadow:inset 0 0 0 1px rgba(70,45,20,.38),inset 0 0 38px rgba(110,85,50,.18),0 6px 14px -8px rgba(40,25,10,.45) !important}
+#dc-root [style*="background: #F7F1E3"],#dc-root [style*="background: #EFE7D6"],#dc-root [style*="background: #F3EAD6"]{box-shadow:inset 0 0 140px rgba(110,85,50,.2)}
+#dc-root [style*="background: #2B4A6B"],#dc-root [style*="background: #1A2E45"],#dc-root [style*="background: #12161C"],#dc-root [style*="background: #1D1A16"],#dc-root [style*="background: #1B1612"],#dc-root [style*="background: #2A231B"]{background-image:url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-blend-mode:multiply;box-shadow:inset 0 0 160px rgba(0,0,0,.45)}
+#dc-root img[src*=".jpg"],#dc-root video{filter:sepia(.18) saturate(.9) contrast(1.06) brightness(.97)}
+#dc-root h1,#dc-root h2,#dc-root h3{text-shadow:0 0 .8px rgba(30,20,10,.55),0 1px 0 rgba(255,240,210,.15)}
+#dc-root [style*="border-radius: 12px"],#dc-root [style*="border-radius: 16px"],#dc-root [style*="border-radius: 10px"],#dc-root [style*="border-radius: 8px"]{border-radius:3px !important}
+.mb-pts i{font-size:13px !important}
+.nopo-grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.09;mix-blend-mode:multiply;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22  0 0 0 0 .15  0 0 0 0 .08  0 0 0 1 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.nopo-vig{position:fixed;inset:0;z-index:8999;pointer-events:none;box-shadow:inset 0 0 min(18vw,220px) rgba(60,45,25,.22)}
+@media (max-width:760px){.nopo-vig{box-shadow:inset 0 0 70px rgba(70,40,10,.3)}}
+
+/* v3: 신문 지면과 같은 구김 종이 + 양철지붕 + 조명 */
+:root{--crm:url(https://cdn.jsdelivr.net/gh/thebestglobal/incheon-assets@main/ihg_crumple_v1.jpg)}
+html body{background-color:#E8DECA;background-image:var(--crm),url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg);background-size:cover,auto;background-attachment:fixed,scroll;background-repeat:no-repeat,repeat;background-blend-mode:multiply,multiply}
+#dc-root [style*="background: #FFFFFF"],#dc-root [style*="background: #F7F1E3"],#dc-root [style*="background: #F4EEE2"],#dc-root [style*="background: #F3EAD6"],#dc-root [style*="background: #EFE7D6"],#dc-root [style*="background: #E9DCC4"],#dc-root .mp-hero,#dc-root .mp-paper,#dc-root .sl-hero,#dc-root .hanji,#dc-root .band.cream,#dc-root .sig,#dc-root .co-rule,#dc-root .bd-box{background-color:#E9DFCA !important;background-image:var(--crm),url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-size:cover,auto !important;background-repeat:no-repeat,repeat !important;background-position:center,0 0 !important;background-blend-mode:multiply,multiply !important}
+#dc-root [style*="background: #FFFFFF"],#dc-root .mi,#dc-root .st,#dc-root .nv,#dc-root .frv,#dc-root .jt,#dc-root .loved figure{background-color:#F0E9DA !important;background-image:var(--crm),url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-size:cover,auto !important;background-repeat:no-repeat,repeat !important;background-position:30% 40%,0 0 !important;background-blend-mode:multiply,multiply !important}
+#dc-root [style*="background: #2B4A6B"],#dc-root [style*="background: #1A2E45"],#dc-root [style*="background: #12161C"],#dc-root [style*="background: #1D1A16"],#dc-root [style*="background: #1B1612"],#dc-root [style*="background: #2A231B"]{background-image:var(--crm),url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-size:cover,auto !important;background-repeat:no-repeat,repeat !important;background-blend-mode:soft-light,multiply !important}
+/* 헤더: 구김 종이 + 아래 양철지붕 */
+#dc-root header[style*="sticky"],header[style*="sticky"]{background-color:#F4EFE3 !important;background-image:linear-gradient(rgba(255,252,244,.5),rgba(255,251,242,.42)),var(--crm),url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-size:auto,cover,auto !important;background-repeat:no-repeat,no-repeat,repeat !important;background-position:0 0,center 30%,0 0 !important;background-blend-mode:normal,multiply,multiply !important;border-bottom:0 !important;box-shadow:none !important}
+header[style*="rgba(18,16,14"]{background-color:#17130F !important;background-image:var(--crm),url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg) !important;background-blend-mode:soft-light,multiply !important}
+header[style*="sticky"]::after{content:"";position:absolute;left:0;right:0;top:100%;height:18px;pointer-events:none;z-index:2;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='120'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.045 .08' numOctaves='3' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .21  0 0 0 0 .09  3.2 0 0 0 -1.3'/></filter><rect width='320' height='120' filter='url(%23r)'/></svg>") 0 0/320px 120px,url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.06 .006' numOctaves='3' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .14  0 0 0 0 .1  0 0 0 0 .06  2.8 0 0 0 -1.05'/></filter><rect width='400' height='200' filter='url(%23g)'/></svg>") 0 0/400px 200px,linear-gradient(90deg,rgba(120,112,98,.14) 0,rgba(230,226,216,.06) 22%,rgba(110,100,85,.2) 47%,rgba(230,226,216,.05) 70%,rgba(120,112,98,.16) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='18'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23B9B7B1'/%3E%3Cstop offset='.25' stop-color='%23AEACA6'/%3E%3Cstop offset='.5' stop-color='%2393918B'/%3E%3Cstop offset='.75' stop-color='%23A9A7A1'/%3E%3Cstop offset='1' stop-color='%23B9B7B1'/%3E%3C/linearGradient%3E%3ClinearGradient id='v' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='.18'/%3E%3Cstop offset='.2' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='.85' stop-color='%23000' stop-opacity='.05'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='.25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='0 0 28 0 28.0 13.20 27.5 13.22 27.0 13.26 26.5 13.33 26.0 13.44 25.5 13.57 25.0 13.72 24.5 13.90 24.0 14.10 23.5 14.32 23.0 14.56 22.5 14.81 22.0 15.07 21.5 15.33 21.0 15.60 20.5 15.87 20.0 16.13 19.5 16.39 19.0 16.64 18.5 16.88 18.0 17.10 17.5 17.30 17.0 17.48 16.5 17.63 16.0 17.76 15.5 17.87 15.0 17.94 14.5 17.98 14.0 18.00 13.5 17.98 13.0 17.94 12.5 17.87 12.0 17.76 11.5 17.63 11.0 17.48 10.5 17.30 10.0 17.10 9.5 16.88 9.0 16.64 8.5 16.39 8.0 16.13 7.5 15.87 7.0 15.60 6.5 15.33 6.0 15.07 5.5 14.81 5.0 14.56 4.5 14.32 4.0 14.10 3.5 13.90 3.0 13.72 2.5 13.57 2.0 13.44 1.5 13.33 1.0 13.26 0.5 13.22 0.0 13.20' fill='url%28%23r%29'/%3E%3Cpolygon points='0 0 28 0 28.0 13.20 27.5 13.22 27.0 13.26 26.5 13.33 26.0 13.44 25.5 13.57 25.0 13.72 24.5 13.90 24.0 14.10 23.5 14.32 23.0 14.56 22.5 14.81 22.0 15.07 21.5 15.33 21.0 15.60 20.5 15.87 20.0 16.13 19.5 16.39 19.0 16.64 18.5 16.88 18.0 17.10 17.5 17.30 17.0 17.48 16.5 17.63 16.0 17.76 15.5 17.87 15.0 17.94 14.5 17.98 14.0 18.00 13.5 17.98 13.0 17.94 12.5 17.87 12.0 17.76 11.5 17.63 11.0 17.48 10.5 17.30 10.0 17.10 9.5 16.88 9.0 16.64 8.5 16.39 8.0 16.13 7.5 15.87 7.0 15.60 6.5 15.33 6.0 15.07 5.5 14.81 5.0 14.56 4.5 14.32 4.0 14.10 3.5 13.90 3.0 13.72 2.5 13.57 2.0 13.44 1.5 13.33 1.0 13.26 0.5 13.22 0.0 13.20' fill='url%28%23v%29'/%3E%3C/svg%3E") 0 0/28px 18px repeat-x;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='18'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23B9B7B1'/%3E%3Cstop offset='.25' stop-color='%23AEACA6'/%3E%3Cstop offset='.5' stop-color='%2393918B'/%3E%3Cstop offset='.75' stop-color='%23A9A7A1'/%3E%3Cstop offset='1' stop-color='%23B9B7B1'/%3E%3C/linearGradient%3E%3ClinearGradient id='v' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='.18'/%3E%3Cstop offset='.2' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='.85' stop-color='%23000' stop-opacity='.05'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='.25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='0 0 28 0 28.0 13.20 27.5 13.22 27.0 13.26 26.5 13.33 26.0 13.44 25.5 13.57 25.0 13.72 24.5 13.90 24.0 14.10 23.5 14.32 23.0 14.56 22.5 14.81 22.0 15.07 21.5 15.33 21.0 15.60 20.5 15.87 20.0 16.13 19.5 16.39 19.0 16.64 18.5 16.88 18.0 17.10 17.5 17.30 17.0 17.48 16.5 17.63 16.0 17.76 15.5 17.87 15.0 17.94 14.5 17.98 14.0 18.00 13.5 17.98 13.0 17.94 12.5 17.87 12.0 17.76 11.5 17.63 11.0 17.48 10.5 17.30 10.0 17.10 9.5 16.88 9.0 16.64 8.5 16.39 8.0 16.13 7.5 15.87 7.0 15.60 6.5 15.33 6.0 15.07 5.5 14.81 5.0 14.56 4.5 14.32 4.0 14.10 3.5 13.90 3.0 13.72 2.5 13.57 2.0 13.44 1.5 13.33 1.0 13.26 0.5 13.22 0.0 13.20' fill='url%28%23r%29'/%3E%3Cpolygon points='0 0 28 0 28.0 13.20 27.5 13.22 27.0 13.26 26.5 13.33 26.0 13.44 25.5 13.57 25.0 13.72 24.5 13.90 24.0 14.10 23.5 14.32 23.0 14.56 22.5 14.81 22.0 15.07 21.5 15.33 21.0 15.60 20.5 15.87 20.0 16.13 19.5 16.39 19.0 16.64 18.5 16.88 18.0 17.10 17.5 17.30 17.0 17.48 16.5 17.63 16.0 17.76 15.5 17.87 15.0 17.94 14.5 17.98 14.0 18.00 13.5 17.98 13.0 17.94 12.5 17.87 12.0 17.76 11.5 17.63 11.0 17.48 10.5 17.30 10.0 17.10 9.5 16.88 9.0 16.64 8.5 16.39 8.0 16.13 7.5 15.87 7.0 15.60 6.5 15.33 6.0 15.07 5.5 14.81 5.0 14.56 4.5 14.32 4.0 14.10 3.5 13.90 3.0 13.72 2.5 13.57 2.0 13.44 1.5 13.33 1.0 13.26 0.5 13.22 0.0 13.20' fill='url%28%23v%29'/%3E%3C/svg%3E") 0 0/28px 18px repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='18'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23B9B7B1'/%3E%3Cstop offset='.25' stop-color='%23AEACA6'/%3E%3Cstop offset='.5' stop-color='%2393918B'/%3E%3Cstop offset='.75' stop-color='%23A9A7A1'/%3E%3Cstop offset='1' stop-color='%23B9B7B1'/%3E%3C/linearGradient%3E%3ClinearGradient id='v' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='.18'/%3E%3Cstop offset='.2' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='.85' stop-color='%23000' stop-opacity='.05'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='.25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='0 0 28 0 28.0 13.20 27.5 13.22 27.0 13.26 26.5 13.33 26.0 13.44 25.5 13.57 25.0 13.72 24.5 13.90 24.0 14.10 23.5 14.32 23.0 14.56 22.5 14.81 22.0 15.07 21.5 15.33 21.0 15.60 20.5 15.87 20.0 16.13 19.5 16.39 19.0 16.64 18.5 16.88 18.0 17.10 17.5 17.30 17.0 17.48 16.5 17.63 16.0 17.76 15.5 17.87 15.0 17.94 14.5 17.98 14.0 18.00 13.5 17.98 13.0 17.94 12.5 17.87 12.0 17.76 11.5 17.63 11.0 17.48 10.5 17.30 10.0 17.10 9.5 16.88 9.0 16.64 8.5 16.39 8.0 16.13 7.5 15.87 7.0 15.60 6.5 15.33 6.0 15.07 5.5 14.81 5.0 14.56 4.5 14.32 4.0 14.10 3.5 13.90 3.0 13.72 2.5 13.57 2.0 13.44 1.5 13.33 1.0 13.26 0.5 13.22 0.0 13.20' fill='url%28%23r%29'/%3E%3Cpolygon points='0 0 28 0 28.0 13.20 27.5 13.22 27.0 13.26 26.5 13.33 26.0 13.44 25.5 13.57 25.0 13.72 24.5 13.90 24.0 14.10 23.5 14.32 23.0 14.56 22.5 14.81 22.0 15.07 21.5 15.33 21.0 15.60 20.5 15.87 20.0 16.13 19.5 16.39 19.0 16.64 18.5 16.88 18.0 17.10 17.5 17.30 17.0 17.48 16.5 17.63 16.0 17.76 15.5 17.87 15.0 17.94 14.5 17.98 14.0 18.00 13.5 17.98 13.0 17.94 12.5 17.87 12.0 17.76 11.5 17.63 11.0 17.48 10.5 17.30 10.0 17.10 9.5 16.88 9.0 16.64 8.5 16.39 8.0 16.13 7.5 15.87 7.0 15.60 6.5 15.33 6.0 15.07 5.5 14.81 5.0 14.56 4.5 14.32 4.0 14.10 3.5 13.90 3.0 13.72 2.5 13.57 2.0 13.44 1.5 13.33 1.0 13.26 0.5 13.22 0.0 13.20' fill='url%28%23v%29'/%3E%3C/svg%3E") 0 0/28px 18px repeat-x;filter:drop-shadow(0 4px 3px rgba(20,12,5,.5))}
+header[style*="sticky"]::before{content:"";position:absolute;left:0;right:0;top:100%;height:170px;pointer-events:none;z-index:1;background:linear-gradient(180deg,transparent 14px,rgba(30,18,8,.30) 17px,rgba(30,18,8,0) 28px),radial-gradient(ellipse 110px 150px at 50% 30px,rgba(255,206,130,.26),rgba(255,206,130,.08) 55%,transparent 75%) 0 0/calc(100% / 8) 170px repeat-x}
+header .lamps{top:calc(100% + 14px) !important;z-index:3}
+header .lamps span{background:#3A2A1C !important}
+header .lamps span::after{box-shadow:0 0 18px 6px rgba(255,214,140,.6),0 0 60px 20px rgba(255,200,120,.18) !important}
+@media (max-width:760px){header[style*="sticky"]::before{background-size:100% 100%,calc(100% / 4) 120px;height:120px}}
+/* 모바일 보정 */
+@media (max-width:760px){
+#dc-root .sl-search{flex:1 1 100% !important;min-width:0 !important;max-width:100% !important;width:100% !important;box-sizing:border-box}
+#dc-root .sl-search input{width:0;flex:1 1 auto}
+#dc-root .sig-grid{grid-template-columns:minmax(0,1fr) !important}
+#dc-root .sig{min-width:0 !important;max-width:100%}
+#dc-root .sig-top{flex-wrap:wrap;row-gap:4px}
+#dc-root .sig-top .pr{white-space:normal}
+#dc-root .mi{grid-template-columns:104px minmax(0,1fr) !important;gap:14px !important}
+#dc-root .mi-b{min-width:0}
+#dc-root .mi-top{flex-wrap:wrap !important;row-gap:2px}
+#dc-root .mi-top .pr{white-space:nowrap}
+#dc-root nav[aria-label="현재 위치"] a{display:inline-block;padding:10px 4px;margin:-10px -4px}
+#dc-root .g-go{font-size:12.5px !important;padding:8px 0;display:inline-block}
+}
+</style>
+</head>
+<body>
+<div id="dc-root">
+<div class="fx" style="font-family: 'Gowun Dodum', sans-serif; color: #1D1A16; background: #F7F1E3; font-size: 16px; line-height: 1.75; overflow-x: clip">
+<div class="progress" aria-hidden="true"></div>
+
+<header style="position: sticky; top: 0; z-index: 30; background: #F3EAD6 url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg); box-shadow: 0 6px 20px rgba(0,0,0,.25); border-bottom: 1.5px solid #1B1612">
+<div aria-hidden="true" style="height: 6px; background: #1B1612"></div>
+<div class="hd-row" style="max-width: 1280px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap">
+<a href="../index.html" aria-label="인천항갈매기 홈" style="display: flex; align-items: center; gap: 12px; text-decoration: none"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/278b51f9f501a77eb57b8cf450b9a150.png" alt="인천항갈매기" style="height: 44px; display: block; filter: brightness(.35) sepia(.6)"><span style="font-size: 12px; letter-spacing: 3px; color: #6B5F4F; border-left: 1px solid #9A8A70; padding-left: 12px">갈매기 숯불구이</span></a>
+<nav class="gnav mnav" aria-label="주 메뉴"><a class="nl" href="../index.html">브랜드 이야기</a><a class="nl" href="menu.html">메뉴 정보</a><a class="nl" href="stores.html">매장찾기</a><a class="nl on" href="news.html">갈매기 소식</a><a class="btn-clean" href="franchise.html">가맹 문의<i aria-hidden="true">→</i></a></nav>
+</div>
+<div class="lamps" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</header>
+
+<article>
+<div style="position: relative; height: 640px; overflow: hidden; background: #1A2E45">
+<img class="heroimg" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/7eb1063ae4b487b5c1dd6ca03918c56a.jpg" alt="새우젓을 올린 숯불 갈매기살 한 점" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .8">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,12,16,.2), rgba(10,12,16,.9))"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; max-width: 1080px; margin: 0 auto; padding: 0 32px 56px; color: #F4EEE2; display: flex; flex-direction: column; gap: 18px">
+<nav aria-label="현재 위치" class="up" style="display: flex; gap: 8px; font-size: 14px; color: #D9CFBD; flex-wrap: wrap"><a href="../index.html" style="color: #D9CFBD; text-decoration: none">홈</a><span aria-hidden="true">/</span><a href="news.html" style="color: #D9CFBD; text-decoration: none">갈매기 소식</a><span aria-hidden="true">/</span><span style="color: #F2C46D">부평점 소식</span></nav>
+<h1 class="up" style="margin: 0; font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.3; animation-delay: .2s">[예시] 부평역 맛집, 젓갈 네 가지에 찍어 먹는 숯불 갈매기살</h1>
+<div class="up" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 15px; color: #D9CFBD; animation-delay: .4s">
+<span style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 38px; height: 38px; background: #2B4A6B; color: #F4EEE2; font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; border-radius: 50%">부</span>인천항갈매기 부평점</span>
+<span>2026.11.05</span><span>읽는 시간 4분</span>
+</div>
+</div>
+</div>
+
+<div style="max-width: 1180px; margin: 0 auto; padding: 72px 32px 40px; display: flex; gap: 64px; align-items: flex-start">
+<aside class="side" aria-label="목차" style="flex: 0 0 220px; position: sticky; top: 110px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 22px; color: #2B4A6B">목차</span>
+<nav class="toc" style="display: flex; flex-direction: column; gap: 10px; border-left: 2px solid #1D1A16; padding-left: 16px; font-size: 15px">
+<a href="#s1" style="color: #1D1A16; text-decoration: none">왜 부평역에서 갈매기살인가</a>
+<a href="#s2" style="color: #1D1A16; text-decoration: none">네 가지 젓갈 찍어 먹기</a>
+<a href="#s3" style="color: #1D1A16; text-decoration: none">맛있게 굽는 법</a>
+<a href="#s4" style="color: #1D1A16; text-decoration: none">마무리와 짜배기</a>
+<a href="#s5" style="color: #1D1A16; text-decoration: none">찾아오는 길</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 20px">
+<span style="font-size: 13px; color: #6B5F4F">공유하기</span>
+<div style="display: flex; gap: 8px">
+<a class="share" href="#share" data-share="kakao" aria-label="카카오톡으로 공유" style="width: 44px; height: 44px; border: 1px solid #1D1A16; display: flex; align-items: center; justify-content: center; color: #1D1A16; text-decoration: none; font-size: 13px">카톡</a>
+<a class="share" href="#share" data-share="link" aria-label="링크 복사" style="width: 44px; height: 44px; border: 1px solid #1D1A16; display: flex; align-items: center; justify-content: center; color: #1D1A16; text-decoration: none; font-size: 13px">링크</a>
+</div>
+</div>
+</aside>
+
+<div class="prose" style="flex: 1 1 0; min-width: 0; max-width: 760px">
+<p style="font-size: 21px !important; font-family: 'Nanum Myeongjo', serif; line-height: 1.9 !important; border-left: 4px solid #2B4A6B; padding-left: 22px">부평역 테마의거리 골목 안쪽, 숯불 냄새를 따라오면 인천항갈매기가 있습니다. 오늘은 처음 오시는 분들을 위해 <span class="hl">젓갈에 찍어 먹는 갈매기살</span>을 제대로 즐기는 방법을 정리해 보았습니다.</p>
+
+<h2 id="s1"><span class="n">01</span>왜 부평역에서 갈매기살인가</h2>
+<p>갈매기살은 한쪽에 질긴 막이 있어 손질이 까다로운 부위입니다. 인천항갈매기는 이 막을 매일 직접 벗겨 냅니다. 그래서 하루에 준비할 수 있는 양이 정해져 있고, 늦은 시간에는 일찍 마감되기도 합니다.</p>
+<figure class="rv"><span class="zoom" style="display: block; border: 10px solid #FFFFFF; box-shadow: 0 24px 48px -28px rgba(0,0,0,.5)"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/b97c5f14d4835aa2804c4a19c34fbf5f.jpg" alt="막을 벗겨 손질한 생 갈매기살" style="width: 100%; display: block"></span><figcaption>매일 손질하는 생 갈매기살</figcaption></figure>
+
+<h2 id="s2"><span class="n">02</span>네 가지 젓갈 찍어 먹기</h2>
+<p>상에는 새우젓, 새우소금, 명란젓, 갈치속젓이 함께 오릅니다. 같은 고기도 무엇에 찍느냐에 따라 매번 다른 한 점이 됩니다.</p>
+<div class="rv" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 1.6em">
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">01 새우젓</span><span style="display: block; font-size: 15px; color: #4A433A">깔끔한 짠맛</span></div>
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">02 새우소금</span><span style="display: block; font-size: 15px; color: #4A433A">가볍게 찍는 감칠맛</span></div>
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">03 명란젓</span><span style="display: block; font-size: 15px; color: #4A433A">부드럽고 고소하게</span></div>
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">04 갈치속젓</span><span style="display: block; font-size: 15px; color: #4A433A">깊고 진한 맛</span></div>
+</div>
+<figure class="rv"><span class="zoom" style="display: block; border: 10px solid #FFFFFF; box-shadow: 0 24px 48px -28px rgba(0,0,0,.5)"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/064f525901ef8a9107890d14ddba7066.jpg" alt="갈치속젓에 찍은 갈매기살" style="width: 100%; display: block"></span></figure>
+
+<h2 id="s3"><span class="n">03</span>맛있게 굽는 법</h2>
+<p>소금갈매기는 말리며 익기 시작하면 먹기 좋게 자르고, 속까지 익으면 드세요. 양념갈매기는 기름기와 윤기가 돌 때가 가장 맛있습니다. 깍뚝항정살은 80% 초벌로 나가니 반으로 잘라 불판 가장자리에서 속까지 익혀 주세요.</p>
+
+<blockquote class="rv" style="margin: 2em 0; padding: 32px 36px; background: #1D1A16; color: #F4EEE2; position: relative"><span class="brush" aria-hidden="true" style="position: absolute; top: -18px; left: 24px; font-size: 56px; color: #2B4A6B">“</span><p style="margin: 0; color: #F4EEE2; font-family: 'Nanum Myeongjo', serif; font-size: 22px; line-height: 1.7">[손님 한마디 또는 점주의 한마디 — 실제 문장으로 교체]</p></blockquote>
+
+<h2 id="s4"><span class="n">04</span>마무리와 짜배기</h2>
+<p>식사는 시래기와 표고가 들어간 젓갈돌솥밥을 추천합니다. 갈치속젓에 비벼 드시면 고기와는 또 다른 마무리가 됩니다. 술은 원하시는 소주 두 병에 오이와 레몬, 얼음을 더한 황동 주전자 짜배기로.</p>
+<figure class="rv" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px"><span class="zoom" style="display: block; border: 8px solid #FFFFFF"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/ce95a4de12f99451dc8c395454a349bf.jpg" alt="젓갈돌솥밥" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block"></span><span class="zoom" style="display: block; border: 8px solid #FFFFFF"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/37ead8c9ddffb17f6b652e7e44917727.jpg" alt="황동 주전자 짜배기" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block"></span></figure>
+
+<h2 id="s5"><span class="n">05</span>찾아오는 길</h2>
+<div class="rv navy" style="position: relative; color: #F4EEE2; padding: 32px; overflow: hidden; margin-bottom: 1.4em">
+<span class="wave-l" aria-hidden="true" style="position: absolute; inset: 0"></span>
+<dl style="position: relative; margin: 0; display: grid; grid-template-columns: 90px 1fr; gap: 12px 16px; font-size: 16px">
+<dt style="color: #9FB4C6">매장</dt><dd style="margin: 0">인천항갈매기 부평점</dd>
+<dt style="color: #9FB4C6">주소</dt><dd style="margin: 0">인천 부평구 시장로12번길 21-1 1층</dd>
+<dt style="color: #9FB4C6">영업</dt><dd style="margin: 0">매일 16:00 – 01:00 (음식 L.O 24:00)</dd>
+<dt style="color: #9FB4C6">주차</dt><dd style="margin: 0">맞은편 파라움빌딩 지하주차장 (유료)</dd>
+<dt style="color: #9FB4C6">문의</dt><dd style="margin: 0">카카오톡 채널 '인천항갈매기'</dd>
+</dl>
+<a href="bupyeong.html" style="position: relative; display: inline-block; margin-top: 22px; background: #F2C46D; color: #1D1A16; text-decoration: none; padding: 12px 22px">부평점 페이지 보기</a>
+</div>
+
+<div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid #CDBFA6">
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 부평역 맛집</a>
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 갈매기살</a>
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 부평 테마의거리</a>
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 부평 고기집</a>
+</div>
+</div>
+</div>
+</article>
+
+<section class="hanji" aria-label="이어서 읽기">
+<div style="max-width: 1180px; margin: 0 auto; padding: 90px 32px 110px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="brush" style="margin: 0; font-weight: 400; font-size: 40px">이어서 읽기</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px">
+<a class="rel" href="post.html" style="text-decoration: none; color: #1D1A16; display: flex; flex-direction: column; gap: 10px"><span class="zoom" style="display: block; aspect-ratio: 4 / 3; border: 8px solid #F7F1E3"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/950cb2fb3d7ee029508cff417f76cc4a.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="font-size: 13px; color: #2B4A6B">부평점 소식</span><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 19px">[예시] 부평 회식장소, 24명까지 앉는 숯불 단체석</span></a>
+<a class="rel" href="post.html" style="text-decoration: none; color: #1D1A16; display: flex; flex-direction: column; gap: 10px"><span class="zoom" style="display: block; aspect-ratio: 4 / 3; border: 8px solid #F7F1E3"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/37ead8c9ddffb17f6b652e7e44917727.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="font-size: 13px; color: #2B4A6B">부평점 소식</span><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 19px">[예시] 부평 테마의거리 맛집, 황동 주전자 짜배기</span></a>
+<a class="rel" href="post.html" style="text-decoration: none; color: #1D1A16; display: flex; flex-direction: column; gap: 10px"><span class="zoom" style="display: block; aspect-ratio: 4 / 3; border: 8px solid #F7F1E3"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/ce95a4de12f99451dc8c395454a349bf.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="font-size: 13px; color: #2B4A6B">부평점 소식</span><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 19px">[예시] 마무리는 갈치속젓 젓갈돌솥밥</span></a>
+</div>
+</div>
+</section>
+
+<footer style="background: #1A2E45; color: #B5AA97; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/278b51f9f501a77eb57b8cf450b9a150.png" alt="인천항갈매기" style="height: 46px; width: auto; display: block; align-self: flex-start; margin-bottom: 8px; filter: brightness(0) invert(.94) sepia(.15)">
+<span>상호 인천항갈매기 · 대표 정시웅, 임경준, 백승화 · 사업자등록번호 467-03-03763</span>
+<span>본사 인천광역시 부평구 시장로12번길 21-1 (부평동) · 이메일 <a href="mailto:thebestglobal@amakers.co.kr" style="color: #B5AA97">thebestglobal@amakers.co.kr</a></span>
+<span>© 인천항갈매기. All rights reserved. · 운영 <a href="/" style="color: #FF8A5C">TheBestF&amp;B</a></span>
+</div>
+<nav aria-label="하단 메뉴" style="display: flex; flex-direction: column; gap: 10px">
+<a href="http://pf.kakao.com/_jxgzSX" style="color: #F4EEE2">카카오톡 채널</a>
+<a href="/member/privacy.html" style="color: #B5AA97">개인정보처리방침</a>
+<a href="/member/mall_agreement.html" style="color: #B5AA97">이용약관</a>
+<a href="/member/login.html?returnUrl=%2Fshop2%2Fbrand%2Fowner.html" style="color: #B5AA97; opacity: .7">로그인</a>
+</nav>
+</div>
+</footer>
+
+<div style="position: sticky; bottom: 0; z-index: 25; background: rgba(18,22,28,.95); color: #F4EEE2; border-top: 2px solid #F2C46D">
+<div style="max-width: 1280px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<span><span class="brush" style="font-size: 19px; color: #F2C46D">이 글 보고 오셨나요?</span> 부평점 매일 16:00 – 01:00</span>
+<a href="http://pf.kakao.com/_jxgzSX/chat" style="background: #F2C46D; color: #1D1A16; text-decoration: none; padding: 12px 24px">카카오톡으로 예약하기</a>
+</div>
+</div>
+</div>
+</div>
+<script type="text/x-dc-tpl" id="dc-tpl">
+<div class="{{fxClass}}" style="font-family: 'Gowun Dodum', sans-serif; color: #1D1A16; background: #F7F1E3; font-size: 16px; line-height: 1.75; overflow-x: clip">
+<div class="progress" aria-hidden="true"></div>
+
+<header style="position: sticky; top: 0; z-index: 30; background: #F3EAD6 url(https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/d6bbe3949a9be1c4725d0d4376e4dabc.jpg); box-shadow: 0 6px 20px rgba(0,0,0,.25); border-bottom: 1.5px solid #1B1612">
+<div aria-hidden="true" style="height: 6px; background: #1B1612"></div>
+<div class="hd-row" style="max-width: 1280px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap">
+<a href="../index.html" aria-label="인천항갈매기 홈" style="display: flex; align-items: center; gap: 12px; text-decoration: none"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/278b51f9f501a77eb57b8cf450b9a150.png" alt="인천항갈매기" style="height: 44px; display: block; filter: brightness(.35) sepia(.6)"><span style="font-size: 12px; letter-spacing: 3px; color: #6B5F4F; border-left: 1px solid #9A8A70; padding-left: 12px">갈매기 숯불구이</span></a>
+<nav class="gnav mnav" aria-label="주 메뉴"><a class="nl" href="../index.html">브랜드 이야기</a><a class="nl" href="menu.html">메뉴 정보</a><a class="nl" href="stores.html">매장찾기</a><a class="nl on" href="news.html">갈매기 소식</a><a class="btn-clean" href="franchise.html">가맹 문의<i aria-hidden="true">→</i></a></nav>
+</div>
+<div class="lamps" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</header>
+
+<article>
+<div style="position: relative; height: 640px; overflow: hidden; background: #1A2E45">
+<img class="heroimg" src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/7eb1063ae4b487b5c1dd6ca03918c56a.jpg" alt="새우젓을 올린 숯불 갈매기살 한 점" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .8">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,12,16,.2), rgba(10,12,16,.9))"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; max-width: 1080px; margin: 0 auto; padding: 0 32px 56px; color: #F4EEE2; display: flex; flex-direction: column; gap: 18px">
+<nav aria-label="현재 위치" class="up" style="display: flex; gap: 8px; font-size: 14px; color: #D9CFBD; flex-wrap: wrap"><a href="../index.html" style="color: #D9CFBD; text-decoration: none">홈</a><span aria-hidden="true">/</span><a href="news.html" style="color: #D9CFBD; text-decoration: none">갈매기 소식</a><span aria-hidden="true">/</span><span style="color: #F2C46D">부평점 소식</span></nav>
+<h1 class="up" style="margin: 0; font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.3; animation-delay: .2s">[예시] 부평역 맛집, 젓갈 네 가지에 찍어 먹는 숯불 갈매기살</h1>
+<div class="up" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 15px; color: #D9CFBD; animation-delay: .4s">
+<span style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 38px; height: 38px; background: #2B4A6B; color: #F4EEE2; font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; border-radius: 50%">부</span>인천항갈매기 부평점</span>
+<span>2026.11.05</span><span>읽는 시간 4분</span>
+</div>
+</div>
+</div>
+
+<div style="max-width: 1180px; margin: 0 auto; padding: 72px 32px 40px; display: flex; gap: 64px; align-items: flex-start">
+<aside class="side" aria-label="목차" style="flex: 0 0 220px; position: sticky; top: 110px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 22px; color: #2B4A6B">목차</span>
+<nav class="toc" style="display: flex; flex-direction: column; gap: 10px; border-left: 2px solid #1D1A16; padding-left: 16px; font-size: 15px">
+<a href="#s1" style="color: #1D1A16; text-decoration: none">왜 부평역에서 갈매기살인가</a>
+<a href="#s2" style="color: #1D1A16; text-decoration: none">네 가지 젓갈 찍어 먹기</a>
+<a href="#s3" style="color: #1D1A16; text-decoration: none">맛있게 굽는 법</a>
+<a href="#s4" style="color: #1D1A16; text-decoration: none">마무리와 짜배기</a>
+<a href="#s5" style="color: #1D1A16; text-decoration: none">찾아오는 길</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 20px">
+<span style="font-size: 13px; color: #6B5F4F">공유하기</span>
+<div style="display: flex; gap: 8px">
+<a class="share" href="#share" data-share="kakao" aria-label="카카오톡으로 공유" style="width: 44px; height: 44px; border: 1px solid #1D1A16; display: flex; align-items: center; justify-content: center; color: #1D1A16; text-decoration: none; font-size: 13px">카톡</a>
+<a class="share" href="#share" data-share="link" aria-label="링크 복사" style="width: 44px; height: 44px; border: 1px solid #1D1A16; display: flex; align-items: center; justify-content: center; color: #1D1A16; text-decoration: none; font-size: 13px">링크</a>
+</div>
+</div>
+</aside>
+
+<div class="prose" style="flex: 1 1 0; min-width: 0; max-width: 760px">
+<p style="font-size: 21px !important; font-family: 'Nanum Myeongjo', serif; line-height: 1.9 !important; border-left: 4px solid #2B4A6B; padding-left: 22px">부평역 테마의거리 골목 안쪽, 숯불 냄새를 따라오면 인천항갈매기가 있습니다. 오늘은 처음 오시는 분들을 위해 <span class="hl">젓갈에 찍어 먹는 갈매기살</span>을 제대로 즐기는 방법을 정리해 보았습니다.</p>
+
+<h2 id="s1"><span class="n">01</span>왜 부평역에서 갈매기살인가</h2>
+<p>갈매기살은 한쪽에 질긴 막이 있어 손질이 까다로운 부위입니다. 인천항갈매기는 이 막을 매일 직접 벗겨 냅니다. 그래서 하루에 준비할 수 있는 양이 정해져 있고, 늦은 시간에는 일찍 마감되기도 합니다.</p>
+<figure class="rv"><span class="zoom" style="display: block; border: 10px solid #FFFFFF; box-shadow: 0 24px 48px -28px rgba(0,0,0,.5)"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/b97c5f14d4835aa2804c4a19c34fbf5f.jpg" alt="막을 벗겨 손질한 생 갈매기살" style="width: 100%; display: block"></span><figcaption>매일 손질하는 생 갈매기살</figcaption></figure>
+
+<h2 id="s2"><span class="n">02</span>네 가지 젓갈 찍어 먹기</h2>
+<p>상에는 새우젓, 새우소금, 명란젓, 갈치속젓이 함께 오릅니다. 같은 고기도 무엇에 찍느냐에 따라 매번 다른 한 점이 됩니다.</p>
+<div class="rv" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 1.6em">
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">01 새우젓</span><span style="display: block; font-size: 15px; color: #4A433A">깔끔한 짠맛</span></div>
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">02 새우소금</span><span style="display: block; font-size: 15px; color: #4A433A">가볍게 찍는 감칠맛</span></div>
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">03 명란젓</span><span style="display: block; font-size: 15px; color: #4A433A">부드럽고 고소하게</span></div>
+<div style="background: #FFFFFF; padding: 18px; border-top: 3px solid #2B4A6B"><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; color: #2B4A6B">04 갈치속젓</span><span style="display: block; font-size: 15px; color: #4A433A">깊고 진한 맛</span></div>
+</div>
+<figure class="rv"><span class="zoom" style="display: block; border: 10px solid #FFFFFF; box-shadow: 0 24px 48px -28px rgba(0,0,0,.5)"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/064f525901ef8a9107890d14ddba7066.jpg" alt="갈치속젓에 찍은 갈매기살" style="width: 100%; display: block"></span></figure>
+
+<h2 id="s3"><span class="n">03</span>맛있게 굽는 법</h2>
+<p>소금갈매기는 말리며 익기 시작하면 먹기 좋게 자르고, 속까지 익으면 드세요. 양념갈매기는 기름기와 윤기가 돌 때가 가장 맛있습니다. 깍뚝항정살은 80% 초벌로 나가니 반으로 잘라 불판 가장자리에서 속까지 익혀 주세요.</p>
+
+<blockquote class="rv" style="margin: 2em 0; padding: 32px 36px; background: #1D1A16; color: #F4EEE2; position: relative"><span class="brush" aria-hidden="true" style="position: absolute; top: -18px; left: 24px; font-size: 56px; color: #2B4A6B">“</span><p style="margin: 0; color: #F4EEE2; font-family: 'Nanum Myeongjo', serif; font-size: 22px; line-height: 1.7">[손님 한마디 또는 점주의 한마디 — 실제 문장으로 교체]</p></blockquote>
+
+<h2 id="s4"><span class="n">04</span>마무리와 짜배기</h2>
+<p>식사는 시래기와 표고가 들어간 젓갈돌솥밥을 추천합니다. 갈치속젓에 비벼 드시면 고기와는 또 다른 마무리가 됩니다. 술은 원하시는 소주 두 병에 오이와 레몬, 얼음을 더한 황동 주전자 짜배기로.</p>
+<figure class="rv" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px"><span class="zoom" style="display: block; border: 8px solid #FFFFFF"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/ce95a4de12f99451dc8c395454a349bf.jpg" alt="젓갈돌솥밥" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block"></span><span class="zoom" style="display: block; border: 8px solid #FFFFFF"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/37ead8c9ddffb17f6b652e7e44917727.jpg" alt="황동 주전자 짜배기" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block"></span></figure>
+
+<h2 id="s5"><span class="n">05</span>찾아오는 길</h2>
+<div class="rv navy" style="position: relative; color: #F4EEE2; padding: 32px; overflow: hidden; margin-bottom: 1.4em">
+<span class="wave-l" aria-hidden="true" style="position: absolute; inset: 0"></span>
+<dl style="position: relative; margin: 0; display: grid; grid-template-columns: 90px 1fr; gap: 12px 16px; font-size: 16px">
+<dt style="color: #9FB4C6">매장</dt><dd style="margin: 0">인천항갈매기 부평점</dd>
+<dt style="color: #9FB4C6">주소</dt><dd style="margin: 0">인천 부평구 시장로12번길 21-1 1층</dd>
+<dt style="color: #9FB4C6">영업</dt><dd style="margin: 0">매일 16:00 – 01:00 (음식 L.O 24:00)</dd>
+<dt style="color: #9FB4C6">주차</dt><dd style="margin: 0">맞은편 파라움빌딩 지하주차장 (유료)</dd>
+<dt style="color: #9FB4C6">문의</dt><dd style="margin: 0">카카오톡 채널 '인천항갈매기'</dd>
+</dl>
+<a href="bupyeong.html" style="position: relative; display: inline-block; margin-top: 22px; background: #F2C46D; color: #1D1A16; text-decoration: none; padding: 12px 22px">부평점 페이지 보기</a>
+</div>
+
+<div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid #CDBFA6">
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 부평역 맛집</a>
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 갈매기살</a>
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 부평 테마의거리</a>
+<a href="news.html" style="border: 1px solid #1D1A16; color: #1D1A16; text-decoration: none; padding: 6px 14px; font-size: 14px; border-radius: 30px"># 부평 고기집</a>
+</div>
+</div>
+</div>
+</article>
+
+<section class="hanji" aria-label="이어서 읽기">
+<div style="max-width: 1180px; margin: 0 auto; padding: 90px 32px 110px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="brush" style="margin: 0; font-weight: 400; font-size: 40px">이어서 읽기</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px">
+<a class="rel" href="post.html" style="text-decoration: none; color: #1D1A16; display: flex; flex-direction: column; gap: 10px"><span class="zoom" style="display: block; aspect-ratio: 4 / 3; border: 8px solid #F7F1E3"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/950cb2fb3d7ee029508cff417f76cc4a.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="font-size: 13px; color: #2B4A6B">부평점 소식</span><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 19px">[예시] 부평 회식장소, 24명까지 앉는 숯불 단체석</span></a>
+<a class="rel" href="post.html" style="text-decoration: none; color: #1D1A16; display: flex; flex-direction: column; gap: 10px"><span class="zoom" style="display: block; aspect-ratio: 4 / 3; border: 8px solid #F7F1E3"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/37ead8c9ddffb17f6b652e7e44917727.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="font-size: 13px; color: #2B4A6B">부평점 소식</span><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 19px">[예시] 부평 테마의거리 맛집, 황동 주전자 짜배기</span></a>
+<a class="rel" href="post.html" style="text-decoration: none; color: #1D1A16; display: flex; flex-direction: column; gap: 10px"><span class="zoom" style="display: block; aspect-ratio: 4 / 3; border: 8px solid #F7F1E3"><img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/ce95a4de12f99451dc8c395454a349bf.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block"></span><span style="font-size: 13px; color: #2B4A6B">부평점 소식</span><span style="font-family: 'Nanum Myeongjo', serif; font-weight: 800; font-size: 19px">[예시] 마무리는 갈치속젓 젓갈돌솥밥</span></a>
+</div>
+</div>
+</section>
+
+<footer style="background: #1A2E45; color: #B5AA97; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 32px; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<img src="https://ecimg.cafe24img.com/pg3531b95889732059/thebestfnb/web/upload/hp/278b51f9f501a77eb57b8cf450b9a150.png" alt="인천항갈매기" style="height: 46px; width: auto; display: block; align-self: flex-start; margin-bottom: 8px; filter: brightness(0) invert(.94) sepia(.15)">
+<span>상호 인천항갈매기 · 대표 정시웅, 임경준, 백승화 · 사업자등록번호 467-03-03763</span>
+<span>본사 인천광역시 부평구 시장로12번길 21-1 (부평동) · 이메일 <a href="mailto:thebestglobal@amakers.co.kr" style="color: #B5AA97">thebestglobal@amakers.co.kr</a></span>
+<span>© 인천항갈매기. All rights reserved. · 운영 <a href="/" style="color: #FF8A5C">TheBestF&amp;B</a></span>
+</div>
+<nav aria-label="하단 메뉴" style="display: flex; flex-direction: column; gap: 10px">
+<a href="http://pf.kakao.com/_jxgzSX" style="color: #F4EEE2">카카오톡 채널</a>
+<a href="/member/privacy.html" style="color: #B5AA97">개인정보처리방침</a>
+<a href="/member/mall_agreement.html" style="color: #B5AA97">이용약관</a>
+<a href="/member/login.html?returnUrl=%2Fshop2%2Fbrand%2Fowner.html" style="color: #B5AA97; opacity: .7">로그인</a>
+</nav>
+</div>
+</footer>
+
+<div style="position: sticky; bottom: 0; z-index: 25; background: rgba(18,22,28,.95); color: #F4EEE2; border-top: 2px solid #F2C46D">
+<div style="max-width: 1280px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<span><span class="brush" style="font-size: 19px; color: #F2C46D">이 글 보고 오셨나요?</span> 부평점 매일 16:00 – 01:00</span>
+<a href="http://pf.kakao.com/_jxgzSX/chat" style="background: #F2C46D; color: #1D1A16; text-decoration: none; padding: 12px 24px">카카오톡으로 예약하기</a>
+</div>
+</div>
+</div>
+</script>
+<script>(function(global,factory){typeof exports==="object"&&typeof module!=="undefined"?module.exports=factory():typeof define==="function"&&define.amd?define(factory):(global=global||self,global.morphdom=factory())})(this,function(){"use strict";var DOCUMENT_FRAGMENT_NODE=11;function morphAttrs(fromNode,toNode){var toNodeAttrs=toNode.attributes;var attr;var attrName;var attrNamespaceURI;var attrValue;var fromValue;if(toNode.nodeType===DOCUMENT_FRAGMENT_NODE||fromNode.nodeType===DOCUMENT_FRAGMENT_NODE){return}for(var i=toNodeAttrs.length-1;i>=0;i--){attr=toNodeAttrs[i];attrName=attr.name;attrNamespaceURI=attr.namespaceURI;attrValue=attr.value;if(attrNamespaceURI){attrName=attr.localName||attrName;fromValue=fromNode.getAttributeNS(attrNamespaceURI,attrName);if(fromValue!==attrValue){if(attr.prefix==="xmlns"){attrName=attr.name}fromNode.setAttributeNS(attrNamespaceURI,attrName,attrValue)}}else{fromValue=fromNode.getAttribute(attrName);if(fromValue!==attrValue){fromNode.setAttribute(attrName,attrValue)}}}var fromNodeAttrs=fromNode.attributes;for(var d=fromNodeAttrs.length-1;d>=0;d--){attr=fromNodeAttrs[d];attrName=attr.name;attrNamespaceURI=attr.namespaceURI;if(attrNamespaceURI){attrName=attr.localName||attrName;if(!toNode.hasAttributeNS(attrNamespaceURI,attrName)){fromNode.removeAttributeNS(attrNamespaceURI,attrName)}}else{if(!toNode.hasAttribute(attrName)){fromNode.removeAttribute(attrName)}}}}var range;var NS_XHTML="http://www.w3.org/1999/xhtml";var doc=typeof document==="undefined"?undefined:document;var HAS_TEMPLATE_SUPPORT=!!doc&&"content"in doc.createElement("template");var HAS_RANGE_SUPPORT=!!doc&&doc.createRange&&"createContextualFragment"in doc.createRange();function createFragmentFromTemplate(str){var template=doc.createElement("template");template.innerHTML=str;return template.content.childNodes[0]}function createFragmentFromRange(str){if(!range){range=doc.createRange();range.selectNode(doc.body)}var fragment=range.createContextualFragment(str);return fragment.childNodes[0]}function createFragmentFromWrap(str){var fragment=doc.createElement("body");fragment.innerHTML=str;return fragment.childNodes[0]}function toElement(str){str=str.trim();if(HAS_TEMPLATE_SUPPORT){return createFragmentFromTemplate(str)}else if(HAS_RANGE_SUPPORT){return createFragmentFromRange(str)}return createFragmentFromWrap(str)}function compareNodeNames(fromEl,toEl){var fromNodeName=fromEl.nodeName;var toNodeName=toEl.nodeName;var fromCodeStart,toCodeStart;if(fromNodeName===toNodeName){return true}fromCodeStart=fromNodeName.charCodeAt(0);toCodeStart=toNodeName.charCodeAt(0);if(fromCodeStart<=90&&toCodeStart>=97){return fromNodeName===toNodeName.toUpperCase()}else if(toCodeStart<=90&&fromCodeStart>=97){return toNodeName===fromNodeName.toUpperCase()}else{return false}}function createElementNS(name,namespaceURI){return!namespaceURI||namespaceURI===NS_XHTML?doc.createElement(name):doc.createElementNS(namespaceURI,name)}function moveChildren(fromEl,toEl){var curChild=fromEl.firstChild;while(curChild){var nextChild=curChild.nextSibling;toEl.appendChild(curChild);curChild=nextChild}return toEl}function syncBooleanAttrProp(fromEl,toEl,name){if(fromEl[name]!==toEl[name]){fromEl[name]=toEl[name];if(fromEl[name]){fromEl.setAttribute(name,"")}else{fromEl.removeAttribute(name)}}}var specialElHandlers={OPTION:function(fromEl,toEl){var parentNode=fromEl.parentNode;if(parentNode){var parentName=parentNode.nodeName.toUpperCase();if(parentName==="OPTGROUP"){parentNode=parentNode.parentNode;parentName=parentNode&&parentNode.nodeName.toUpperCase()}if(parentName==="SELECT"&&!parentNode.hasAttribute("multiple")){if(fromEl.hasAttribute("selected")&&!toEl.selected){fromEl.setAttribute("selected","selected");fromEl.removeAttribute("selected")}parentNode.selectedIndex=-1}}syncBooleanAttrProp(fromEl,toEl,"selected")},INPUT:function(fromEl,toEl){syncBooleanAttrProp(fromEl,toEl,"checked");syncBooleanAttrProp(fromEl,toEl,"disabled");if(fromEl.value!==toEl.value){fromEl.value=toEl.value}if(!toEl.hasAttribute("value")){fromEl.removeAttribute("value")}},TEXTAREA:function(fromEl,toEl){var newValue=toEl.value;if(fromEl.value!==newValue){fromEl.value=newValue}var firstChild=fromEl.firstChild;if(firstChild){var oldValue=firstChild.nodeValue;if(oldValue==newValue||!newValue&&oldValue==fromEl.placeholder){return}firstChild.nodeValue=newValue}},SELECT:function(fromEl,toEl){if(!toEl.hasAttribute("multiple")){var selectedIndex=-1;var i=0;var curChild=fromEl.firstChild;var optgroup;var nodeName;while(curChild){nodeName=curChild.nodeName&&curChild.nodeName.toUpperCase();if(nodeName==="OPTGROUP"){optgroup=curChild;curChild=optgroup.firstChild}else{if(nodeName==="OPTION"){if(curChild.hasAttribute("selected")){selectedIndex=i;break}i++}curChild=curChild.nextSibling;if(!curChild&&optgroup){curChild=optgroup.nextSibling;optgroup=null}}}fromEl.selectedIndex=selectedIndex}}};var ELEMENT_NODE=1;var DOCUMENT_FRAGMENT_NODE$1=11;var TEXT_NODE=3;var COMMENT_NODE=8;function noop(){}function defaultGetNodeKey(node){if(node){return node.getAttribute&&node.getAttribute("id")||node.id}}function morphdomFactory(morphAttrs){return function morphdom(fromNode,toNode,options){if(!options){options={}}if(typeof toNode==="string"){if(fromNode.nodeName==="#document"||fromNode.nodeName==="HTML"||fromNode.nodeName==="BODY"){var toNodeHtml=toNode;toNode=doc.createElement("html");toNode.innerHTML=toNodeHtml}else{toNode=toElement(toNode)}}else if(toNode.nodeType===DOCUMENT_FRAGMENT_NODE$1){toNode=toNode.firstElementChild}var getNodeKey=options.getNodeKey||defaultGetNodeKey;var onBeforeNodeAdded=options.onBeforeNodeAdded||noop;var onNodeAdded=options.onNodeAdded||noop;var onBeforeElUpdated=options.onBeforeElUpdated||noop;var onElUpdated=options.onElUpdated||noop;var onBeforeNodeDiscarded=options.onBeforeNodeDiscarded||noop;var onNodeDiscarded=options.onNodeDiscarded||noop;var onBeforeElChildrenUpdated=options.onBeforeElChildrenUpdated||noop;var skipFromChildren=options.skipFromChildren||noop;var addChild=options.addChild||function(parent,child){return parent.appendChild(child)};var childrenOnly=options.childrenOnly===true;var fromNodesLookup=Object.create(null);var keyedRemovalList=[];function addKeyedRemoval(key){keyedRemovalList.push(key)}function walkDiscardedChildNodes(node,skipKeyedNodes){if(node.nodeType===ELEMENT_NODE){var curChild=node.firstChild;while(curChild){var key=undefined;if(skipKeyedNodes&&(key=getNodeKey(curChild))){addKeyedRemoval(key)}else{onNodeDiscarded(curChild);if(curChild.firstChild){walkDiscardedChildNodes(curChild,skipKeyedNodes)}}curChild=curChild.nextSibling}}}function removeNode(node,parentNode,skipKeyedNodes){if(onBeforeNodeDiscarded(node)===false){return}if(parentNode){parentNode.removeChild(node)}onNodeDiscarded(node);walkDiscardedChildNodes(node,skipKeyedNodes)}function indexTree(node){if(node.nodeType===ELEMENT_NODE||node.nodeType===DOCUMENT_FRAGMENT_NODE$1){var curChild=node.firstChild;while(curChild){var key=getNodeKey(curChild);if(key){fromNodesLookup[key]=curChild}indexTree(curChild);curChild=curChild.nextSibling}}}indexTree(fromNode);function handleNodeAdded(el){onNodeAdded(el);var curChild=el.firstChild;while(curChild){var nextSibling=curChild.nextSibling;var key=getNodeKey(curChild);if(key){var unmatchedFromEl=fromNodesLookup[key];if(unmatchedFromEl&&compareNodeNames(curChild,unmatchedFromEl)){curChild.parentNode.replaceChild(unmatchedFromEl,curChild);morphEl(unmatchedFromEl,curChild)}else{handleNodeAdded(curChild)}}else{handleNodeAdded(curChild)}curChild=nextSibling}}function cleanupFromEl(fromEl,curFromNodeChild,curFromNodeKey){while(curFromNodeChild){var fromNextSibling=curFromNodeChild.nextSibling;if(curFromNodeKey=getNodeKey(curFromNodeChild)){addKeyedRemoval(curFromNodeKey)}else{removeNode(curFromNodeChild,fromEl,true)}curFromNodeChild=fromNextSibling}}function morphEl(fromEl,toEl,childrenOnly){var toElKey=getNodeKey(toEl);if(toElKey){delete fromNodesLookup[toElKey]}if(!childrenOnly){var beforeUpdateResult=onBeforeElUpdated(fromEl,toEl);if(beforeUpdateResult===false){return}else if(beforeUpdateResult instanceof HTMLElement){fromEl=beforeUpdateResult;indexTree(fromEl)}morphAttrs(fromEl,toEl);onElUpdated(fromEl);if(onBeforeElChildrenUpdated(fromEl,toEl)===false){return}}if(fromEl.nodeName!=="TEXTAREA"){morphChildren(fromEl,toEl)}else{specialElHandlers.TEXTAREA(fromEl,toEl)}}function morphChildren(fromEl,toEl){var skipFrom=skipFromChildren(fromEl,toEl);var curToNodeChild=toEl.firstChild;var curFromNodeChild=fromEl.firstChild;var curToNodeKey;var curFromNodeKey;var fromNextSibling;var toNextSibling;var matchingFromEl;outer:while(curToNodeChild){toNextSibling=curToNodeChild.nextSibling;curToNodeKey=getNodeKey(curToNodeChild);while(!skipFrom&&curFromNodeChild){fromNextSibling=curFromNodeChild.nextSibling;if(curToNodeChild.isSameNode&&curToNodeChild.isSameNode(curFromNodeChild)){curToNodeChild=toNextSibling;curFromNodeChild=fromNextSibling;continue outer}curFromNodeKey=getNodeKey(curFromNodeChild);var curFromNodeType=curFromNodeChild.nodeType;var isCompatible=undefined;if(curFromNodeType===curToNodeChild.nodeType){if(curFromNodeType===ELEMENT_NODE){if(curToNodeKey){if(curToNodeKey!==curFromNodeKey){if(matchingFromEl=fromNodesLookup[curToNodeKey]){if(fromNextSibling===matchingFromEl){isCompatible=false}else{fromEl.insertBefore(matchingFromEl,curFromNodeChild);if(curFromNodeKey){addKeyedRemoval(curFromNodeKey)}else{removeNode(curFromNodeChild,fromEl,true)}curFromNodeChild=matchingFromEl;curFromNodeKey=getNodeKey(curFromNodeChild)}}else{isCompatible=false}}}else if(curFromNodeKey){isCompatible=false}isCompatible=isCompatible!==false&&compareNodeNames(curFromNodeChild,curToNodeChild);if(isCompatible){morphEl(curFromNodeChild,curToNodeChild)}}else if(curFromNodeType===TEXT_NODE||curFromNodeType==COMMENT_NODE){isCompatible=true;if(curFromNodeChild.nodeValue!==curToNodeChild.nodeValue){curFromNodeChild.nodeValue=curToNodeChild.nodeValue}}}if(isCompatible){curToNodeChild=toNextSibling;curFromNodeChild=fromNextSibling;continue outer}if(curFromNodeKey){addKeyedRemoval(curFromNodeKey)}else{removeNode(curFromNodeChild,fromEl,true)}curFromNodeChild=fromNextSibling}if(curToNodeKey&&(matchingFromEl=fromNodesLookup[curToNodeKey])&&compareNodeNames(matchingFromEl,curToNodeChild)){if(!skipFrom){addChild(fromEl,matchingFromEl)}morphEl(matchingFromEl,curToNodeChild)}else{var onBeforeNodeAddedResult=onBeforeNodeAdded(curToNodeChild);if(onBeforeNodeAddedResult!==false){if(onBeforeNodeAddedResult){curToNodeChild=onBeforeNodeAddedResult}if(curToNodeChild.actualize){curToNodeChild=curToNodeChild.actualize(fromEl.ownerDocument||doc)}addChild(fromEl,curToNodeChild);handleNodeAdded(curToNodeChild)}}curToNodeChild=toNextSibling;curFromNodeChild=fromNextSibling}cleanupFromEl(fromEl,curFromNodeChild,curFromNodeKey);var specialElHandler=specialElHandlers[fromEl.nodeName];if(specialElHandler){specialElHandler(fromEl,toEl)}}var morphedNode=fromNode;var morphedNodeType=morphedNode.nodeType;var toNodeType=toNode.nodeType;if(!childrenOnly){if(morphedNodeType===ELEMENT_NODE){if(toNodeType===ELEMENT_NODE){if(!compareNodeNames(fromNode,toNode)){onNodeDiscarded(fromNode);morphedNode=moveChildren(fromNode,createElementNS(toNode.nodeName,toNode.namespaceURI))}}else{morphedNode=toNode}}else if(morphedNodeType===TEXT_NODE||morphedNodeType===COMMENT_NODE){if(toNodeType===morphedNodeType){if(morphedNode.nodeValue!==toNode.nodeValue){morphedNode.nodeValue=toNode.nodeValue}return morphedNode}else{morphedNode=toNode}}}if(morphedNode===toNode){onNodeDiscarded(fromNode)}else{if(toNode.isSameNode&&toNode.isSameNode(morphedNode)){return}morphEl(morphedNode,toNode,childrenOnly);if(keyedRemovalList){for(var i=0,len=keyedRemovalList.length;i<len;i++){var elToRemove=fromNodesLookup[keyedRemovalList[i]];if(elToRemove){removeNode(elToRemove,elToRemove.parentNode,false)}}}}if(!childrenOnly&&morphedNode!==fromNode&&fromNode.parentNode){if(morphedNode.actualize){morphedNode=morphedNode.actualize(fromNode.ownerDocument||doc)}fromNode.parentNode.replaceChild(morphedNode,fromNode)}return morphedNode}}var morphdom=morphdomFactory(morphAttrs);return morphdom});</script>
+<script>(function(G){
+var EV={onClick:'click',onInput:'input',onChange:'change',onSubmit:'submit',onKeyDown:'keydown',onKeyUp:'keyup',onFocus:'focusin',onBlur:'focusout',onMouseEnter:'mouseover',onMouseLeave:'mouseout'};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function get(scope,p){p=p.trim();if(p==='true')return true;if(p==='false')return false;if(/^-?\d+(\.\d+)?$/.test(p))return Number(p);var neg=false;while(p[0]==='!'){neg=!neg;p=p.slice(1).trim();}
+ var v=p.split('.').reduce(function(a,k){return a==null?a:a[k];},scope);return neg?!v:v;}
+function findClose(str,tag,from){var open='<'+tag,close='</'+tag+'>',depth=1,i=from;while(i<str.length){var a=str.indexOf(open,i),b=str.indexOf(close,i);if(b<0)return -1;if(a>=0&&a<b){depth++;i=a+open.length;}else{depth--;if(depth===0)return b;i=b+close.length;}}return -1;}
+function interp(text,scope,H){
+ text=text.replace(/\s(on[A-Z]\w*)="\{\{\s*([\w.]+)\s*\}\}"/g,function(m,ev,p){var f=get(scope,p);if(typeof f!=='function')return '';var n=EV[ev]||ev.slice(2).toLowerCase();H.push(f);return ' data-dc-'+n+'="'+(H.length-1)+'"';});
+ return text.replace(/\{\{([^{}]*)\}\}/g,function(m,p){var v=get(scope,p);return (v==null||typeof v==='function'||v===false&&false)?'':esc(v);});
+}
+function proc(str,scope,H){var out='',i=0;var re=/<sc-(for|if)\b([^>]*)>/g;re.lastIndex=0;var m;
+ while((m=re.exec(str))){out+=interp(str.slice(i,m.index),scope,H);var tag='sc-'+m[1];var st=m.index+m[0].length;var end=findClose(str,tag,st);if(end<0)throw new Error('unclosed '+tag);var inner=str.slice(st,end);var attrs=m[2];
+  if(m[1]==='for'){var lm=attrs.match(/list="\{\{([^}]*)\}\}"/),am=attrs.match(/as="(\w+)"/);var list=get(scope,lm[1])||[];var as=am?am[1]:'item';
+   for(var k=0;k<list.length;k++){var s2=Object.create(scope);s2[as]=list[k];s2[as+'Index']=k;out+=proc(inner,s2,H);}}
+  else{var vm=attrs.match(/value="\{\{([^}]*)\}\}"/);if(vm&&get(scope,vm[1]))out+=proc(inner,scope,H);}
+  i=end+tag.length+3;re.lastIndex=i;}
+ return out+interp(str.slice(i),scope,H);}
+function render(tpl,vals){var H=[];var html=proc(tpl,vals,H);return {html:html,H:H};}
+function DCLogic(props){this.props=props||{};this.state={};}
+DCLogic.prototype.setState=function(o){if(typeof o==='function')o=o(this.state);Object.assign(this.state,o);this.__q();};
+DCLogic.prototype.forceUpdate=function(){this.__q();};
+DCLogic.prototype.__q=function(){var self=this;if(self.__p)return;self.__p=true;Promise.resolve().then(function(){self.__p=false;self.__r();});};
+function mount(Cls,props,root,tpl){var c=new Cls(props);var H=[];
+ c.__r=function(){var r=render(tpl,c.renderVals());H=r.H;var tmp=root.cloneNode(false);tmp.innerHTML=r.html;if(G.DC_I18N)G.DC_I18N(tmp);
+  if(G.morphdom){G.morphdom(root,tmp,{childrenOnly:true,onBeforeElUpdated:function(f,t){if(f.tagName==='VIDEO'&&t.tagName==='VIDEO'&&f.getAttribute('src')===t.getAttribute('src'))return false;if((f.tagName==='INPUT'||f.tagName==='TEXTAREA')&&f===document.activeElement){t.value=f.value;}if(f.tagName==='DETAILS'&&f.open)t.setAttribute('open','');return true;}});}else root.innerHTML=r.html;if(G.DC_POST)G.DC_POST();};
+ ['click','input','change','submit','keydown','keyup','focusin','focusout','mouseover','mouseout'].forEach(function(n){root.addEventListener(n,function(e){var el=e.target&&e.target.closest?e.target.closest('[data-dc-'+n+']'):null;if(!el||!root.contains(el))return;var f=H[+el.getAttribute('data-dc-'+n)];if(f){if(n==='submit')e.preventDefault();f(e);}});});
+ c.__r();if(c.componentDidMount)c.componentDidMount();G.__dc=c;return c;}
+G.DCLite={render:render,mount:mount,DCLogic:DCLogic};G.DCLogic=DCLogic;
+if(typeof module!=='undefined')module.exports=G.DCLite;
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>
+(function(){var Component=class Component extends DCLogic {
+  renderVals() {
+    const fx = this.props.effects ?? true;
+    return { fxClass: fx ? 'fx' : 'nofx' };
+  }
+};
+var root=document.getElementById('dc-root');var tpl=document.getElementById('dc-tpl').textContent;
+DCLite.mount(Component,{"effects":true},root,tpl);})();
+</script>
+
+<script id="share-js">document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-share]");if(!a)return;e.preventDefault();var u=location.href.split("#")[0],t=document.title;if(navigator.share){navigator.share({title:t,url:u}).catch(function(){});return;}if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){var d=document.createElement("div");d.textContent="링크를 복사했어요. 카카오톡에 붙여 넣어 보내세요.";d.style.cssText="position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#1D1A16;color:#F4EEE2;padding:12px 18px;z-index:99;font-size:14px";document.body.appendChild(d);setTimeout(function(){d.remove()},2200)})}},true);</script>
+<script id="m-fix-js">(function(){var last=0;function hd(){var h=document.querySelector(".m-hd");if(!h){var c=document.querySelectorAll("#dc-root header");for(var i=0;i<c.length;i++){var ps=getComputedStyle(c[i]).position;if(ps==="sticky"||ps==="fixed"){c[i].classList.add("m-hd");h=c[i];break;}}}}function on(){var r=document.documentElement;if(innerWidth>760){r.classList.remove("hd-hide");return;}hd();var y=scrollY,d=y-last;if(y<140||d<-6)r.classList.remove("hd-hide");else if(d>6)r.classList.add("hd-hide");last=y;}addEventListener("scroll",on,{passive:true});setTimeout(hd,800);})();</script>
+<div class="nopo-grain" aria-hidden="true"></div><div class="nopo-vig" aria-hidden="true"></div>
+</body>
+</html>
